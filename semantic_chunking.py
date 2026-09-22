@@ -63,18 +63,4 @@ def semantic_chunk_text(
     
 
 
-all_chunks = []
-
-for document in all_documents:
-    chunks = semantic_chunk_text(document["text"])
-    for chunk_number, chunk in enumerate(chunks):
-        all_chunks.append({
-            "text": chunk,
-            "source": document["source"],
-            "page": document["page"],
-            "chunk": chunk_number
-        })
-
-
-print(all_chunks[:2])
 

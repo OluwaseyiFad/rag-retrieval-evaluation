@@ -137,25 +137,3 @@ def recursive_chunk_text(text, chunk_size=500, overlap=100):
     chunks = merge_with_overlap(pieces, chunk_size, overlap)
 
     return chunks
-
-
-# Process documents
-
-all_chunks = []
-
-for document in all_documents:
-    chunks = recursive_chunk_text(
-        document["text"],
-        chunk_size=500,
-        overlap=100
-    )
-    for chunk_number, chunk in enumerate(chunks):
-        all_chunks.append({
-            "text": chunk,
-            "source": document["source"],
-            "page": document["page"],
-            "chunk": chunk_number
-        })
-
-
-print(all_chunks[:2])
