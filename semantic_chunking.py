@@ -1,20 +1,10 @@
 import re
 import numpy as np
-from pathlib import Path
-from process_pdf import extract_pdf
 from sentence_transformers import SentenceTransformer
-from sklearn.metrics.pairwise import cosine_similarity
 
 
-pdf_folder = Path("sources")
-
-all_documents = []
 model = SentenceTransformer("all-MiniLM-L6-v2")
 
-for pdf_path in pdf_folder.glob("*.pdf"):
-    documents = extract_pdf(pdf_path)
-    all_documents.extend(documents)
-    
     
 def split_sentences(text):
     sentences = re.split(r'(?<=[.!?])\s+', text)
@@ -23,7 +13,7 @@ def split_sentences(text):
 
 def get_similarities(sentences):
     if len(sentences) <= 1:
-        return sentences
+        return []
     embeddings = model.encode(sentences, normalize_embeddings=True)
     similarities = []
     for i in range(len(sentences) - 1):
@@ -38,11 +28,11 @@ def get_similarities(sentences):
 def semantic_chunk_text(
     text,
     breakpoint_percentile=20,
-    max_chunk_size=1000
+    max_chunk_size=500
 ):
     sentences = split_sentences(text)
     if len(sentences) <= 1:
-        return sentences
+        return []
     similarities = get_similarities(sentences)
     threshold = np.percentile(similarities, breakpoint_percentile)
     chunks = []

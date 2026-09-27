@@ -1,16 +1,3 @@
-from pathlib import Path
-from process_pdf import extract_pdf
-
-
-pdf_folder = Path("sources")
-
-all_documents = []
-
-for pdf_path in pdf_folder.glob("*.pdf"):
-    documents = extract_pdf(pdf_path)
-    all_documents.extend(documents)
-
-
 # Fixed-size fallback
 
 def fixed_size_chunk_text(text, chunk_size=500, overlap=100):
@@ -128,9 +115,7 @@ def merge_with_overlap(pieces, chunk_size=500, overlap=100):
     return chunks
 
 
-
 # Main recursive chunking function
-
 def recursive_chunk_text(text, chunk_size=500, overlap=100):
     separators = ["\n\n", "\n", ". ", " "]
     pieces = recursive_split(text, chunk_size, separators)

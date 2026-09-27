@@ -66,6 +66,20 @@ def retrieve(query, index, chunks, model, top_k=3):
     return results
 
 
+# print results
+def print_results(strategy, results):
+    print(f"\n{'=' * 80}")
+    print(strategy.upper())
+    print(f"{'=' * 80}")
+    for rank, result in enumerate(results, start=1):
+        print(f"\nRank: {rank}")
+        print(f"Score: {result['score']:.4f}")
+        print(f"Source: {result['source']}")
+        print(f"Page: {result['page']}")
+        print(f"Chunk: {result['chunk']}")
+        print(f"Text:\n{result['text'][:1000]}")
+
+
 fixed_chunks = generate_chunks(fixed_size_chunk_text)
 recursive_chunks = generate_chunks(recursive_chunk_text)
 semantic_chunks = generate_chunks(semantic_chunk_text)
@@ -74,12 +88,47 @@ fixed_index = create_index(fixed_chunks, model)
 recursive_index = create_index(recursive_chunks, model)
 semantic_index = create_index(semantic_chunks, model)
 
-query = "what is dynamic RAQ?"
+queries = [
+    "How does user feedback affect the dynamic routing framework's handling of future queries?",
 
-fixed_results = retrieve(query, fixed_index, fixed_chunks, model, top_k=3)
-recursive_results = retrieve(query, recursive_index, recursive_chunks, model, top_k=3)
-semantic_results = retrieve(query, semantic_index, semantic_chunks, model, top_k=3)
+    "How does the dynamic RAG framework decide whether to use a canned response or retrieve information through RAG?",
 
-print(f"fixed results: \n{fixed_results}\n\n\n")
-print(f"recursive results: \n{recursive_results}\n\n\n")
-print(f"semantic results: \n{semantic_results}\n\n\n")
+    "What happens when the confidence score for an intent falls below the threshold for using a predefined FAQ response?",
+
+    "What accuracy and response latency does the dynamic routing framework report?",
+
+    "What are the two strategies used for adaptive retrieval and the two strategies used for query reformulation in multiturn RAG?",
+
+    "How does SSRAG process a user's query before retrieving the final context?",
+
+    "How does SSRAG combine vector-based retrieval with graph-based retrieval?",
+
+    "Why is chunking an important preprocessing step in RAG systems?",
+
+    "How does hybrid search combine keyword search and semantic search?",
+
+    "Why is query reformulation necessary in multi-turn RAG systems?"
+]
+
+
+# Examinining the chunks for each strategies
+# Ensure suitability for comparison
+print("Fixed chunks: ", len(fixed_chunks))
+print("Recursive chunks: ", len(recursive_chunks))
+print("Semantic chunks: ", len(semantic_chunks))
+
+def average_chunk_size(chunks):
+    return sum(len(c["text"]) for c in chunks) / len(chunks)
+
+print("Fixed avg:", average_chunk_size(fixed_chunks))
+print("Recursive avg:", average_chunk_size(recursive_chunks))
+print("Semantic avg:", average_chunk_size(semantic_chunks))
+
+
+fixed_results = retrieve(queries[0], fixed_index, fixed_chunks, model, top_k=3)
+recursive_results = retrieve(queries[0], recursive_index, recursive_chunks, model, top_k=3)
+semantic_results = retrieve(queries[0], semantic_index, semantic_chunks, model, top_k=3)
+
+print_results("Fixed", fixed_results)
+print_results("Recursive", recursive_results)
+print_results("Semantic", semantic_results)
