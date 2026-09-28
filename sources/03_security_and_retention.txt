@@ -1,0 +1,68 @@
+AtlasDesk Security and Data Retention Policy
+
+1. Security incidents
+
+An AtlasDesk security incident is an event in which the confidentiality, integrity, or availability of customer data or services may be affected. A support ticket about a suspected problem is not automatically a security incident. An incident record contains an identifier, severity, start time, affected service, current status, and incident commander.
+
+1.1 Severity levels
+
+- Severity One: a widespread customer-facing outage or confirmed broad data exposure.
+- Severity Two: significant degradation affecting a subset of customers or a critical feature.
+- Severity Three: limited impact with a documented workaround.
+- Severity Four: an internal issue with no customer-visible effect.
+
+Severity is based on customer impact, not on how difficult the technical problem is. A difficult bug with no customer impact is Severity Four. Severity can be raised or lowered during the incident; every change is recorded with the reason and the name of the person who changed it.
+
+1.2 Incident roles
+
+When an incident is declared, the incident commander assigns owners for investigation, communications, and remediation. The communications owner prepares customer updates. The remediation owner tracks technical changes. The incident commander coordinates the work. The incident commander should not also act as the remediation owner on a Severity One incident, because coordinating and fixing at the same time slows both down.
+
+1.3 Customer communication
+
+The first public update should state what is known, what is not known, and what customers should do, if anything. It should not speculate about the root cause. A later update may state a confirmed cause after the investigation has established enough evidence. A status update and a root-cause statement are therefore different things.
+
+Update timing depends on severity:
+1. Severity One: first public update within 30 minutes of declaration, then every 60 minutes.
+2. Severity Two: first public update within 60 minutes, then every 4 hours.
+3. Severity Three: an update on the status page is optional; affected customers are notified through their tickets.
+4. Severity Four: no public update.
+
+A post-incident review is required for Severity One and Severity Two incidents. The review must be completed within 10 business days of resolution. The review document is internal; a shorter customer-facing summary is published only for Severity One incidents.
+
+1.4 Suspicious access
+
+If an employee discovers suspicious access, they should preserve the relevant identifiers and notify the security response group rather than deleting or modifying records. Removing evidence can make timeline reconstruction more difficult.
+
+A service incident and a security incident can overlap but are not identical. A service incident may involve downtime with no security consequence. A security incident may involve unauthorized access without an outage. When both dimensions are present, the operational and security records are tracked separately and linked together.
+
+2. Audit logs
+
+AtlasDesk keeps audit logs for administrative actions. An audit record includes the actor, action, target object, timestamp, and result. Failed administrative actions are also recorded. The standard audit-log retention period is 180 days.
+
+Enterprise workspaces can purchase extended audit retention of 2 years. Extended retention applies only to records created after the add-on is activated; it does not recover records that were already older than 180 days. Audit logs cannot be edited or deleted by any workspace role, including administrators.
+
+Audit logs can be exported as CSV or streamed to an external security tool. Export is limited to 90 days of records per request, so exporting a full 180-day period requires two requests.
+
+3. Conversation retention
+
+Conversation content follows a separate workspace retention policy. Standard settings are 30, 90, or 365 days. Changing conversation retention does not change the 180-day audit-log period. Retention begins from the timestamp of the conversation's final message, not from ticket creation.
+
+Shortening the retention period does not delete anything immediately. The new period is applied at the next nightly retention evaluation, and conversations that are already past the new period become eligible for deletion at that point. Lengthening the retention period cannot restore conversations that have already been deleted.
+
+Attachments follow the conversation they belong to. An attachment cannot have a longer retention period than its conversation, and deleting a conversation deletes its attachments in the same background job.
+
+3.1 Legal holds
+
+A legal hold temporarily suspends deletion for records covered by the hold. If a conversation is past its normal retention period but is under legal hold, it remains protected from deletion until the hold is released. After release, normal retention processing can resume.
+
+Only administrators with the Compliance permission can create or release a legal hold. A hold can cover an entire workspace, a set of customers, or a date range. A legal hold does not stop new messages from arriving, and it does not change what agents can see.
+
+3.2 Deletion processing
+
+Deletion is asynchronous. When a conversation becomes eligible for deletion, a background process evaluates it. A conversation may therefore remain visible temporarily after becoming eligible. When a customer asks why an old conversation is still visible, support should check the eligibility timestamp, legal-hold status, and deletion-processing status.
+
+Deleted conversations are removed from backups within 35 days. During that period, a deleted conversation cannot be restored through the Operations Console; restoration from backup is possible only as part of a declared Severity One incident.
+
+4. Data subject requests
+
+A customer's end user can ask for their personal data to be exported or erased. Erasure requests override the workspace retention setting, but they do not override a legal hold. If an erasure request covers data under legal hold, the request is recorded, the requester is told that some data is held for legal reasons, and the erasure is completed after the hold is released. Data subject requests must be completed within 30 days.

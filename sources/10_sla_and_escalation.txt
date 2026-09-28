@@ -1,0 +1,65 @@
+AtlasDesk Service Levels and Escalation
+
+Support SLA targets
+
+AtlasDesk measures support performance against service level agreement
+targets. The targets depend on the ticket priority and the customer's
+plan.
+
+First-response targets:
+- Urgent: 1 hour on Enterprise, 2 hours on Growth, 8 hours on Starter.
+- High: 4 hours on Enterprise, 8 hours on Growth, 1 business day on
+  Starter.
+- Normal: 1 business day on all plans.
+- Low: 3 business days on all plans.
+
+Resolution targets are only defined for Enterprise: 1 business day for
+Urgent and 3 business days for High. Growth and Starter have no
+resolution target, although resolution time is still measured and
+reported.
+
+SLA timers
+
+The first-response timer starts when the ticket is created and stops at
+the first human response. The resolution timer runs while the ticket is
+Open and stops while the ticket is Pending or On Hold. Because GuideFlow
+answers do not count as human responses, an automated answer does not
+stop the first-response timer.
+
+Business days are counted in the workspace's support time zone, which
+can differ from the billing time zone. Public holidays are excluded only
+if the workspace has uploaded a holiday calendar.
+
+Priority changes
+
+If a ticket's priority is raised, the first-response target is
+recalculated from the ticket creation time, not from the time of the
+change. This means raising a ticket to Urgent can immediately put it in
+breach. If priority is lowered, the new, longer target applies, but a
+breach that already happened is not removed from reports.
+
+Breaches and escalation
+
+When a ticket is within 20 percent of its first-response target without
+a response, it is highlighted in the Inbox and the assigned team's
+supervisor is notified. When the target is breached, the ticket is
+escalated to the team supervisor and recorded as a breach in team
+analytics.
+
+Repeated breaches trigger a service review. If a single team breaches
+more than 5 percent of Urgent tickets in a calendar month, the
+supervisor must submit a remediation plan within 10 business days. A
+service review is not the same as a post-incident review: a service
+review is about support performance, while a post-incident review is
+about a platform incident.
+
+Service credits
+
+Enterprise contracts may include service credits for platform
+availability. If monthly availability falls below 99.9 percent, the
+customer can request a service credit of 10 percent of the monthly
+subscription subtotal. Below 99.0 percent, the credit is 25 percent.
+Service credits must be requested within 30 days after the end of the
+affected month and are applied as adjustments on a later invoice.
+Service credits are not paid out as refunds. Support SLA breaches do not
+generate service credits; only platform availability does.

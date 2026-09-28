@@ -1,0 +1,61 @@
+AtlasDesk Support Workflows and Access Control
+
+Workflow overview
+
+AtlasDesk support uses different workflows for different requests. Password-reset requests use the account-access workflow. Billing disputes use the billing-review workflow. Suspected outages use incident triage. The workflows share vocabulary but have different required actions.
+
+Account-access workflow
+
+1. Verify the requester's identity using the approved method for the workspace (email link, SMS code, or verified phone callback).
+2. Check whether the account is locked, expired, or restricted.
+3. If the account is locked after too many failed sign-ins, wait for the automatic 30-minute lock to expire or unlock it manually with supervisor approval.
+4. If recovery is allowed, send approved recovery instructions.
+5. Record the verification method used in the ticket.
+
+Agents must not bypass verification or disclose authentication secrets because a customer claims to be in a hurry. If the requester cannot complete verification, the agent escalates to the security response group instead of trying an alternative method that is not approved for the workspace.
+
+Accounts that use single sign-on cannot be recovered through the account-access workflow at all. For those accounts, the agent tells the customer to contact their own identity provider administrator, because AtlasDesk does not store their password.
+
+Billing-review workflow
+
+The billing-review workflow begins by recording the invoice number and billing period. The agent compares the disputed line item with the corresponding billing record. If the charge is correct, the agent explains the calculation. If it is incorrect, the agent documents the discrepancy and requests an adjustment through the approval workflow.
+
+Incident-triage workflow
+
+The incident-triage workflow begins by determining whether reported behavior is isolated or widespread. The agent checks the service-status dashboard and searches for an existing incident. If an active incident matches the symptoms, the ticket is linked to that incident instead of creating a duplicate. If no incident exists and the evidence indicates broad impact, the report is escalated.
+
+Three reports of the same symptom from different workspaces within 15 minutes count as evidence of broad impact, even if each individual report looks minor.
+
+Combined requests
+
+Some requests combine workflows. If a customer cannot access an account and also says they were charged for a service they could not use, the access issue and billing issue should be handled according to their respective workflows. One ticket can contain both issues, but the agent should not assume that one workflow resolves both.
+
+Escalation
+
+Escalation does not always mean transferring the entire conversation. An agent may retain ticket ownership while requesting specialist review. The specialist response is attached to the ticket, and the original agent remains responsible for communicating the approved outcome unless ownership changes.
+
+Ticket statuses
+
+A ticket can be Open, Pending, On Hold, or Resolved. Pending means the agent is waiting for the customer. On Hold means the agent is waiting for an internal team or a third party. A ticket on hold is unrelated to a legal hold: putting a ticket On Hold pauses the resolution timer but does not protect the conversation from deletion. Pending tickets with no customer reply for 7 days are resolved automatically.
+
+Metrics
+
+First-response time and resolution time are separate measurements. First-response time is the elapsed time from ticket creation to the first human response. Resolution time is the elapsed time from ticket creation until the ticket is marked resolved. A ticket can have a short first-response time and a long resolution time. An automated GuideFlow answer does not count as a first response, because first-response time measures human responses only.
+
+Access control
+
+AtlasDesk access is based on effective permissions rather than job title alone. A Supervisor role normally permits knowledge approval and team analytics, but it does not automatically permit retention or billing configuration. Access groups can add or restrict capabilities.
+
+Default role permissions:
+
+| Capability | Agent | Supervisor | Administrator |
+| Reply to customers | yes | yes | yes |
+| Approve knowledge | no | yes | yes |
+| View team analytics | no | yes | yes |
+| Change retention settings | no | no | yes |
+| Change billing settings | no | no | yes |
+| Create legal holds | no | no | only with Compliance permission |
+
+Access-group membership can be assigned directly to a user or inherited through a team. If a user has conflicting access rules, an explicit deny takes precedence over a general allow. Moving a user from one team to another changes team membership but does not automatically remove direct access-group assignments.
+
+Temporary access grants have expiration timestamps. When the timestamp passes, the grant becomes inactive even if the user remains on the team that originally requested the access. Temporary grants are recorded in the audit log when created, modified, and expired. The longest temporary grant allowed is 30 days; a longer need requires a permanent access-group assignment approved by an administrator.

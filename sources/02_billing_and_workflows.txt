@@ -1,0 +1,45 @@
+AtlasDesk Billing Guide
+
+Plans and seats
+
+AtlasDesk billing is based on active seats and optional automation credits. A seat represents a licensed support user. Automation credits represent usage of selected background jobs such as transcript classification and nightly knowledge indexing. Normal message retrieval does not consume automation credits. A workspace can therefore have many active seats and zero automation credits consumed, or few active seats and substantial automation usage.
+
+There are three plans: Starter, Growth, and Enterprise. Starter includes up to 10 seats and 2,000 automation credits per month. Growth includes up to 100 seats and 25,000 automation credits per month. Enterprise has no seat ceiling, and its automation credit allowance is negotiated in the contract. Unused automation credits do not roll over into the next billing period on Starter or Growth. On Enterprise, the contract may allow up to 20 percent of unused credits to roll over for one period only. When a workspace exceeds its included credits, overage is billed at 0.8 cents per credit on Growth and 1.2 cents per credit on Starter, and the overage appears in the automation usage section of the invoice rather than as an adjustment.
+
+Light seats are a reduced-price seat type for users who only read tickets and knowledge. A light seat cannot reply to customers, cannot approve knowledge, and cannot be assigned tickets. Converting a light seat to a full seat takes effect immediately, but the price difference is only charged starting with the next daily billing snapshot. Converting a full seat to a light seat also takes effect immediately, although a full seat that was already recorded in today's snapshot is still billed as a full seat for that day.
+
+Invoices
+
+An invoice contains subscription subtotal, automation usage, adjustments, and total due. The subscription subtotal is based on billable seats. Automation usage is based on credits consumed during the billing period. Adjustments include approved credits or one-time charges. The total due is calculated after applicable taxes.
+
+A seat becomes billable when it is active at the end of the workspace's daily billing snapshot. Deactivating a seat immediately prevents sign-in, but it does not retroactively remove the seat from a snapshot that has already been recorded. If the user is later reactivated, the system creates a new active seat record for the next snapshot.
+
+The daily billing snapshot runs at 23:30 in the workspace's billing time zone, not in UTC. The billing time zone is set when the workspace is created and can only be changed by AtlasDesk finance staff. Snapshot times are shown in the Operations Console under Billing History.
+
+Invoices are finalized at 02:00 UTC on the first day of the new billing period. Finalization and the payment deadline are separate events. Finalization creates the accounting record for the previous period. The payment deadline is the date by which the resulting balance must be paid. Changing the payment method does not move either time. The payment deadline is 15 days after finalization on Starter and Growth, and 30 days after finalization on Enterprise unless the contract states otherwise.
+
+Account credits are a different thing from automation credits. An account credit is a monetary amount, usually created by an approved billing adjustment, that reduces the total due on a future invoice. Account credits cannot be exchanged for automation credits, and automation credits have no monetary value and cannot be refunded.
+
+Failed payments
+
+Failed payments use a three-stage recovery process. The first failed attempt creates a warning and schedules another attempt after 24 hours. A second failure schedules a third attempt after another 48 hours. If the third attempt fails, the workspace enters a restricted billing state. Existing tickets remain readable, but new automation jobs are paused until the balance is resolved.
+
+While a workspace is in the restricted billing state, agents can still reply to existing conversations, and customers can still open new conversations through email and web chat. However, GuideFlow answer generation is limited to agent-facing drafts, so no automated answer is sent to a customer until the balance is resolved. Paying the outstanding balance removes the restriction within 15 minutes. Automation jobs that were paused are not replayed automatically; an administrator must choose which paused jobs to resume.
+
+If the workspace is on Enterprise with invoice billing instead of card billing, the three-stage card recovery process does not apply. Instead, an overdue Enterprise invoice triggers a notice to the billing contact after 7 days and escalation to the account manager after 21 days. An Enterprise workspace is never placed in the restricted billing state automatically; the account manager must request it.
+
+Billing workflows
+
+The billing-review workflow begins with invoice identification. The agent records the invoice number and billing period, then compares the disputed line item with the corresponding billing record. If the line item is correct, the agent explains the calculation. If it is incorrect, the agent documents the discrepancy and requests an adjustment. A finalized invoice cannot be edited directly; corrections appear as adjustment entries on a later invoice.
+
+Adjustments have approval limits. A supervisor can approve adjustments up to 200 dollars per invoice. Adjustments above 200 dollars and up to 2,000 dollars need a billing specialist. Any adjustment above 2,000 dollars needs approval from the finance lead. Refunds to the original payment method always need a billing specialist, regardless of the amount, because a refund moves money outside the platform while an adjustment only changes a future invoice.
+
+Some support requests combine multiple workflows. If a customer cannot access an account and also disputes a charge, the agent should not assume that one workflow solves both problems. The access problem follows identity verification and account recovery. The billing problem follows invoice review. One ticket may contain both issues.
+
+Whenever a workflow requires approval, the approval must happen before an agent promises that the requested change will be made. This applies to refunds, billing adjustments, account exceptions, and retention changes. A request can be likely to be approved without being approved yet.
+
+Plan changes
+
+Upgrading a plan takes effect immediately, and the price difference for the remaining days of the period is added as a prorated charge. Downgrading a plan takes effect at the start of the next billing period. A downgrade is blocked if the workspace has more active seats than the new plan allows; the administrator must deactivate seats first. Because of the daily snapshot rule, seats deactivated on the last day of the period may still be billed for that day.
+
+Cancelling a subscription stops renewal but does not delete the workspace immediately. The workspace remains readable for 30 days after the period ends, after which it is scheduled for deletion under the standard deletion process. A legal hold on the workspace prevents that deletion.

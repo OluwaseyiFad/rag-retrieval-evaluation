@@ -1,0 +1,45 @@
+AtlasDesk FAQ and Glossary
+
+Frequently asked questions
+
+Q: Can I edit an invoice after it is finalized?
+A: No. Corrections to a finalized invoice appear as adjustment entries on a later invoice.
+
+Q: Does GuideFlow use Draft articles?
+A: No. Only Approved articles are used for customer-facing answers.
+
+Q: Why is a deleted user still on my invoice?
+A: Seats are billed from the daily billing snapshot. If the user was active when the snapshot ran, the seat is billed for that day even if it was deactivated afterwards.
+
+Q: Do automation credits expire?
+A: On Starter and Growth, unused automation credits expire at the end of the billing period.
+
+Q: Can an agent see audit logs?
+A: No. Audit logs are visible only to administrators and to users with the Compliance permission.
+
+Q: Does changing my payment card move my payment deadline?
+A: No. Neither finalization nor the payment deadline moves when the payment method changes.
+
+Q: How long does a region migration take?
+A: The maintenance window lasts up to six hours. Attachments may show as pending migration for up to 24 hours afterwards.
+
+Q: Why did GuideFlow send a question to an agent instead of answering?
+A: No eligible passage cleared the minimum relevance threshold, or the answer had no citation.
+
+Glossary
+
+Hold (ticket): The On Hold ticket status, used while waiting for an internal team or a third party. It pauses the resolution timer.
+Hold (legal): A legal hold, which suspends deletion of covered records until it is released.
+Credit (automation): A unit of background-job usage. Automation credits have no monetary value.
+Credit (account): A monetary amount that reduces the total due on a future invoice.
+Credit (service): A contractual adjustment for platform availability below the agreed level.
+Snapshot (billing): The daily record of active seats, taken at 23:30 in the workspace billing time zone.
+Snapshot (index): The frozen copy of knowledge passages that GuideFlow searches, created after each indexing run.
+Retry (payment): A repeated attempt to charge a card after a failed payment.
+Retry (webhook): A repeated attempt to deliver an event to an integration endpoint.
+Review (article): The publication state in which an article waits for supervisor approval.
+Review (service): A process triggered by repeated support SLA breaches.
+Passage: The retrievable unit of a knowledge article.
+Seat: A licensed support user.
+Light seat: A reduced-price seat that can read tickets and knowledge but cannot reply to customers.
+Incident commander: The person who coordinates an incident and assigns owners.

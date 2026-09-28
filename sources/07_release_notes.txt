@@ -1,0 +1,52 @@
+AtlasDesk Release Notes
+
+These notes describe changes to AtlasDesk in reverse chronological
+order. When a note describes a value that was later changed, the most
+recent note is authoritative. Older notes are kept for reference and may
+describe behavior that no longer applies.
+
+Release 4.2 (current)
+
+- Audit-log retention remains 180 days. Extended audit retention of 2
+  years is now available as an Enterprise add-on.
+- The default GuideFlow minimum relevance threshold was raised from 0.50
+  to 0.55.
+- Stale knowledge passages now receive a ranking penalty of 0.05 instead
+  of being excluded from customer-facing retrieval.
+- The maximum temporary access grant was reduced from 90 days to 30
+  days.
+
+Release 4.0
+
+- Audit-log retention was increased from 90 days to 180 days. Records
+  that had already been deleted under the old 90-day rule were not
+  restored.
+- Failed payment recovery changed from two attempts to three attempts.
+  The retry interval before the third attempt is 48 hours.
+- Light seats were introduced for users who only need to read tickets
+  and knowledge.
+
+Release 3.6
+
+- The GuideFlow answer generation limit increased from two passages to
+  three passages.
+- Stale knowledge passages are excluded from customer-facing retrieval.
+  This behavior was replaced in release 4.2.
+- Webhook deliveries are retried up to five times before being moved to
+  the dead-letter list.
+
+Release 3.2
+
+- Cross-language retrieval was introduced as an optional workspace
+  setting.
+- The payment deadline for Growth workspaces was extended from 10 days
+  to 15 days after finalization.
+
+Known issues
+
+- In workspaces that migrated regions before release 4.0, some audit
+  records from the migration window show the old region in the target
+  object field. The records are otherwise correct.
+- The Billing History page shows snapshot times in the viewer's browser
+  time zone instead of the workspace billing time zone. The snapshot
+  itself still runs at 23:30 in the billing time zone.

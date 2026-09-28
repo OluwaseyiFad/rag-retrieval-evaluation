@@ -1,0 +1,103 @@
+AtlasDesk Knowledge Hub and Search
+
+The AtlasDesk Knowledge Hub organizes information into articles,
+collections, and passages. An article is the authoring unit, a
+collection groups related articles, and a passage is the retrievable
+unit used by GuideFlow. One article can therefore produce several
+passages during indexing.
+
+Publication workflow
+
+An article follows a publication workflow. In Draft, the author can edit
+it. In Review, it is waiting for supervisor approval. In Approved, it
+can be used for customer-facing answer generation. Archived articles are
+retained for historical reference but excluded from normal
+customer-facing retrieval.
+
+The approval workflow has two checks. First, the article owner confirms
+that the content is factually correct and complete. Second, a supervisor
+confirms that it is appropriate for customer-facing use. Passing the
+first check does not publish the article. It remains in Review until the
+supervisor approves it.
+
+If a supervisor rejects an article in Review, it returns to Draft with
+the rejection comment attached. Editing an Approved article creates a
+new Draft version while the previous Approved version stays live.
+Customers keep receiving answers from the previous version until the new
+version is approved, at which point the old version is replaced rather
+than archived.
+
+Indexing
+
+Passages are created by the nightly knowledge indexing job, which
+consumes automation credits. An article approved during the day is
+therefore not retrievable by GuideFlow until the next indexing run
+completes, unless an administrator triggers a manual reindex. A manual
+reindex of a single article costs 5 automation credits; a full reindex
+of the Knowledge Hub costs 1 credit per article.
+
+The indexing job splits each article into passages at headings first,
+then at paragraph breaks. A passage is limited to roughly 800
+characters. Tables are kept inside a single passage when possible,
+because splitting a table separates values from their column headings.
+
+The index snapshot is the frozen copy of passages that GuideFlow
+searches. A new index snapshot is created after every indexing run, and
+the previous snapshot is kept for 7 days so an administrator can roll
+back if a bad article was published. An index snapshot is unrelated to
+the daily billing snapshot.
+
+Retrieval and filters
+
+GuideFlow uses semantic retrieval to find passages related in meaning to
+a query. It also applies metadata filters before final ranking. Filters
+can exclude archived articles, restrict results to a product area, or
+require a particular language. Semantic similarity alone therefore does
+not guarantee that a passage is eligible.
+
+Suppose Passage A has a semantic similarity of 0.84 but belongs to an
+Archived article. Passage B has a similarity of 0.79 and belongs to an
+Approved article that satisfies every filter. Passage B can be selected
+even though its raw similarity score is lower. This is why similarity
+scores should not be treated as direct quality scores for the entire
+retrieval strategy.
+
+Editors can attach synonyms to a collection. Synonyms are applied to the
+query before retrieval, so a collection with the synonym seat = license
+lets a customer who asks about licenses retrieve passages that only use
+the word seat. Synonyms apply only to the collection where they are
+defined.
+
+Search results include article and passage identifiers. Passage
+identifiers are stable within a published article version but may change
+after substantial republishing. An evaluation system should therefore
+avoid treating a passage identifier as a permanent global identifier.
+
+Editors can mark articles as related. Related-article links help human
+navigation, but GuideFlow does not automatically retrieve every related
+article. Each article still has to earn a place in retrieval based on
+the query and eligibility rules.
+
+Writing guidelines
+
+Good knowledge articles answer one primary question or a tightly
+connected group of questions. Editors are encouraged to place
+definitions near the beginning, procedures in numbered steps, and
+exceptions in a clearly labeled section. This structure helps both human
+readers and retrieval systems.
+
+Procedural order matters. Imagine a billing adjustment procedure that
+says the agent must verify the invoice before requesting approval.
+Retrieving only the approval step can produce an incomplete answer even
+if the retrieved passage contains the correct approval words. A
+retrieval system should ideally preserve enough surrounding context to
+reconstruct the complete procedure.
+
+Article freshness
+
+Every Approved article has a review date. The default review date is 180
+days after approval. When the review date passes, the article stays
+Approved and remains retrievable, but it is flagged as stale in the
+Knowledge Hub and its owner is notified. GuideFlow lowers the ranking of
+stale passages by a fixed penalty of 0.05 but never excludes them
+because of staleness alone.

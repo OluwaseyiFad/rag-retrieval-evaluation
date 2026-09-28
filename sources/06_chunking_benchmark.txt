@@ -1,0 +1,43 @@
+GuideFlow Chunking Benchmark
+
+Pipeline
+
+GuideFlow includes an experimental benchmark for comparing fixed-size, recursive, and semantic chunking. The pipeline extracts text, creates chunks, embeds the chunks, stores the vectors in an index, and retrieves the highest-ranked chunks for each query.
+
+Strategies
+
+Fixed-size chunking divides text into blocks of approximately the same character length. It is predictable and easy to implement, but it can cut through sentences or paragraphs. Overlap can reduce the chance that important context is separated from a neighboring chunk, although overlap increases the number of stored vectors.
+
+Recursive chunking tries larger structural boundaries before smaller ones. A typical hierarchy tries paragraph breaks first, then line breaks, then sentence boundaries, and finally word boundaries. If a paragraph fits within the maximum size, it can remain intact. If it is too large, the algorithm recursively tries a smaller separator.
+
+Semantic chunking begins by splitting text into sentences and embedding those sentences. Adjacent sentence embeddings are compared with cosine similarity. A large drop in similarity can indicate a topic boundary, so the chunker can start a new chunk at that point. A maximum chunk size is still necessary because a long sequence of related sentences can otherwise become one very large chunk.
+
+Source formatting
+
+Source formatting affects chunkers differently. Text that is hard-wrapped at a fixed line width contains line breaks in the middle of sentences. A recursive chunker that tries line breaks before sentence boundaries will then split at arbitrary line positions, which behaves much like fixed-size chunking. Normalizing single line breaks into spaces before chunking, or placing the sentence separator before the line separator, avoids this problem.
+
+Lists and tables need special care. A numbered procedure split in the middle loses the order of its steps, and a table row separated from its header row loses the meaning of its values. Some chunkers therefore treat a list or a table as a single unit whenever it fits within the maximum size.
+
+Chunk size and overlap
+
+Chunk size and chunk boundary strategy are separate variables. Two systems can use the same maximum chunk size and still produce very different chunks because one cuts at character positions while another preserves semantic or structural boundaries. A fair benchmark should keep the embedding model, retrieval metric, query set, maximum chunk size, and top-K constant while changing the chunking strategy.
+
+Smaller chunks tend to produce higher similarity scores for narrow questions because each chunk contains fewer unrelated sentences. Larger chunks tend to contain more complete answers but can dilute the embedding when several topics share a chunk. The best chunk size therefore depends on question type as well as on document structure.
+
+Overlap duplicates text at chunk edges. With a 300-character chunk and a 50-character overlap, roughly one sixth of each chunk is repeated from the previous one. Overlap helps when an answer straddles a boundary, but it can also cause the same fact to appear in two of the top-K results, which wastes a retrieval slot.
+
+Evaluation
+
+Similarity scores are not direct scores for chunking quality. A similarity score measures how closely a retrieved vector matches a query vector according to the embedding model. A lower-scoring chunk can contain the complete answer, while a higher-scoring chunk can contain only a related fragment.
+
+Retrieval evaluation should use questions with known relevant evidence. Recall@K measures whether relevant evidence appears anywhere in the first K retrieved results. Mean reciprocal rank focuses on the position of the first relevant result. These metrics are more informative for comparing retrieval systems than simply averaging similarity scores.
+
+Evidence can be checked at two levels. Document-level evaluation only asks whether a chunk came from the right source file, which is easy to satisfy when there are few documents. Evidence-level evaluation asks whether the retrieved text actually contains the specific statements needed to answer the question, which is stricter and more useful for comparing chunking strategies.
+
+The benchmark should include several question types. Narrow factual questions test whether the retriever can find a focused statement. Boundary questions test whether an answer is split across a paragraph or section boundary. Multi-fact questions require several related statements. Exception questions require both a general rule and a condition that changes the outcome. Distractor questions use terminology that appears in multiple documents but has different meanings.
+
+Downstream answer quality should be evaluated separately from retrieval quality. A retriever can return relevant evidence that is too fragmented for an answer generator to use correctly. Conversely, a slightly lower-ranked passage can contain enough context to produce a complete answer. The benchmark should therefore record both retrieval metrics and final answer quality.
+
+Controlled experiments
+
+For a controlled experiment, the same query must be sent to all indexes. The same embedding model and similarity metric must be used. The only intended experimental variable should be how the source text is divided into chunks. If chunk size, overlap, embedding model, and query set all change at once, it becomes difficult to attribute an observed difference to chunking.

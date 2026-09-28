@@ -1,0 +1,112 @@
+AtlasDesk Platform Overview
+
+AtlasDesk is a fictional customer-support platform used by mid-sized
+software companies. It has an Inbox for customer conversations, a
+Knowledge Hub for approved information, and an Operations Console for
+administrative settings. Each customer organization receives its own
+workspace, and every workspace has exactly one primary region that
+determines where conversation content is stored.
+
+The platform distinguishes a conversation, a ticket, and an incident. A
+conversation is the exchange between a customer and the support
+organization. A ticket is a tracked work item that can contain one or
+more conversations. An incident is an operational event affecting the
+availability or behavior of the platform. A single incident may be
+linked to hundreds of tickets, but a ticket is never converted into an
+incident; instead, the ticket is linked to the incident record.
+
+Conversations arrive through four channels: email, web chat, the in-app
+widget, and the public API. The channel is recorded on the conversation
+and cannot be changed later. When a customer replies to an old email
+thread after the related ticket has been resolved for more than 14 days,
+AtlasDesk opens a new ticket instead of reopening the old one, and it
+links the two tickets so agents can see the history.
+
+Workspace regions
+
+A workspace can be hosted in the North America, Europe, or Asia-Pacific
+region. The primary region is chosen during workspace creation. Region
+migration is possible but requires a scheduled maintenance window of up
+to six hours, during which the Inbox is read-only. Attachments are
+migrated after conversation text, so an attachment can appear as pending
+migration for up to 24 hours after the window closes. Knowledge articles
+are not region-bound; they are replicated to every region so that
+GuideFlow can retrieve them with low latency.
+
+GuideFlow
+
+AtlasDesk uses a retrieval-assisted answer system called GuideFlow.
+GuideFlow first normalizes the user's message, then retrieves candidate
+passages from approved knowledge, ranks the candidates, and gives the
+highest-ranked eligible passages to an answer generator. If no passage
+clears the minimum relevance threshold, GuideFlow asks an agent to
+review the question rather than inventing an answer.
+
+Normalization removes signatures, quoted reply chains, and tracking
+footers from email messages. It also expands a small list of product
+abbreviations, so OC becomes Operations Console and KH becomes Knowledge
+Hub. Normalization does not translate messages. A message written in
+Portuguese is retrieved against Portuguese passages unless the workspace
+has enabled cross-language retrieval.
+
+The default minimum relevance threshold is 0.55. Administrators can
+raise the threshold to make GuideFlow more cautious, but they cannot set
+it below 0.40. Raising the threshold increases the number of questions
+routed to agents. Lowering it increases coverage but also increases the
+risk that a loosely related passage is used to answer a question it does
+not actually address.
+
+Knowledge articles have four states: Draft, Review, Approved, and
+Archived. Draft articles are editable. Review articles are waiting for
+supervisor approval. Approved articles may be used for customer-facing
+answer generation. Archived articles remain available to administrators
+for historical reference but are excluded from normal customer-facing
+retrieval.
+
+The retrieval system also uses metadata filters. A passage can have a
+very high semantic similarity score and still be excluded if its article
+is Archived, if it belongs to the wrong product area, or if it fails a
+language requirement. For example, an Archived passage with a similarity
+score of 0.84 can lose to an Approved passage with a score of 0.79
+because eligibility is checked before final selection.
+
+Answer generation uses at most three passages. If more than three
+passages are eligible, GuideFlow keeps the three highest-ranked passages
+and discards the rest, even when the discarded passages come from the
+same article. Every generated answer includes citations to the passages
+it used. An answer without at least one citation is never shown to a
+customer; it is shown to the agent as a draft instead.
+
+GuideFlow records retrieval diagnostics. A diagnostic record contains a
+query identifier, article identifiers considered during retrieval,
+selected passage identifiers, and a confidence band. When redaction mode
+is enabled, the diagnostic record does not contain the customer's raw
+message. This means an administrator can investigate retrieval behavior
+without necessarily seeing the original conversation text.
+
+Confidence bands are High, Medium, and Low. High means the top passage
+cleared the threshold by at least 0.15. Medium means it cleared the
+threshold by less than 0.15. Low is used only for agent-facing drafts,
+because a Low answer is never sent automatically. Confidence bands
+describe retrieval, not the factual accuracy of the generated answer.
+
+Roles
+
+The platform has three default roles. Agents can work tickets and use
+approved knowledge. Supervisors can approve knowledge articles and
+review team analytics. Administrators can change workspace configuration
+such as retention, billing, and access settings. A supervisor does not
+automatically become an administrator merely because the supervisor can
+approve an article.
+
+Custom roles can be created from any default role. A custom role starts
+with the permissions of the role it was copied from, and later changes
+to the original default role are not propagated to the copy. This is why
+two custom roles that were copied from the Supervisor role at different
+times can behave differently.
+
+AtlasDesk separates customer-facing knowledge from operational state. A
+billing record can explain why a charge occurred, while an approved
+knowledge article can explain that charge to a customer. GuideFlow
+therefore retrieves from the knowledge layer first and accesses
+operational data only through explicitly configured integrations.

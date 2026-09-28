@@ -1,0 +1,25 @@
+AtlasDesk Integrations and API
+
+API keys
+
+The AtlasDesk public API uses workspace API keys. An API key belongs to the workspace, not to the administrator who created it, so deactivating that administrator's seat does not revoke the key. Keys must be revoked explicitly in the Operations Console. Each key has a scope: read-only, tickets, knowledge, or full. A read-only key cannot create conversations, even through the conversation endpoint.
+
+Rate limits are applied per API key. Starter keys can make 60 requests per minute, Growth keys 300 requests per minute, and Enterprise keys 1,200 requests per minute. When a key exceeds its limit, the API returns status 429 with a Retry-After header. Requests rejected because of rate limits do not consume automation credits.
+
+Webhooks
+
+Webhooks send events such as ticket.created, ticket.resolved, and incident.linked to an external endpoint. A webhook delivery is considered successful when the endpoint returns a 2xx status within 10 seconds. Failed deliveries are retried up to five times with exponential backoff: after 1 minute, 5 minutes, 30 minutes, 2 hours, and 12 hours. After the fifth failed retry, the event is moved to the dead-letter list, and the webhook is not disabled automatically.
+
+A webhook is disabled automatically only when more than 95 percent of deliveries in a 24-hour period fail and at least 100 deliveries were attempted. Disabling a webhook does not affect other webhooks on the same workspace. Webhook retries are unrelated to failed payment retries and never affect the billing state of a workspace.
+
+Events in the dead-letter list are kept for 14 days and can be replayed manually. Replayed events carry their original event timestamp and a replay flag, so receiving systems can detect that they arrived late.
+
+Operational data integrations
+
+GuideFlow can read operational data such as order status or subscription plan only through an explicitly configured integration. Each integration declares which fields it exposes. A field that is not declared cannot be used in an answer, even if the external system returns it. Integration responses are never stored in the knowledge index; they are fetched at answer time and discarded after the answer is generated.
+
+If an integration does not respond within 3 seconds, GuideFlow continues without it and marks the answer as a draft for agent review, because an answer that depends on missing operational data could be misleading.
+
+Sandbox workspaces
+
+Every Growth and Enterprise workspace can create one sandbox workspace. The sandbox has no billable seats and does not generate invoices, but automation jobs in the sandbox consume credits from the parent workspace. Sandbox data is deleted after 60 days of inactivity regardless of the parent's retention setting, and a legal hold on the parent does not extend to the sandbox.
