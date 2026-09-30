@@ -1,0 +1,52 @@
+AtlasDesk billing is based on active seats and optional automation
+credits. A seat represents a licensed support user. Automation credits
+represent usage of selected background jobs such as transcript
+classification and nightly knowledge indexing. Normal message retrieval
+does not consume automation credits. A workspace can therefore have many
+active seats and zero automation credits consumed, or few active seats
+and substantial automation usage.
+
+An invoice contains subscription subtotal, automation usage,
+adjustments, and total due. The subscription subtotal is based on
+billable seats. Automation usage is based on credits consumed during the
+billing period. Adjustments include approved credits or one-time
+charges. The total due is calculated after applicable taxes.
+
+A seat becomes billable when it is active at the end of the workspace’s
+daily billing snapshot. Deactivating a seat immediately prevents
+sign-in, but it does not retroactively remove the seat from a snapshot
+that has already been recorded. If the user is later reactivated, the
+system creates a new active seat record for the next snapshot.
+
+Invoices are finalized at 02:00 UTC on the first day of the new billing
+period. Finalization and the payment deadline are separate events.
+Finalization creates the accounting record for the previous period. The
+payment deadline is the date by which the resulting balance must be
+paid. Changing the payment method does not move either time.
+
+Failed payments use a three-stage recovery process. The first failed
+attempt creates a warning and schedules another attempt after 24 hours.
+A second failure schedules a third attempt after another 48 hours. If
+the third attempt fails, the workspace enters a restricted billing
+state. Existing tickets remain readable, but new automation jobs are
+paused until the balance is resolved.
+
+The billing-review workflow begins with invoice identification. The
+agent records the invoice number and billing period, then compares the
+disputed line item with the corresponding billing record. If the line
+item is correct, the agent explains the calculation. If it is incorrect,
+the agent documents the discrepancy and requests an adjustment. A
+finalized invoice cannot be edited directly; corrections appear as
+adjustment entries on a later invoice.
+
+Some support requests combine multiple workflows. If a customer cannot
+access an account and also disputes a charge, the agent should not
+assume that one workflow solves both problems. The access problem
+follows identity verification and account recovery. The billing problem
+follows invoice review. One ticket may contain both issues.
+
+Whenever a workflow requires approval, the approval must happen before
+an agent promises that the requested change will be made. This applies
+to refunds, billing adjustments, account exceptions, and retention
+changes. A request can be likely to be approved without being approved
+yet.

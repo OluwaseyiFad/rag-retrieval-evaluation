@@ -1,0 +1,770 @@
+[
+  {
+    "context": "AtlasDesk Release Notes: Situated within the document, this chunk describes changes to AtlasDesk in reverse chronological order, including updates to audit-log retention, guide-flow minimum relevance threshold, and stale knowledge passage ranking penalty.",
+    "text": "AtlasDesk Release Notes These notes describe changes to AtlasDesk in reverse chronological\norder. When a note describes a value that was later changed, the most\nrecent note is authoritative. Older notes are kept for reference and may\ndescribe behavior that no longer applies. Release 4.2 (current)",
+    "source": "07_release_notes.txt",
+    "chunk": 0
+  },
+  {
+    "context": "Release 4.2 (current) - Audit-log retention remains 180 days. Extended audit retention of 2 years is now available as an Enterprise add-on.\n- The default GuideFlow minimum relevance threshold was raised from 0.50 to 0.55.\n- Stale knowledge passages now receive a ranking penalty of 0.05 instead of being excluded from customer-facing retrieval.\n- The maximum temporary access grant was reduced from",
+    "text": "Release 4.2 (current) - Audit-log retention remains 180 days. Extended audit retention of 2\n  years is now available as an Enterprise add-on.\n- The default GuideFlow minimum relevance threshold was raised from 0.50\n  to 0.55.\n- Stale knowledge passages now receive a ranking penalty of 0.05 instead\n  of being excluded from customer-facing retrieval.\n- The maximum temporary access grant was reduced from 90 days to 30\n  days. Release 4.0",
+    "source": "07_release_notes.txt",
+    "chunk": 1
+  },
+  {
+    "context": "Release 4.0 - Audit-log retention was increased from 90 days to 180 days. Records\n  that had already been deleted under the old 90-day rule were not\n  restored.\n- Failed payment recovery changed from two attempts to three attempts.\n  The retry interval before the third attempt is 48 hours.\n- Light seats were introduced for users who only need to read tickets\n  and knowledge. Release 3.6",
+    "text": "Release 4.0 - Audit-log retention was increased from 90 days to 180 days. Records\n  that had already been deleted under the old 90-day rule were not\n  restored.\n- Failed payment recovery changed from two attempts to three attempts.\n  The retry interval before the third attempt is 48 hours.\n- Light seats were introduced for users who only need to read tickets\n  and knowledge. Release 3.6",
+    "source": "07_release_notes.txt",
+    "chunk": 2
+  },
+  {
+    "context": "Release 3.6 - The GuideFlow answer generation limit increased from two passages to three passages.\n- Stale knowledge passages are excluded from customer-facing retrieval. This behavior was replaced in release 4.2.\n- Webhook deliveries are retried up to five times before being moved to the dead-letter list.",
+    "text": "Release 3.6 - The GuideFlow answer generation limit increased from two passages to\n  three passages.\n- Stale knowledge passages are excluded from customer-facing retrieval.\n  This behavior was replaced in release 4.2.\n- Webhook deliveries are retried up to five times before being moved to\n  the dead-letter list. Release 3.2",
+    "source": "07_release_notes.txt",
+    "chunk": 3
+  },
+  {
+    "context": "Release 3.2 - Cross-language retrieval was introduced as an optional workspace setting. Known issues",
+    "text": "Release 3.2 - Cross-language retrieval was introduced as an optional workspace\n  setting.\n- The payment deadline for Growth workspaces was extended from 10 days\n  to 15 days after finalization. Known issues",
+    "source": "07_release_notes.txt",
+    "chunk": 4
+  },
+  {
+    "context": "The chunk discusses known issues in workspaces that migrated regions before release 4.0, specifically regarding audit records and the Billing History page.",
+    "text": "Known issues - In workspaces that migrated regions before release 4.0, some audit\n  records from the migration window show the old region in the target\n  object field. The records are otherwise correct.\n- The Billing History page shows snapshot times in the viewer's browser\n  time zone instead of the workspace billing time zone. The snapshot\n  itself still runs at 23:30 in the billing time zone.",
+    "source": "07_release_notes.txt",
+    "chunk": 5
+  },
+  {
+    "context": "The chunk provides information on AtlasDesk's support SLA targets, including first-response targets, resolution targets, and priority changes, as well as service credits for platform availability.",
+    "text": "AtlasDesk Service Levels and Escalation Support SLA targets AtlasDesk measures support performance against service level agreement\ntargets. The targets depend on the ticket priority and the customer's\nplan. First-response targets:\n- Urgent: 1 hour on Enterprise, 2 hours on Growth, 8 hours on Starter.\n- High: 4 hours on Enterprise, 8 hours on Growth, 1 business day on\n  Starter.\n- Normal: 1 business day on all plans.\n- Low: 3 business days on all plans.",
+    "source": "10_sla_and_escalation.txt",
+    "chunk": 0
+  },
+  {
+    "context": "The context for this chunk is to describe the resolution targets and SLA timers for AtlasDesk, specifically for Enterprise customers, highlighting the first-response targets, resolution targets, and SLA timers.",
+    "text": "Resolution targets are only defined for Enterprise: 1 business day for\nUrgent and 3 business days for High. Growth and Starter have no\nresolution target, although resolution time is still measured and\nreported. SLA timers",
+    "source": "10_sla_and_escalation.txt",
+    "chunk": 1
+  },
+  {
+    "context": "The SLA timers section describes how the first-response and resolution timers work for tickets, including how automated answers do not stop the first-response timer and how the resolution timer runs while the ticket is Open.",
+    "text": "SLA timers The first-response timer starts when the ticket is created and stops at\nthe first human response. The resolution timer runs while the ticket is\nOpen and stops while the ticket is Pending or On Hold. Because GuideFlow\nanswers do not count as human responses, an automated answer does not\nstop the first-response timer.",
+    "source": "10_sla_and_escalation.txt",
+    "chunk": 2
+  },
+  {
+    "context": "The chunk is about the business day calculation for support tickets, including public holidays and the exclusion of holiday calendars for workspace time zones.",
+    "text": "Business days are counted in the workspace's support time zone, which\ncan differ from the billing time zone. Public holidays are excluded only\nif the workspace has uploaded a holiday calendar. Priority changes",
+    "source": "10_sla_and_escalation.txt",
+    "chunk": 3
+  },
+  {
+    "context": "The chunk discusses the impact of priority changes on the first-response target and the escalation process for support SLA breaches.",
+    "text": "Priority changes If a ticket's priority is raised, the first-response target is\nrecalculated from the ticket creation time, not from the time of the\nchange. This means raising a ticket to Urgent can immediately put it in\nbreach. If priority is lowered, the new, longer target applies, but a\nbreach that already happened is not removed from reports. Breaches and escalation",
+    "source": "10_sla_and_escalation.txt",
+    "chunk": 4
+  },
+  {
+    "context": "The chunk discusses the escalation process for tickets that are within 20 percent of their first-response targets without a response, highlighting the need for team supervisors to be notified and the ticket to be escalated.",
+    "text": "Breaches and escalation When a ticket is within 20 percent of its first-response target without\na response, it is highlighted in the Inbox and the assigned team's\nsupervisor is notified. When the target is breached, the ticket is\nescalated to the team supervisor and recorded as a breach in team\nanalytics.",
+    "source": "10_sla_and_escalation.txt",
+    "chunk": 5
+  },
+  {
+    "context": "The chunk discusses the escalation process for repeated breaches of the support SLA targets, specifically mentioning the requirement for a service review and the need for a remediation plan within 10 business days.",
+    "text": "Repeated breaches trigger a service review. If a single team breaches\nmore than 5 percent of Urgent tickets in a calendar month, the\nsupervisor must submit a remediation plan within 10 business days. A\nservice review is not the same as a post-incident review: a service\nreview is about support performance, while a post-incident review is\nabout a platform incident. Service credits Enterprise contracts may include service credits for platform",
+    "source": "10_sla_and_escalation.txt",
+    "chunk": 6
+  },
+  {
+    "context": "The context for the chunk is: \"AtlasDesk measures support performance against service level agreement targets. The targets depend on the ticket priority and the customer's plan.\"",
+    "text": "Service credits Enterprise contracts may include service credits for platform availability. If monthly availability falls below 99.9 percent, the customer can request a service credit of 10 percent of the monthly subscription subtotal. Below 99.0 percent, the credit is 25 percent. Service credits must be requested within 30 days after the end of the affected month and are applied as adjustments on a later invoice. Service credits are not paid out as refunds. Support SLA breaches do not",
+    "source": "10_sla_and_escalation.txt",
+    "chunk": 7
+  },
+  {
+    "context": "The context for situating the chunk within the overall document is to provide a brief explanation of how service credits work and how they differ from support SLA breaches.",
+    "text": "Service credits are not paid out as refunds. Support SLA breaches do not generate service credits; only platform availability does.",
+    "source": "10_sla_and_escalation.txt",
+    "chunk": 8
+  },
+  {
+    "context": "The context for situating this chunk within the overall document is to provide information on how AtlasDesk billing is structured, including the different plans, seat types, and automation credits, as well as how billing works and how to manage subscriptions and plan changes.",
+    "text": "AtlasDesk Billing Guide Plans and seats AtlasDesk billing is based on active seats and optional automation credits. A seat represents a licensed support user. Automation credits represent usage of selected background jobs such as transcript classification and nightly knowledge indexing. Normal message retrieval does not consume automation credits. A workspace can therefore have many active seats and zero automation credits consumed, or few active seats and substantial automation usage.",
+    "source": "02_billing_and_workflows.txt",
+    "chunk": 0
+  },
+  {
+    "context": "The chunk discusses the plans and pricing options available for AtlasDesk billing, including Starter, Growth, and Enterprise plans, as well as the rules for plan upgrades, downgrades, and cancellations.",
+    "text": "There are three plans: Starter, Growth, and Enterprise Starter includes up to 10 seats and 2,000 automation credits per month Growth includes up to 100 seats and 25,000 automation credits per month Enterprise has no seat ceiling, and its automation credit allowance is negotiated in the contract Unused automation credits do not roll over into the next billing period on Starter or Growth On Enterprise, the contract may allow up to 20 percent of unused credits to roll over for one period only",
+    "source": "02_billing_and_workflows.txt",
+    "chunk": 1
+  },
+  {
+    "context": "The chunk discusses the billing policies and features of AtlasDesk, including overage charges for unused automation credits, the pricing structure for different plans, and the differences between light seats and full seats.",
+    "text": "When a workspace exceeds its included credits, overage is billed at 0.8 cents per credit on Growth and 1.2 cents per credit on Starter, and the overage appears in the automation usage section of the invoice rather than as an adjustment. Light seats are a reduced-price seat type for users who only read tickets and knowledge A light seat cannot reply to customers, cannot approve knowledge, and cannot be assigned tickets",
+    "source": "02_billing_and_workflows.txt",
+    "chunk": 2
+  },
+  {
+    "context": "The context for situating the chunk within the overall document is to provide information on the billing process for AtlasDesk, specifically on the different types of seats, the process for converting seats, and the billing structure for different plans.",
+    "text": "A light seat cannot reply to customers, cannot approve knowledge, and cannot be assigned tickets Converting a light seat to a full seat takes effect immediately, but the price difference is only charged starting with the next daily billing snapshot Converting a full seat to a light seat also takes effect immediately, although a full seat that was already recorded in today's snapshot is still billed as a full seat for that day. Invoices",
+    "source": "02_billing_and_workflows.txt",
+    "chunk": 3
+  },
+  {
+    "context": "The chunk provides information on the components of an invoice, including subscription subtotal, automation usage, adjustments, and total due, and how these are calculated based on billable seats and credits consumed during the billing period.",
+    "text": "Invoices An invoice contains subscription subtotal, automation usage, adjustments, and total due. The subscription subtotal is based on billable seats. Automation usage is based on credits consumed during the billing period. Adjustments include approved credits or one-time charges. The total due is calculated after applicable taxes.",
+    "source": "02_billing_and_workflows.txt",
+    "chunk": 4
+  },
+  {
+    "context": "The context for situating the chunk within the overall document is to explain how a seat becomes billable and how it is affected by deactivation.",
+    "text": "A seat becomes billable when it is active at the end of the workspace's daily billing snapshot. Deactivating a seat immediately prevents sign-in, but it does not retroactively remove the seat from a snapshot that has already been recorded. If the user is later reactivated, the system creates a new active seat record for the next snapshot.",
+    "source": "02_billing_and_workflows.txt",
+    "chunk": 5
+  },
+  {
+    "context": "The daily billing snapshot runs at 23:30 in the workspace's billing time zone, not in UTC. The billing time zone is set when the workspace is created and can only be changed by AtlasDesk finance staff.",
+    "text": "The daily billing snapshot runs at 23:30 in the workspace's billing time zone, not in UTC. The billing time zone is set when the workspace is created and can only be changed by AtlasDesk finance staff. Snapshot times are shown in the Operations Console under Billing History.",
+    "source": "02_billing_and_workflows.txt",
+    "chunk": 6
+  },
+  {
+    "context": "The chunk describes the process of finalizing invoices and the payment deadline, which is a key aspect of the billing process in AtlasDesk.",
+    "text": "Invoices are finalized at 02:00 UTC on the first day of the new billing period. Finalization and the payment deadline are separate events. Finalization creates the accounting record for the previous period. The payment deadline is the date by which the resulting balance must be paid. Changing the payment method does not move either time. The payment deadline is 15 days after finalization on Starter and Growth, and 30 days after finalization on Enterprise unless the contract states otherwise.",
+    "source": "02_billing_and_workflows.txt",
+    "chunk": 7
+  },
+  {
+    "context": "The chunk discusses the concept of account credits, which are monetary amounts created by approved billing adjustments, and their differences from automation credits, which have no monetary value and cannot be refunded.",
+    "text": "Account credits are a different thing from automation credits. An account credit is a monetary amount, usually created by an approved billing adjustment, that reduces the total due on a future invoice. Account credits cannot be exchanged for automation credits, and automation credits have no monetary value and cannot be refunded. Failed payments",
+    "source": "02_billing_and_workflows.txt",
+    "chunk": 8
+  },
+  {
+    "context": "The chunk describes the process of failed payments and the recovery process that follows, including the three-stage recovery process and the restricted billing state that occurs when a workspace is placed in this state.",
+    "text": "Failed payments Failed payments use a three-stage recovery process. The first failed attempt creates a warning and schedules another attempt after 24 hours. A second failure schedules a third attempt after another 48 hours. If the third attempt fails, the workspace enters a restricted billing state. Existing tickets remain readable, but new automation jobs are paused until the balance is resolved.",
+    "source": "02_billing_and_workflows.txt",
+    "chunk": 9
+  },
+  {
+    "context": "The context for situating the chunk within the overall document is to describe the restricted billing state and the limitations on GuideFlow answer generation for a workspace in this state.",
+    "text": "While a workspace is in the restricted billing state, agents can still reply to existing conversations, and customers can still open new conversations through email and web chat However, GuideFlow answer generation is limited to agent-facing drafts, so no automated answer is sent to a customer until the balance is resolved Paying the outstanding balance removes the restriction within 15 minutes",
+    "source": "02_billing_and_workflows.txt",
+    "chunk": 10
+  },
+  {
+    "context": "The chunk is about the process of paying outstanding invoices and managing paused automation jobs in AtlasDesk billing.",
+    "text": "Paying the outstanding balance removes the restriction within 15 minutes Automation jobs that were paused are not replayed automatically; an administrator must choose which paused jobs to resume.",
+    "source": "02_billing_and_workflows.txt",
+    "chunk": 11
+  },
+  {
+    "context": "The chunk \"Billing workflows\" is located within the document's \"AtlasDesk Billing Guide\" section, which provides detailed information on AtlasDesk billing, including plans, seats, invoices, failed payments, and plan changes.",
+    "text": "If the workspace is on Enterprise with invoice billing instead of card billing, the three-stage card recovery process does not apply. Instead, an overdue Enterprise invoice triggers a notice to the billing contact after 7 days and escalation to the account manager after 21 days. An Enterprise workspace is never placed in the restricted billing state automatically; the account manager must request it. Billing workflows",
+    "source": "02_billing_and_workflows.txt",
+    "chunk": 12
+  },
+  {
+    "context": "The billing-review workflow is a critical process in AtlasDesk billing that involves comparing disputed line items with corresponding billing records to ensure accuracy and resolve any discrepancies.",
+    "text": "Billing workflows The billing-review workflow begins with invoice identification. The agent records the invoice number and billing period, then compares the disputed line item with the corresponding billing record. If the line item is correct, the agent explains the calculation. If it is incorrect, the agent documents the discrepancy and requests an adjustment. A finalized invoice cannot be edited directly; corrections appear as adjustment entries on a later invoice.",
+    "source": "02_billing_and_workflows.txt",
+    "chunk": 13
+  },
+  {
+    "context": "Adjustments have approval limits. A supervisor can approve adjustments up to 200 dollars per invoice. Adjustments above 200 dollars and up to 2,000 dollars need a billing specialist. Any adjustment above 2,000 dollars needs approval from the finance lead.",
+    "text": "Adjustments have approval limits. A supervisor can approve adjustments up to 200 dollars per invoice. Adjustments above 200 dollars and up to 2,000 dollars need a billing specialist. Any adjustment above 2,000 dollars needs approval from the finance lead. Refunds to the original payment method always need a billing specialist, regardless of the amount, because a refund moves money outside the platform while an adjustment only changes a future invoice.",
+    "source": "02_billing_and_workflows.txt",
+    "chunk": 14
+  },
+  {
+    "context": "The chunk discusses the process of handling multiple issues in a support request, such as an account not being accessible and a disputed charge, and explains the workflow for resolving these issues.",
+    "text": "Some support requests combine multiple workflows. If a customer cannot access an account and also disputes a charge, the agent should not assume that one workflow solves both problems. The access problem follows identity verification and account recovery. The billing problem follows invoice review. One ticket may contain both issues.",
+    "source": "02_billing_and_workflows.txt",
+    "chunk": 15
+  },
+  {
+    "context": "The context for situating the chunk within the overall document is to provide a brief explanation of the importance of approval for workflow changes, such as refunds, billing adjustments, account exceptions, and retention changes, and to highlight the need for approval before an agent makes a promise about the change.",
+    "text": "Whenever a workflow requires approval, the approval must happen before an agent promises that the requested change will be made. This applies to refunds, billing adjustments, account exceptions, and retention changes. A request can be likely to be approved without being approved yet. Plan changes",
+    "source": "02_billing_and_workflows.txt",
+    "chunk": 16
+  },
+  {
+    "context": "The chunk describes the process of changing a plan, including the immediate effect of the change and the prorated charge for remaining days of the period.",
+    "text": "Plan changes Upgrading a plan takes effect immediately, and the price difference for the remaining days of the period is added as a prorated charge. Downgrading a plan takes effect at the start of the next billing period. A downgrade is blocked if the workspace has more active seats than the new plan allows; the administrator must deactivate seats first. Because of the daily snapshot rule, seats deactivated on the last day of the period may still be billed for that day.",
+    "source": "02_billing_and_workflows.txt",
+    "chunk": 17
+  },
+  {
+    "context": "The chunk \"Cancelling a subscription stops renewal but does not delete the workspace immediately. The workspace remains readable for 30 days after the period ends, after which it is scheduled for deletion under the standard deletion process. A legal hold on the workspace prevents that deletion.\" is situated within the whole document as a section describing the process of cancelling a subscription, including the timeframe for the workspace to remain readable and the steps taken to prevent deletion.",
+    "text": "Cancelling a subscription stops renewal but does not delete the workspace immediately. The workspace remains readable for 30 days after the period ends, after which it is scheduled for deletion under the standard deletion process. A legal hold on the workspace prevents that deletion.",
+    "source": "02_billing_and_workflows.txt",
+    "chunk": 18
+  },
+  {
+    "context": "<chunk>\nAtlasDesk FAQ and Glossary\n\nFrequently asked questions\n\nQ: Can I edit an invoice after it is finalized?\nA: No. Corrections to a finalized invoice appear as adjustment entries on a later invoice.\n\nQ: Does GuideFlow use Draft articles?\nA: No. Only Approved articles are used for customer-facing answers.\n</chunk>",
+    "text": "AtlasDesk FAQ and Glossary Frequently asked questions Q: Can I edit an invoice after it is finalized?\nA: No. Corrections to a finalized invoice appear as adjustment entries on a later invoice. Q: Does GuideFlow use Draft articles?\nA: No. Only Approved articles are used for customer-facing answers.",
+    "source": "08_faq_and_glossary.txt",
+    "chunk": 0
+  },
+  {
+    "context": "<chunk>\nQ: Why is a deleted user still on my invoice?\nA: Seats are billed from the daily billing snapshot. If the user was active when the snapshot ran, the seat is billed for that day even if it was deactivated afterwards.\nQ: Do automation credits expire?\nA: On Starter and Growth, unused automation credits expire at the end of the billing period.\n</chunk>\n\nContext: This chunk discusses the behavior of deleted",
+    "text": "Q: Why is a deleted user still on my invoice?\nA: Seats are billed from the daily billing snapshot. If the user was active when the snapshot ran, the seat is billed for that day even if it was deactivated afterwards. Q: Do automation credits expire?\nA: On Starter and Growth, unused automation credits expire at the end of the billing period. Q: Can an agent see audit logs?\nA: No. Audit logs are visible only to administrators and to users with the Compliance permission.",
+    "source": "08_faq_and_glossary.txt",
+    "chunk": 1
+  },
+  {
+    "context": "<chunk>\nQ: Does changing my payment card move my payment deadline?\nA: No. Neither finalization nor the payment deadline moves when the payment method changes.\nQ: How long does a region migration take?\nA: The maintenance window lasts up to six hours. Attachments may show as pending migration for up to 24 hours afterwards.\n</chunk>",
+    "text": "Q: Does changing my payment card move my payment deadline?\nA: No. Neither finalization nor the payment deadline moves when the payment method changes. Q: How long does a region migration take?\nA: The maintenance window lasts up to six hours. Attachments may show as pending migration for up to 24 hours afterwards. Q: Why did GuideFlow send a question to an agent instead of answering?\nA: No eligible passage cleared the minimum relevance threshold, or the answer had no citation. Glossary",
+    "source": "08_faq_and_glossary.txt",
+    "chunk": 2
+  },
+  {
+    "context": "<chunk>\nGlossary\n\n</chunk>\n\n<chunk>\nGlossary\n\n</chunk>",
+    "text": "Glossary Hold (ticket): The On Hold ticket status, used while waiting for an internal team or a third party. It pauses the resolution timer. Hold (legal): A legal hold, which suspends deletion of covered records until it is released. Credit (automation): A unit of background-job usage. Automation credits have no monetary value. Credit (account): A monetary amount that reduces the total due on a future invoice.",
+    "source": "08_faq_and_glossary.txt",
+    "chunk": 3
+  },
+  {
+    "context": "<chunk>\nCredit (account): A monetary amount that reduces the total due on a future invoice. Credit (service): A contractual adjustment for platform availability below the agreed level. Snapshot (billing): The daily record of active seats, taken at 23:30 in the workspace billing time zone. Snapshot (index): The frozen copy of knowledge passages that GuideFlow searches, created after each indexing run. Retry (payment): A repeated attempt to charge a card after a",
+    "text": "Credit (account): A monetary amount that reduces the total due on a future invoice. Credit (service): A contractual adjustment for platform availability below the agreed level. Snapshot (billing): The daily record of active seats, taken at 23:30 in the workspace billing time zone. Snapshot (index): The frozen copy of knowledge passages that GuideFlow searches, created after each indexing run. Retry (payment): A repeated attempt to charge a card after a failed payment.",
+    "source": "08_faq_and_glossary.txt",
+    "chunk": 4
+  },
+  {
+    "context": "<chunk>\nRetry (payment): A repeated attempt to charge a card after a failed payment. Retry (webhook): A repeated attempt to deliver an event to an integration endpoint. Review (article): The publication state in which an article waits for supervisor approval. Review (service): A process triggered by repeated support SLA breaches. Passage: The retrievable unit of a knowledge article. Seat: A licensed support user.\n</chunk>\n\nContext: This chunk discusses the",
+    "text": "Retry (payment): A repeated attempt to charge a card after a failed payment. Retry (webhook): A repeated attempt to deliver an event to an integration endpoint. Review (article): The publication state in which an article waits for supervisor approval. Review (service): A process triggered by repeated support SLA breaches. Passage: The retrievable unit of a knowledge article. Seat: A licensed support user.",
+    "source": "08_faq_and_glossary.txt",
+    "chunk": 5
+  },
+  {
+    "context": "<chunk>\nPassage: The retrievable unit of a knowledge article. Seat: A licensed support user. Light seat: A reduced-price seat that can read tickets and knowledge but cannot reply to customers. Incident commander: The person who coordinates an incident and assigns owners.\n</chunk>\n\nContext: This chunk provides definitions for key terms related to the AtlasDesk platform, including \"Passage\", \"Seat\", \"Light seat\", and \"Incident commander\". These",
+    "text": "Passage: The retrievable unit of a knowledge article. Seat: A licensed support user. Light seat: A reduced-price seat that can read tickets and knowledge but cannot reply to customers. Incident commander: The person who coordinates an incident and assigns owners.",
+    "source": "08_faq_and_glossary.txt",
+    "chunk": 6
+  },
+  {
+    "context": "This chunk discusses the experimental benchmark for comparing fixed-size, recursive, and semantic chunking in the GuideFlow pipeline, including strategies for dividing text into chunks, embedding and storing vectors, and retrieving the highest-ranked chunks for each query.",
+    "text": "GuideFlow Chunking Benchmark Pipeline GuideFlow includes an experimental benchmark for comparing fixed-size, recursive, and semantic chunking. The pipeline extracts text, creates chunks, embeds the chunks, stores the vectors in an index, and retrieves the highest-ranked chunks for each query. Strategies",
+    "source": "06_chunking_benchmark.txt",
+    "chunk": 0
+  },
+  {
+    "context": "The context for situating the chunk within the overall document is to provide a brief description of the strategies used for dividing text into chunks, highlighting the predictability and ease of implementation of fixed-size chunking, as well as the potential benefits and drawbacks of this approach, including the risk of cutting through sentences or paragraphs and the potential for important context to be separated from neighboring chunks.",
+    "text": "Strategies Fixed-size chunking divides text into blocks of approximately the same character length. It is predictable and easy to implement, but it can cut through sentences or paragraphs. Overlap can reduce the chance that important context is separated from a neighboring chunk, although overlap increases the number of stored vectors.",
+    "source": "06_chunking_benchmark.txt",
+    "chunk": 1
+  },
+  {
+    "context": "The chunk discusses the strategies of chunking text, specifically recursive chunking, which tries larger structural boundaries before smaller ones.",
+    "text": "Recursive chunking tries larger structural boundaries before smaller ones. A typical hierarchy tries paragraph breaks first, then line breaks, then sentence boundaries, and finally word boundaries. If a paragraph fits within the maximum size, it can remain intact. If it is too large, the algorithm recursively tries a smaller separator.",
+    "source": "06_chunking_benchmark.txt",
+    "chunk": 2
+  },
+  {
+    "context": "The context for the chunk is that it discusses the experimental strategies used in the GuideFlow benchmark, specifically focusing on semantic chunking, which involves splitting text into sentences and comparing adjacent sentence embeddings for topic boundaries.",
+    "text": "Semantic chunking begins by splitting text into sentences and embedding those sentences. Adjacent sentence embeddings are compared with cosine similarity. A large drop in similarity can indicate a topic boundary, so the chunker can start a new chunk at that point. A maximum chunk size is still necessary because a long sequence of related sentences can otherwise become one very large chunk. Source formatting",
+    "source": "06_chunking_benchmark.txt",
+    "chunk": 3
+  },
+  {
+    "context": "The chunk discusses how source formatting affects chunkers, specifically how hard-wrapped text with line breaks in the middle of sentences can be treated differently than text with line breaks before or after sentence boundaries.",
+    "text": "Source formatting Source formatting affects chunkers differently. Text that is hard-wrapped at a fixed line width contains line breaks in the middle of sentences. A recursive chunker that tries line breaks before sentence boundaries will then split at arbitrary line positions, which behaves much like fixed-size chunking. Normalizing single line breaks into spaces before chunking, or placing the sentence separator before the line separator, avoids this problem.",
+    "source": "06_chunking_benchmark.txt",
+    "chunk": 4
+  },
+  {
+    "context": "The context for situating this chunk within the overall document is to discuss the importance of handling lists and tables in a specific way when chunking text, as some chunkers may treat them as single units to avoid losing their order or meaning.",
+    "text": "Lists and tables need special care. A numbered procedure split in the middle loses the order of its steps, and a table row separated from its header row loses the meaning of its values. Some chunkers therefore treat a list or a table as a single unit whenever it fits within the maximum size. Chunk size and overlap",
+    "source": "06_chunking_benchmark.txt",
+    "chunk": 5
+  },
+  {
+    "context": "The context for situating this chunk within the overall document is to provide a clear explanation of the different strategies for dividing text into chunks, highlighting the importance of choosing the right chunk size and boundary strategy to achieve optimal search retrieval results.",
+    "text": "Chunk size and overlap Chunk size and chunk boundary strategy are separate variables. Two systems can use the same maximum chunk size and still produce very different chunks because one cuts at character positions while another preserves semantic or structural boundaries. A fair benchmark should keep the embedding model, retrieval metric, query set, maximum chunk size, and top-K constant while changing the chunking strategy.",
+    "source": "06_chunking_benchmark.txt",
+    "chunk": 6
+  },
+  {
+    "context": "The context for situating the chunk within the overall document is to understand how different chunk strategies affect the similarity scores and answer quality for narrow factual questions, boundary questions, multi-fact questions, exception questions, and distractor questions.",
+    "text": "Smaller chunks tend to produce higher similarity scores for narrow questions because each chunk contains fewer unrelated sentences. Larger chunks tend to contain more complete answers but can dilute the embedding when several topics share a chunk. The best chunk size therefore depends on question type as well as on document structure.",
+    "source": "06_chunking_benchmark.txt",
+    "chunk": 7
+  },
+  {
+    "context": "The context for situating the chunk within the overall document is to provide a brief explanation of how overlap in chunk boundaries can affect the quality of search retrieval, specifically highlighting the trade-off between preserving semantic or structural boundaries and reducing the chance of important context being separated from neighboring chunks.",
+    "text": "Overlap duplicates text at chunk edges. With a 300-character chunk and a 50-character overlap, roughly one sixth of each chunk is repeated from the previous one. Overlap helps when an answer straddles a boundary, but it can also cause the same fact to appear in two of the top-K results, which wastes a retrieval slot. Evaluation",
+    "source": "06_chunking_benchmark.txt",
+    "chunk": 8
+  },
+  {
+    "context": "The context for situating this chunk within the overall document is to provide a brief explanation of how similarity scores are used to evaluate the quality of chunking strategies, highlighting that lower-scoring chunks can contain complete answers while higher-scoring chunks contain related fragments.",
+    "text": "Evaluation Similarity scores are not direct scores for chunking quality. A similarity score measures how closely a retrieved vector matches a query vector according to the embedding model. A lower-scoring chunk can contain the complete answer, while a higher-scoring chunk can contain only a related fragment.",
+    "source": "06_chunking_benchmark.txt",
+    "chunk": 9
+  },
+  {
+    "context": "The context for situating this chunk within the overall document is to provide a brief explanation of how similarity scores are not direct scores for chunking quality, and how retrieval evaluation should use questions with known relevant evidence to measure the effectiveness of chunking strategies.",
+    "text": "Retrieval evaluation should use questions with known relevant evidence. Recall@K measures whether relevant evidence appears anywhere in the first K retrieved results. Mean reciprocal rank focuses on the position of the first relevant result. These metrics are more informative for comparing retrieval systems than simply averaging similarity scores.",
+    "source": "06_chunking_benchmark.txt",
+    "chunk": 10
+  },
+  {
+    "context": "The context for situating this chunk within the overall document is to evaluate the effectiveness of different chunking strategies in improving search retrieval of the chunk, specifically by comparing the similarity scores and final answer quality of chunks produced by various chunking methods.",
+    "text": "Evidence can be checked at two levels. Document-level evaluation only asks whether a chunk came from the right source file, which is easy to satisfy when there are few documents. Evidence-level evaluation asks whether the retrieved text actually contains the specific statements needed to answer the question, which is stricter and more useful for comparing chunking strategies.",
+    "source": "06_chunking_benchmark.txt",
+    "chunk": 11
+  },
+  {
+    "context": "The benchmark should include several question types to evaluate the effectiveness of different chunking strategies in retrieving relevant and complete answers.",
+    "text": "The benchmark should include several question types. Narrow factual questions test whether the retriever can find a focused statement. Boundary questions test whether an answer is split across a paragraph or section boundary. Multi-fact questions require several related statements. Exception questions require both a general rule and a condition that changes the outcome. Distractor questions use terminology that appears in multiple documents but has different meanings.",
+    "source": "06_chunking_benchmark.txt",
+    "chunk": 12
+  },
+  {
+    "context": "The context for situating the chunk within the overall document is to evaluate the effectiveness of the chunking strategy in improving the retrieval of relevant evidence for downstream answer quality, ensuring that the retrieved text contains the specific statements needed to answer the question accurately.",
+    "text": "Downstream answer quality should be evaluated separately from retrieval quality. A retriever can return relevant evidence that is too fragmented for an answer generator to use correctly. Conversely, a slightly lower-ranked passage can contain enough context to produce a complete answer. The benchmark should therefore record both retrieval metrics and final answer quality. Controlled experiments",
+    "source": "06_chunking_benchmark.txt",
+    "chunk": 13
+  },
+  {
+    "context": "The context for situating this chunk within the overall document is to provide a brief explanation of the experimental design and methodology used to evaluate the effectiveness of different chunking strategies in improving search retrieval of the chunk.",
+    "text": "Controlled experiments For a controlled experiment, the same query must be sent to all indexes. The same embedding model and similarity metric must be used. The only intended experimental variable should be how the source text is divided into chunks. If chunk size, overlap, embedding model, and query set all change at once, it becomes difficult to attribute an observed difference to chunking.",
+    "source": "06_chunking_benchmark.txt",
+    "chunk": 14
+  },
+  {
+    "context": "The context for situating this chunk within the overall document is to provide a clear definition of what constitutes a security incident at AtlasDesk, including the different severity levels and incident roles involved in handling such incidents.",
+    "text": "AtlasDesk Security and Data Retention Policy 1. Security incidents An AtlasDesk security incident is an event in which the confidentiality, integrity, or availability of customer data or services may be affected. A support ticket about a suspected problem is not automatically a security incident. An incident record contains an identifier, severity, start time, affected service, current status, and incident commander. 1.1 Severity levels",
+    "source": "03_security_and_retention.txt",
+    "chunk": 0
+  },
+  {
+    "context": "The context for situating the chunk within the overall document is to provide a clear definition of the severity levels used to categorize incidents, ensuring that the severity levels are accurately described and understood by all stakeholders.",
+    "text": "1.1 Severity levels - Severity One: a widespread customer-facing outage or confirmed broad data exposure.\n- Severity Two: significant degradation affecting a subset of customers or a critical feature.\n- Severity Three: limited impact with a documented workaround.\n- Severity Four: an internal issue with no customer-visible effect.",
+    "source": "03_security_and_retention.txt",
+    "chunk": 1
+  },
+  {
+    "context": "Situated within the AtlasDesk Security and Data Retention Policy document, the chunk discusses the importance of Severity levels in categorizing security incidents, incident roles, customer communication, suspicious access, audit logs, conversation retention, and data subject requests.",
+    "text": "Severity is based on customer impact, not on how difficult the technical problem is. A difficult bug with no customer impact is Severity Four. Severity can be raised or lowered during the incident; every change is recorded with the reason and the name of the person who changed it. 1.2 Incident roles",
+    "source": "03_security_and_retention.txt",
+    "chunk": 2
+  },
+  {
+    "context": "The incident commander assigns incident roles, including communications, remediation, and coordination, to ensure effective incident management.",
+    "text": "1.2 Incident roles When an incident is declared, the incident commander assigns owners for investigation, communications, and remediation. The communications owner prepares customer updates. The remediation owner tracks technical changes. The incident commander coordinates the work. The incident commander should not also act as the remediation owner on a Severity One incident, because coordinating and fixing at the same time slows both down. 1.3 Customer communication",
+    "source": "03_security_and_retention.txt",
+    "chunk": 3
+  },
+  {
+    "context": "The first public update should state what is known, what is not known, and what customers should do, if anything. It should not speculate about the root cause. A later update may state a confirmed cause after the investigation has established enough evidence. A status update and a root-cause statement are therefore different things.",
+    "text": "1.3 Customer communication The first public update should state what is known, what is not known, and what customers should do, if anything. It should not speculate about the root cause. A later update may state a confirmed cause after the investigation has established enough evidence. A status update and a root-cause statement are therefore different things.",
+    "source": "03_security_and_retention.txt",
+    "chunk": 4
+  },
+  {
+    "context": "The update timing for customer communication about security incidents is specified in the document, with different intervals for Severity One, Severity Two, Severity Three, and Severity Four incidents.",
+    "text": "Update timing depends on severity:\n1. Severity One: first public update within 30 minutes of declaration, then every 60 minutes.\n2. Severity Two: first public update within 60 minutes, then every 4 hours.\n3. Severity Three: an update on the status page is optional; affected customers are notified through their tickets.\n4. Severity Four: no public update.",
+    "source": "03_security_and_retention.txt",
+    "chunk": 5
+  },
+  {
+    "context": "The post-incident review is a critical step in ensuring that the root cause of a security incident is identified and addressed, and that the necessary actions are taken to prevent similar incidents from occurring in the future.",
+    "text": "A post-incident review is required for Severity One and Severity Two incidents. The review must be completed within 10 business days of resolution. The review document is internal; a shorter customer-facing summary is published only for Severity One incidents. 1.4 Suspicious access",
+    "source": "03_security_and_retention.txt",
+    "chunk": 6
+  },
+  {
+    "context": "The context for situating the chunk within the overall document is to provide guidance on handling suspicious access incidents, emphasizing the importance of preserving relevant identifiers and not deleting or modifying records to avoid complicating timeline reconstruction.",
+    "text": "1.4 Suspicious access If an employee discovers suspicious access, they should preserve the relevant identifiers and notify the security response group rather than deleting or modifying records. Removing evidence can make timeline reconstruction more difficult.",
+    "source": "03_security_and_retention.txt",
+    "chunk": 7
+  },
+  {
+    "context": "The context for situating the chunk within the overall document is to provide a clear explanation of the relationship between service incidents and security incidents, and to introduce the concept of audit logs and data subject requests.",
+    "text": "A service incident and a security incident can overlap but are not identical. A service incident may involve downtime with no security consequence. A security incident may involve unauthorized access without an outage. When both dimensions are present, the operational and security records are tracked separately and linked together. 2. Audit logs",
+    "source": "03_security_and_retention.txt",
+    "chunk": 8
+  },
+  {
+    "context": "The context for situating the chunk within the overall document is to provide information about the audit logs kept by AtlasDesk for administrative actions, including the types of records that are stored, the retention period, and the purpose of recording failed administrative actions.",
+    "text": "2. Audit logs AtlasDesk keeps audit logs for administrative actions. An audit record includes the actor, action, target object, timestamp, and result. Failed administrative actions are also recorded. The standard audit-log retention period is 180 days.",
+    "source": "03_security_and_retention.txt",
+    "chunk": 9
+  },
+  {
+    "context": "The context for situating the chunk within the overall document is to provide information on enterprise workspaces' ability to purchase extended audit retention of 2 years, which applies to records created after the add-on is activated, and the limitations on editing or deleting audit logs, as well as the ability to export audit logs as CSV or stream to an external security tool, with export limited to 90 days of records per request.",
+    "text": "Enterprise workspaces can purchase extended audit retention of 2 years. Extended retention applies only to records created after the add-on is activated; it does not recover records that were already older than 180 days. Audit logs cannot be edited or deleted by any workspace role, including administrators. Audit logs can be exported as CSV or streamed to an external security tool. Export is limited to 90 days of records per request, so exporting a full 180-day period requires two requests.",
+    "source": "03_security_and_retention.txt",
+    "chunk": 10
+  },
+  {
+    "context": "The conversation retention chunk is located within the document's section on \"Conversation retention\" which outlines the retention policies for conversation content, including standard settings, extended retention options, and the relationship between conversation retention and audit log retention.",
+    "text": "3. Conversation retention Conversation content follows a separate workspace retention policy. Standard settings are 30, 90, or 365 days. Changing conversation retention does not change the 180-day audit-log period. Retention begins from the timestamp of the conversation's final message, not from ticket creation.",
+    "source": "03_security_and_retention.txt",
+    "chunk": 11
+  },
+  {
+    "context": "The context for situating the chunk within the overall document is to provide a brief explanation of how conversation retention periods work, including the difference between conversation retention and audit log retention, and how conversation retention periods are applied and managed.",
+    "text": "Shortening the retention period does not delete anything immediately. The new period is applied at the next nightly retention evaluation, and conversations that are already past the new period become eligible for deletion at that point. Lengthening the retention period cannot restore conversations that have already been deleted.",
+    "source": "03_security_and_retention.txt",
+    "chunk": 12
+  },
+  {
+    "context": "This chunk discusses the retention policies for audit logs, conversation content, and attachments, including legal holds, deletion processing, and data subject requests.",
+    "text": "Attachments follow the conversation they belong to. An attachment cannot have a longer retention period than its conversation, and deleting a conversation deletes its attachments in the same background job. 3.1 Legal holds A legal hold temporarily suspends deletion for records covered by the hold. If a conversation is past its normal retention period but is under legal hold, it remains protected from deletion until the hold is released. After release, normal retention processing can resume.",
+    "source": "03_security_and_retention.txt",
+    "chunk": 13
+  },
+  {
+    "context": "The chunk is located within the AtlasDesk Security and Data Retention Policy document, which outlines the procedures and policies for managing customer data and incident response.",
+    "text": "Only administrators with the Compliance permission can create or release a legal hold. A hold can cover an entire workspace, a set of customers, or a date range. A legal hold does not stop new messages from arriving, and it does not change what agents can see. 3.2 Deletion processing",
+    "source": "03_security_and_retention.txt",
+    "chunk": 14
+  },
+  {
+    "context": "The context for situating the chunk within the overall document is to provide a brief explanation of how deletion processing works, including the eligibility timestamp, legal hold status, and deletion-processing status, to help support teams understand why a conversation may remain visible after becoming eligible for deletion.",
+    "text": "3.2 Deletion processing Deletion is asynchronous. When a conversation becomes eligible for deletion, a background process evaluates it. A conversation may therefore remain visible temporarily after becoming eligible. When a customer asks why an old conversation is still visible, support should check the eligibility timestamp, legal-hold status, and deletion-processing status.",
+    "source": "03_security_and_retention.txt",
+    "chunk": 15
+  },
+  {
+    "context": "The context for situating the chunk within the overall document is to provide a brief explanation of how deleted conversations are handled, including the 35-day period during which they cannot be restored through the Operations Console, and the exception for erasure requests under legal hold.",
+    "text": "Deleted conversations are removed from backups within 35 days. During that period, a deleted conversation cannot be restored through the Operations Console; restoration from backup is possible only as part of a declared Severity One incident. 4. Data subject requests",
+    "source": "03_security_and_retention.txt",
+    "chunk": 16
+  },
+  {
+    "context": "The context for situating the chunk within the overall document is to provide information on data subject requests, which allow customers to request the export or erasure of their personal data, and how these requests interact with the workspace retention settings and legal holds.",
+    "text": "4. Data subject requests A customer's end user can ask for their personal data to be exported or erased. Erasure requests override the workspace retention setting, but they do not override a legal hold. If an erasure request covers data under legal hold, the request is recorded, the requester is told that some data is held for legal reasons, and the erasure is completed after the hold is released. Data subject requests must be completed within 30 days.",
+    "source": "03_security_and_retention.txt",
+    "chunk": 17
+  },
+  {
+    "context": "The context for situating the chunk within the overall document is to provide a brief overview of the different workflows AtlasDesk support uses for various requests, including password-reset requests, billing disputes, and suspected outages.",
+    "text": "AtlasDesk Support Workflows and Access Control Workflow overview AtlasDesk support uses different workflows for different requests. Password-reset requests use the account-access workflow. Billing disputes use the billing-review workflow. Suspected outages use incident triage. The workflows share vocabulary but have different required actions. Account-access workflow",
+    "source": "05_support_and_access.txt",
+    "chunk": 0
+  },
+  {
+    "context": "<chunk>\nAccount-access workflow 1. Verify the requester's identity using the approved method for the workspace (email link, SMS code, or verified phone callback).\n2. Check whether the account is locked, expired, or restricted.\n3. If the account is locked after too many failed sign-ins, wait for the automatic 30-minute lock to expire or unlock it manually with supervisor approval.\n4. If recovery is allowed, send approved recovery instructions.",
+    "text": "Account-access workflow 1. Verify the requester's identity using the approved method for the workspace (email link, SMS code, or verified phone callback).\n2. Check whether the account is locked, expired, or restricted.\n3. If the account is locked after too many failed sign-ins, wait for the automatic 30-minute lock to expire or unlock it manually with supervisor approval.\n4. If recovery is allowed, send approved recovery instructions.\n5. Record the verification method used in the ticket.",
+    "source": "05_support_and_access.txt",
+    "chunk": 1
+  },
+  {
+    "context": "<chunk>\nAgents must not bypass verification or disclose authentication secrets because a customer claims to be in a hurry. If the requester cannot complete verification, the agent escalates to the security response group instead of trying an alternative method that is not approved for the workspace.\n</chunk>\nSituated within the overall document, this chunk discusses the importance of verifying customer identities and not disclosing authentication secrets, particularly when a customer claims to be in a hurry.",
+    "text": "Agents must not bypass verification or disclose authentication secrets because a customer claims to be in a hurry. If the requester cannot complete verification, the agent escalates to the security response group instead of trying an alternative method that is not approved for the workspace.",
+    "source": "05_support_and_access.txt",
+    "chunk": 2
+  },
+  {
+    "context": "<chunk>\nAccounts that use single sign-on cannot be recovered through the account-access workflow at all. For those accounts, the agent tells the customer to contact their own identity provider administrator, because AtlasDesk does not store their password. Billing-review workflow\n</chunk>\nSituated within the overall document, this chunk describes the account-access workflow for handling password-reset requests, specifically mentioning that accounts that use single sign-on cannot be recovered through this workflow",
+    "text": "Accounts that use single sign-on cannot be recovered through the account-access workflow at all. For those accounts, the agent tells the customer to contact their own identity provider administrator, because AtlasDesk does not store their password. Billing-review workflow",
+    "source": "05_support_and_access.txt",
+    "chunk": 3
+  },
+  {
+    "context": "The billing-review workflow begins by recording the invoice number and billing period. The agent compares the disputed line item with the corresponding billing record. If the charge is correct, the agent explains the calculation. If it is incorrect, the agent documents the discrepancy and requests an adjustment through the approval workflow.",
+    "text": "Billing-review workflow The billing-review workflow begins by recording the invoice number and billing period. The agent compares the disputed line item with the corresponding billing record. If the charge is correct, the agent explains the calculation. If it is incorrect, the agent documents the discrepancy and requests an adjustment through the approval workflow. Incident-triage workflow",
+    "source": "05_support_and_access.txt",
+    "chunk": 4
+  },
+  {
+    "context": "The incident-triage workflow is used to handle reports of unusual or widespread behavior that may indicate a broader issue affecting multiple workspaces, such as a security breach or a technical problem.",
+    "text": "Incident-triage workflow The incident-triage workflow begins by determining whether reported behavior is isolated or widespread. The agent checks the service-status dashboard and searches for an existing incident. If an active incident matches the symptoms, the ticket is linked to that incident instead of creating a duplicate. If no incident exists and the evidence indicates broad impact, the report is escalated.",
+    "source": "05_support_and_access.txt",
+    "chunk": 5
+  },
+  {
+    "context": "The context for situating the chunk within the overall document is to provide a brief explanation of how the incident-triage workflow handles reports of the same symptom from different workspaces within 15 minutes, indicating that if the symptoms match, the ticket is linked to an existing incident instead of creating a duplicate.",
+    "text": "Three reports of the same symptom from different workspaces within 15 minutes count as evidence of broad impact, even if each individual report looks minor. Combined requests",
+    "source": "05_support_and_access.txt",
+    "chunk": 6
+  },
+  {
+    "context": "The combined requests chunk is situated within the overall document to explain how different workflows are used for different types of requests, such as password-reset requests, billing disputes, and suspected outages. It also discusses the importance of not assuming that one workflow resolves both issues when a customer reports both an account access issue and a billing issue.",
+    "text": "Combined requests Some requests combine workflows. If a customer cannot access an account and also says they were charged for a service they could not use, the access issue and billing issue should be handled according to their respective workflows. One ticket can contain both issues, but the agent should not assume that one workflow resolves both. Escalation",
+    "source": "05_support_and_access.txt",
+    "chunk": 7
+  },
+  {
+    "context": "The context for situating the chunk within the overall document is to provide a brief explanation of how escalation works in AtlasDesk support workflows, including the role of retaining ticket ownership and the importance of communicating the approved outcome, as well as the different ticket statuses and their implications for the resolution process.",
+    "text": "Escalation Escalation does not always mean transferring the entire conversation. An agent may retain ticket ownership while requesting specialist review. The specialist response is attached to the ticket, and the original agent remains responsible for communicating the approved outcome unless ownership changes. Ticket statuses",
+    "source": "05_support_and_access.txt",
+    "chunk": 8
+  },
+  {
+    "context": "The context for situating the chunk within the overall document is to provide a brief description of the different ticket statuses, their meanings, and the metrics used to measure the performance of the support team.",
+    "text": "Ticket statuses A ticket can be Open, Pending, On Hold, or Resolved. Pending means the agent is waiting for the customer. On Hold means the agent is waiting for an internal team or a third party. A ticket on hold is unrelated to a legal hold: putting a ticket On Hold pauses the resolution timer but does not protect the conversation from deletion. Pending tickets with no customer reply for 7 days are resolved automatically. Metrics",
+    "source": "05_support_and_access.txt",
+    "chunk": 9
+  },
+  {
+    "context": "<chunk>\nMetrics First-response time and resolution time are separate measurements. First-response time is the elapsed time from ticket creation to the first human response. Resolution time is the elapsed time from ticket creation until the ticket is marked resolved. A ticket can have a short first-response time and a long resolution time. An automated GuideFlow answer does not count as a first response, because first-response time measures human responses only. Access control\n</chunk>\nSituated within",
+    "text": "Metrics First-response time and resolution time are separate measurements. First-response time is the elapsed time from ticket creation to the first human response. Resolution time is the elapsed time from ticket creation until the ticket is marked resolved. A ticket can have a short first-response time and a long resolution time. An automated GuideFlow answer does not count as a first response, because first-response time measures human responses only. Access control",
+    "source": "05_support_and_access.txt",
+    "chunk": 10
+  },
+  {
+    "context": "The chunk provides information on the access control system used in AtlasDesk, including the role-based permissions, access groups, and default permissions for different roles.",
+    "text": "Access control AtlasDesk access is based on effective permissions rather than job title alone. A Supervisor role normally permits knowledge approval and team analytics, but it does not automatically permit retention or billing configuration. Access groups can add or restrict capabilities. Default role permissions:",
+    "source": "05_support_and_access.txt",
+    "chunk": 11
+  },
+  {
+    "context": "The chunk provides default role permissions for access control in AtlasDesk, including capabilities such as replying to customers, approving knowledge, viewing team analytics, changing retention settings, and creating legal holds.",
+    "text": "Default role permissions: | Capability | Agent | Supervisor | Administrator |\n| Reply to customers | yes | yes | yes |\n| Approve knowledge | no | yes | yes |\n| View team analytics | no | yes | yes |\n| Change retention settings | no | no | yes |\n| Change billing settings | no | no | yes |\n| Create legal holds | no | no | only with Compliance permission |",
+    "source": "05_support_and_access.txt",
+    "chunk": 12
+  },
+  {
+    "context": "<chunk>\nAccess-group membership can be assigned directly to a user or inherited through a team. If a user has conflicting access rules, an explicit deny takes precedence over a general allow. Moving a user from one team to another changes team membership but does not automatically remove direct access-group assignments.\n</chunk>\n\nContext: This chunk discusses the management of access groups and their impact on user permissions within the AtlasDesk system.",
+    "text": "Access-group membership can be assigned directly to a user or inherited through a team. If a user has conflicting access rules, an explicit deny takes precedence over a general allow. Moving a user from one team to another changes team membership but does not automatically remove direct access-group assignments.",
+    "source": "05_support_and_access.txt",
+    "chunk": 13
+  },
+  {
+    "context": "The temporary access grants have expiration timestamps, which become inactive even if the user remains on the team that originally requested the access.",
+    "text": "Temporary access grants have expiration timestamps. When the timestamp passes, the grant becomes inactive even if the user remains on the team that originally requested the access. Temporary grants are recorded in the audit log when created, modified, and expired. The longest temporary grant allowed is 30 days; a longer need requires a permanent access-group assignment approved by an administrator.",
+    "source": "05_support_and_access.txt",
+    "chunk": 14
+  },
+  {
+    "context": "AtlasDesk is a customer-support platform used by mid-sized software companies, offering an Inbox for customer conversations, a Knowledge Hub for approved information, and an Operations Console for administrative settings, each workspace receiving its own primary region for storing conversation content.",
+    "text": "AtlasDesk Platform Overview AtlasDesk is a fictional customer-support platform used by mid-sized\nsoftware companies. It has an Inbox for customer conversations, a\nKnowledge Hub for approved information, and an Operations Console for\nadministrative settings. Each customer organization receives its own\nworkspace, and every workspace has exactly one primary region that\ndetermines where conversation content is stored.",
+    "source": "01_product_and_rag.txt",
+    "chunk": 0
+  },
+  {
+    "context": "The context for situating this chunk within the overall document is to provide a clear definition of the different components of the AtlasDesk platform, including conversations, tickets, and incidents, and to explain how these components interact with each other.",
+    "text": "The platform distinguishes a conversation, a ticket, and an incident. A\nconversation is the exchange between a customer and the support\norganization. A ticket is a tracked work item that can contain one or\nmore conversations. An incident is an operational event affecting the\navailability or behavior of the platform. A single incident may be\nlinked to hundreds of tickets, but a ticket is never converted into an\nincident; instead, the ticket is linked to the incident record.",
+    "source": "01_product_and_rag.txt",
+    "chunk": 1
+  },
+  {
+    "context": "The context for the chunk is: AtlasDesk is a fictional customer-support platform used by mid-sized software companies. It has an Inbox for customer conversations, a Knowledge Hub for approved information, and an Operations Console for administrative settings.",
+    "text": "Conversations arrive through four channels: email, web chat, the in-app\nwidget, and the public API. The channel is recorded on the conversation\nand cannot be changed later. When a customer replies to an old email\nthread after the related ticket has been resolved for more than 14 days,\nAtlasDesk opens a new ticket instead of reopening the old one, and it\nlinks the two tickets so agents can see the history. Workspace regions A workspace can be hosted in the North America, Europe, or Asia-Pacific",
+    "source": "01_product_and_rag.txt",
+    "chunk": 2
+  },
+  {
+    "context": "The context for situating the chunk within the overall document is to provide information about the workspace regions, primary region selection, and region migration, which are relevant to understanding the organization of the AtlasDesk platform and its features.",
+    "text": "Workspace regions A workspace can be hosted in the North America, Europe, or Asia-Pacific region. The primary region is chosen during workspace creation. Region migration is possible but requires a scheduled maintenance window of up to six hours, during which the Inbox is read-only. Attachments are migrated after conversation text, so an attachment can appear as pending migration for up to 24 hours after the window closes. Knowledge articles",
+    "source": "01_product_and_rag.txt",
+    "chunk": 3
+  },
+  {
+    "context": "The chunk discusses the migration process for old email conversations to new tickets, and how knowledge articles are replicated across regions to improve GuideFlow's retrieval capabilities.",
+    "text": "migration for up to 24 hours after the window closes. Knowledge articles are not region-bound; they are replicated to every region so that GuideFlow can retrieve them with low latency. GuideFlow",
+    "source": "01_product_and_rag.txt",
+    "chunk": 4
+  },
+  {
+    "context": "AtlasDesk uses a retrieval-assisted answer system called GuideFlow to retrieve information from approved knowledge articles, normalizes the user's message, retrieves candidate passages, ranks them, and gives the highest-ranked eligible passages to an answer generator.",
+    "text": "GuideFlow can retrieve them with low latency. GuideFlow AtlasDesk uses a retrieval-assisted answer system called GuideFlow.\nGuideFlow first normalizes the user's message, then retrieves candidate\npassages from approved knowledge, ranks the candidates, and gives the\nhighest-ranked eligible passages to an answer generator. If no passage\nclears the minimum relevance threshold, GuideFlow asks an agent to\nreview the question rather than inventing an answer.",
+    "source": "01_product_and_rag.txt",
+    "chunk": 5
+  },
+  {
+    "context": "AtlasDesk is a customer-support platform used by mid-sized software companies, and the document describes how it handles conversation normalization, translation, and retrieval of approved knowledge articles.",
+    "text": "Normalization removes signatures, quoted reply chains, and tracking\nfooters from email messages. It also expands a small list of product\nabbreviations, so OC becomes Operations Console and KH becomes Knowledge\nHub. Normalization does not translate messages. A message written in\nPortuguese is retrieved against Portuguese passages unless the workspace\nhas enabled cross-language retrieval.",
+    "source": "01_product_and_rag.txt",
+    "chunk": 6
+  },
+  {
+    "context": "The context for situating the chunk within the overall document is to provide information on how the minimum relevance threshold for GuideFlow's answer generation is set and managed by administrators, and how this affects the number of questions routed to agents and the risk of using loosely related passages.",
+    "text": "The default minimum relevance threshold is 0.55. Administrators can\nraise the threshold to make GuideFlow more cautious, but they cannot set\nit below 0.40. Raising the threshold increases the number of questions\nrouted to agents. Lowering it increases coverage but also increases the\nrisk that a loosely related passage is used to answer a question it does\nnot actually address.",
+    "source": "01_product_and_rag.txt",
+    "chunk": 7
+  },
+  {
+    "context": "AtlasDesk uses knowledge articles to provide customer-facing answers, with four states: Draft, Review, Approved, and Archived.",
+    "text": "Knowledge articles have four states: Draft, Review, Approved, and\nArchived. Draft articles are editable. Review articles are waiting for\nsupervisor approval. Approved articles may be used for customer-facing\nanswer generation. Archived articles remain available to administrators\nfor historical reference but are excluded from normal customer-facing\nretrieval.",
+    "source": "01_product_and_rag.txt",
+    "chunk": 8
+  },
+  {
+    "context": "The passage discusses the AtlasDesk platform's use of metadata filters to exclude passages from the retrieval system, including considerations for Archived articles, product areas, and language requirements.",
+    "text": "The retrieval system also uses metadata filters. A passage can have a\nvery high semantic similarity score and still be excluded if its article\nis Archived, if it belongs to the wrong product area, or if it fails a\nlanguage requirement. For example, an Archived passage with a similarity\nscore of 0.84 can lose to an Approved passage with a score of 0.79\nbecause eligibility is checked before final selection.",
+    "source": "01_product_and_rag.txt",
+    "chunk": 9
+  },
+  {
+    "context": "AtlasDesk uses a retrieval-assisted answer system called GuideFlow to generate answers from approved knowledge articles.",
+    "text": "Answer generation uses at most three passages. If more than three\npassages are eligible, GuideFlow keeps the three highest-ranked passages\nand discards the rest, even when the discarded passages come from the\nsame article. Every generated answer includes citations to the passages\nit used. An answer without at least one citation is never shown to a\ncustomer; it is shown to the agent as a draft instead.",
+    "source": "01_product_and_rag.txt",
+    "chunk": 10
+  },
+  {
+    "context": "The diagnostic record provides information about the retrieval process, including query identifiers, article and passage identifiers, and confidence bands, allowing administrators to investigate retrieval behavior without seeing the raw conversation text.",
+    "text": "GuideFlow records retrieval diagnostics. A diagnostic record contains a\nquery identifier, article identifiers considered during retrieval,\nselected passage identifiers, and a confidence band. When redaction mode\nis enabled, the diagnostic record does not contain the customer's raw\nmessage. This means an administrator can investigate retrieval behavior\nwithout necessarily seeing the original conversation text.",
+    "source": "01_product_and_rag.txt",
+    "chunk": 11
+  },
+  {
+    "context": "The context for the chunk is: \"GuideFlow records retrieval diagnostics. A diagnostic record contains a query identifier, article identifiers considered during retrieval, selected passage identifiers, and a confidence band. When redaction mode is enabled, the diagnostic record does not contain the customer's raw message. This means an administrator can investigate retrieval behavior without necessarily seeing the original conversation text.\"",
+    "text": "Confidence bands are High, Medium, and Low. High means the top passage\ncleared the threshold by at least 0.15. Medium means it cleared the\nthreshold by less than 0.15. Low is used only for agent-facing drafts,\nbecause a Low answer is never sent automatically. Confidence bands\ndescribe retrieval, not the factual accuracy of the generated answer. Roles",
+    "source": "01_product_and_rag.txt",
+    "chunk": 12
+  },
+  {
+    "context": "The role of the platform is to provide customer support for mid-sized software companies, with a focus on customer-facing knowledge and operational data management.",
+    "text": "Roles The platform has three default roles. Agents can work tickets and use\napproved knowledge. Supervisors can approve knowledge articles and\nreview team analytics. Administrators can change workspace configuration\nsuch as retention, billing, and access settings. A supervisor does not\nautomatically become an administrator merely because the supervisor can\napprove an article.",
+    "source": "01_product_and_rag.txt",
+    "chunk": 13
+  },
+  {
+    "context": "This chunk discusses the creation and behavior of custom roles in AtlasDesk, which are derived from default roles and can have different permissions and behaviors compared to the original default role.",
+    "text": "Custom roles can be created from any default role. A custom role starts\nwith the permissions of the role it was copied from, and later changes\nto the original default role are not propagated to the copy. This is why\ntwo custom roles that were copied from the Supervisor role at different\ntimes can behave differently.",
+    "source": "01_product_and_rag.txt",
+    "chunk": 14
+  },
+  {
+    "context": "AtlasDesk, a fictional customer-support platform, separates customer-facing knowledge from operational state to improve search retrieval of the chunk.",
+    "text": "AtlasDesk separates customer-facing knowledge from operational state. A\nbilling record can explain why a charge occurred, while an approved\nknowledge article can explain that charge to a customer. GuideFlow\ntherefore retrieves from the knowledge layer first and accesses\noperational data only through explicitly configured integrations.",
+    "source": "01_product_and_rag.txt",
+    "chunk": 15
+  },
+  {
+    "context": "The context for situating the chunk within the overall document is to provide information about the API keys used by AtlasDesk, including their scope, usage, and revocation process.",
+    "text": "AtlasDesk Integrations and API API keys The AtlasDesk public API uses workspace API keys. An API key belongs to the workspace, not to the administrator who created it, so deactivating that administrator's seat does not revoke the key. Keys must be revoked explicitly in the Operations Console. Each key has a scope: read-only, tickets, knowledge, or full. A read-only key cannot create conversations, even through the conversation endpoint.",
+    "source": "09_integrations_and_api.txt",
+    "chunk": 0
+  },
+  {
+    "context": "The context for situating the chunk within the overall document is to provide information about the rate limits and webhook functionality in AtlasDesk, specifically how API keys are used, the rate limits per key, and how webhooks work.",
+    "text": "Rate limits are applied per API key. Starter keys can make 60 requests per minute, Growth keys 300 requests per minute, and Enterprise keys 1,200 requests per minute. When a key exceeds its limit, the API returns status 429 with a Retry-After header. Requests rejected because of rate limits do not consume automation credits. Webhooks",
+    "source": "09_integrations_and_api.txt",
+    "chunk": 1
+  },
+  {
+    "context": "The context for situating the chunk within the overall document is to provide information on how webhooks work, including their delivery status, retries, and automatic disabling, as well as their relationship to webhook integrations and operational data.",
+    "text": "Webhooks Webhooks send events such as ticket.created, ticket.resolved, and incident.linked to an external endpoint. A webhook delivery is considered successful when the endpoint returns a 2xx status within 10 seconds. Failed deliveries are retried up to five times with exponential backoff: after 1 minute, 5 minutes, 30 minutes, 2 hours, and 12 hours. After the fifth failed retry, the event is moved to the dead-letter list, and the webhook is not disabled automatically.",
+    "source": "09_integrations_and_api.txt",
+    "chunk": 2
+  },
+  {
+    "context": "The context for situating the chunk within the overall document is to explain how webhook failures and successful retries are handled, and how webhook retries are related to failed payment retries and do not affect the billing state of a workspace.",
+    "text": "A webhook is disabled automatically only when more than 95 percent of deliveries in a 24-hour period fail and at least 100 deliveries were attempted. Disabling a webhook does not affect other webhooks on the same workspace. Webhook retries are unrelated to failed payment retries and never affect the billing state of a workspace.",
+    "source": "09_integrations_and_api.txt",
+    "chunk": 3
+  },
+  {
+    "context": "The context for situating the chunk within the overall document is to provide information about how operational data integrations work, specifically how they can be used to read operational data such as order status or subscription plan, and how they can be replayed manually if they fail to deliver data within a certain timeframe.",
+    "text": "Events in the dead-letter list are kept for 14 days and can be replayed manually. Replayed events carry their original event timestamp and a replay flag, so receiving systems can detect that they arrived late. Operational data integrations",
+    "source": "09_integrations_and_api.txt",
+    "chunk": 4
+  },
+  {
+    "context": "The context for situating the chunk within the overall document is to provide information on how GuideFlow integrates with external operational data sources, such as order status or subscription plans, and how it handles missing data in the knowledge index.",
+    "text": "Operational data integrations GuideFlow can read operational data such as order status or subscription plan only through an explicitly configured integration. Each integration declares which fields it exposes. A field that is not declared cannot be used in an answer, even if the external system returns it. Integration responses are never stored in the knowledge index; they are fetched at answer time and discarded after the answer is generated.",
+    "source": "09_integrations_and_api.txt",
+    "chunk": 5
+  },
+  {
+    "context": "The context for the chunk \"Sandbox workspaces\" is to provide information about sandbox workspaces, which are temporary workspaces created for testing and development purposes, and how they differ from regular workspaces in terms of billable seats, invoices, and data retention.",
+    "text": "If an integration does not respond within 3 seconds, GuideFlow continues without it and marks the answer as a draft for agent review, because an answer that depends on missing operational data could be misleading. Sandbox workspaces",
+    "source": "09_integrations_and_api.txt",
+    "chunk": 6
+  },
+  {
+    "context": "The context for situating the chunk within the overall document is to provide information about sandbox workspaces, which are created by Growth and Enterprise workspaces and have no billable seats, do not generate invoices, and consume automation credits from the parent workspace.",
+    "text": "Sandbox workspaces Every Growth and Enterprise workspace can create one sandbox workspace. The sandbox has no billable seats and does not generate invoices, but automation jobs in the sandbox consume credits from the parent workspace. Sandbox data is deleted after 60 days of inactivity regardless of the parent's retention setting, and a legal hold on the parent does not extend to the sandbox.",
+    "source": "09_integrations_and_api.txt",
+    "chunk": 7
+  },
+  {
+    "context": "The AtlasDesk Knowledge Hub and Search document discusses the organization and retrieval of information within AtlasDesk. The chunk \"AtlasDesk Knowledge Hub and Search\" is part of the section on \"Publication workflow\" which explains how articles are created, published, and managed within the system.",
+    "text": "AtlasDesk Knowledge Hub and Search The AtlasDesk Knowledge Hub organizes information into articles,\ncollections, and passages. An article is the authoring unit, a\ncollection groups related articles, and a passage is the retrievable\nunit used by GuideFlow. One article can therefore produce several\npassages during indexing. Publication workflow",
+    "source": "04_knowledge_search.txt",
+    "chunk": 0
+  },
+  {
+    "context": "The publication workflow describes the stages an article goes through from initial creation to final approval and customer-facing use, including editing, review, and approval.",
+    "text": "Publication workflow An article follows a publication workflow. In Draft, the author can edit\nit. In Review, it is waiting for supervisor approval. In Approved, it\ncan be used for customer-facing answer generation. Archived articles are\nretained for historical reference but excluded from normal\ncustomer-facing retrieval.",
+    "source": "04_knowledge_search.txt",
+    "chunk": 1
+  },
+  {
+    "context": "The approval workflow ensures that the article content is factually correct and complete before it is approved for customer-facing use.",
+    "text": "The approval workflow has two checks. First, the article owner confirms\nthat the content is factually correct and complete. Second, a supervisor\nconfirms that it is appropriate for customer-facing use. Passing the\nfirst check does not publish the article. It remains in Review until the\nsupervisor approves it.",
+    "source": "04_knowledge_search.txt",
+    "chunk": 2
+  },
+  {
+    "context": "The chunk discusses the process of handling article rejections and creating new drafts in the knowledge hub workflow.",
+    "text": "If a supervisor rejects an article in Review, it returns to Draft with\nthe rejection comment attached. Editing an Approved article creates a\nnew Draft version while the previous Approved version stays live.\nCustomers keep receiving answers from the previous version until the new\nversion is approved, at which point the old version is replaced rather\nthan archived. Indexing",
+    "source": "04_knowledge_search.txt",
+    "chunk": 3
+  },
+  {
+    "context": "The chunk discusses the indexing process for articles in the AtlasDesk Knowledge Hub, including the consumption of automation credits and the availability of articles after a manual reindex.",
+    "text": "Indexing Passages are created by the nightly knowledge indexing job, which\nconsumes automation credits. An article approved during the day is\ntherefore not retrievable by GuideFlow until the next indexing run\ncompletes, unless an administrator triggers a manual reindex. A manual\nreindex of a single article costs 5 automation credits; a full reindex\nof the Knowledge Hub costs 1 credit per article.",
+    "source": "04_knowledge_search.txt",
+    "chunk": 4
+  },
+  {
+    "context": "The indexing job splits each article into passages at headings first, then at paragraph breaks, limiting passages to roughly 800 characters and keeping tables inside a single passage to separate values from their column headings.",
+    "text": "The indexing job splits each article into passages at headings first,\nthen at paragraph breaks. A passage is limited to roughly 800\ncharacters. Tables are kept inside a single passage when possible,\nbecause splitting a table separates values from their column headings.",
+    "source": "04_knowledge_search.txt",
+    "chunk": 5
+  },
+  {
+    "context": "The index snapshot is the frozen copy of passages that GuideFlow searches, created after every indexing run and kept for 7 days to allow administrators to roll back if a bad article was published.",
+    "text": "The index snapshot is the frozen copy of passages that GuideFlow\nsearches. A new index snapshot is created after every indexing run, and\nthe previous snapshot is kept for 7 days so an administrator can roll\nback if a bad article was published. An index snapshot is unrelated to\nthe daily billing snapshot. Retrieval and filters",
+    "source": "04_knowledge_search.txt",
+    "chunk": 6
+  },
+  {
+    "context": "The passage describes the knowledge hub and search system, including how articles are organized, indexed, and retrieved. It also explains the importance of semantic similarity and metadata filters in ensuring passage eligibility and relevance.",
+    "text": "Retrieval and filters GuideFlow uses semantic retrieval to find passages related in meaning to\na query. It also applies metadata filters before final ranking. Filters\ncan exclude archived articles, restrict results to a product area, or\nrequire a particular language. Semantic similarity alone therefore does\nnot guarantee that a passage is eligible.",
+    "source": "04_knowledge_search.txt",
+    "chunk": 7
+  },
+  {
+    "context": "The passage discusses the importance of considering the semantic similarity of passages, especially when they are from archived or approved articles, and how this can affect the ranking of passages in search results.",
+    "text": "Suppose Passage A has a semantic similarity of 0.84 but belongs to an\nArchived article. Passage B has a similarity of 0.79 and belongs to an\nApproved article that satisfies every filter. Passage B can be selected\neven though its raw similarity score is lower. This is why similarity\nscores should not be treated as direct quality scores for the entire\nretrieval strategy.",
+    "source": "04_knowledge_search.txt",
+    "chunk": 8
+  },
+  {
+    "context": "The chunk discusses the use of synonyms in collections to improve search retrieval, specifically in the context of retrieving passages that only use the word \"seat\" for a customer asking about \"licenses.\"",
+    "text": "Editors can attach synonyms to a collection. Synonyms are applied to the\nquery before retrieval, so a collection with the synonym seat = license\nlets a customer who asks about licenses retrieve passages that only use\nthe word seat. Synonyms apply only to the collection where they are\ndefined.",
+    "source": "04_knowledge_search.txt",
+    "chunk": 9
+  },
+  {
+    "context": "The passage identifiers are stable within a published article version but may change after substantial republishing, making it essential for evaluation systems to avoid treating them as permanent global identifiers.",
+    "text": "Search results include article and passage identifiers. Passage\nidentifiers are stable within a published article version but may change\nafter substantial republishing. An evaluation system should therefore\navoid treating a passage identifier as a permanent global identifier.",
+    "source": "04_knowledge_search.txt",
+    "chunk": 10
+  },
+  {
+    "context": "The related-article links help human navigation, but GuideFlow does not automatically retrieve every related article.",
+    "text": "Editors can mark articles as related. Related-article links help human\nnavigation, but GuideFlow does not automatically retrieve every related\narticle. Each article still has to earn a place in retrieval based on\nthe query and eligibility rules. Writing guidelines",
+    "source": "04_knowledge_search.txt",
+    "chunk": 11
+  },
+  {
+    "context": "The context for situating the chunk within the overall document is to provide guidelines for writing effective knowledge articles that are easily understood and retrieved by search systems.",
+    "text": "Writing guidelines Good knowledge articles answer one primary question or a tightly\nconnected group of questions. Editors are encouraged to place\ndefinitions near the beginning, procedures in numbered steps, and\nexceptions in a clearly labeled section. This structure helps both human\nreaders and retrieval systems.",
+    "source": "04_knowledge_search.txt",
+    "chunk": 12
+  },
+  {
+    "context": "The chunk discusses the importance of procedural order in knowledge articles and the potential issue of incomplete answers when retrieving only the relevant step, while the surrounding context is the article freshness policy, which sets a default review date of 180 days after approval and flags stale articles as such.",
+    "text": "Procedural order matters. Imagine a billing adjustment procedure that\nsays the agent must verify the invoice before requesting approval.\nRetrieving only the approval step can produce an incomplete answer even\nif the retrieved passage contains the correct approval words. A\nretrieval system should ideally preserve enough surrounding context to\nreconstruct the complete procedure. Article freshness",
+    "source": "04_knowledge_search.txt",
+    "chunk": 13
+  },
+  {
+    "context": "The article freshness context situates the chunk within the Knowledge Hub and Search section of the document, where it discusses the importance of article freshness and the consequences of articles becoming stale, including a penalty on passage ranking and notification to the article owner.",
+    "text": "Article freshness Every Approved article has a review date. The default review date is 180\ndays after approval. When the review date passes, the article stays\nApproved and remains retrievable, but it is flagged as stale in the\nKnowledge Hub and its owner is notified. GuideFlow lowers the ranking of\nstale passages by a fixed penalty of 0.05 but never excludes them\nbecause of staleness alone.",
+    "source": "04_knowledge_search.txt",
+    "chunk": 14
+  }
+]

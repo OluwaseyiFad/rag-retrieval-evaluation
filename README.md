@@ -24,3 +24,11 @@ Overall, these comparison was done for the purpose of understanding how these di
 What is contextual retrieval? Contextual retrieval is the prepending of a short LLM generated description of what each chunk is about, which is expected to improve retrieval relevance. 
 
 contextual retrieval upgrade will be applied with the recursive with overlap strategy only. 
+
+Based on the comparison run between:
+recursive with overlap chunking
+&
+recursive with overlap chunking with prepended LLM generated context.
+
+Small improvements were noticed with the most correct result now appearing into the first place. The top-3 results are no better overall. 
+However, the sources text are too small, 45 queries is limited, and the quality of context generated has to be evaluated itself for maximum gains. The contexts generated generated here are more like a summary of the chunk in of itself, hence the context generation prompt has to be properly tuned.

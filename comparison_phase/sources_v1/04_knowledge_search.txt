@@ -1,0 +1,53 @@
+The AtlasDesk Knowledge Hub organizes information into articles,
+collections, and passages. An article is the authoring unit, a
+collection groups related articles, and a passage is the retrievable
+unit used by GuideFlow. One article can therefore produce several
+passages during indexing.
+
+An article follows a publication workflow. In Draft, the author can edit
+it. In Review, it is waiting for supervisor approval. In Approved, it
+can be used for customer-facing answer generation. Archived articles are
+retained for historical reference but excluded from normal
+customer-facing retrieval.
+
+The approval workflow has two checks. First, the article owner confirms
+that the content is factually correct and complete. Second, a supervisor
+confirms that it is appropriate for customer-facing use. Passing the
+first check does not publish the article. It remains in Review until the
+supervisor approves it.
+
+GuideFlow uses semantic retrieval to find passages related in meaning to
+a query. It also applies metadata filters before final ranking. Filters
+can exclude archived articles, restrict results to a product area, or
+require a particular language. Semantic similarity alone therefore does
+not guarantee that a passage is eligible.
+
+Suppose Passage A has a semantic similarity of 0.84 but belongs to an
+Archived article. Passage B has a similarity of 0.79 and belongs to an
+Approved article that satisfies every filter. Passage B can be selected
+even though its raw similarity score is lower. This is why similarity
+scores should not be treated as direct quality scores for the entire
+retrieval strategy.
+
+Search results include article and passage identifiers. Passage
+identifiers are stable within a published article version but may change
+after substantial republishing. An evaluation system should therefore
+avoid treating a passage identifier as a permanent global identifier.
+
+Editors can mark articles as related. Related-article links help human
+navigation, but GuideFlow does not automatically retrieve every related
+article. Each article still has to earn a place in retrieval based on
+the query and eligibility rules.
+
+Good knowledge articles answer one primary question or a tightly
+connected group of questions. Editors are encouraged to place
+definitions near the beginning, procedures in numbered steps, and
+exceptions in a clearly labeled section. This structure helps both human
+readers and retrieval systems.
+
+Procedural order matters. Imagine a billing adjustment procedure that
+says the agent must verify the invoice before requesting approval.
+Retrieving only the approval step can produce an incomplete answer even
+if the retrieved passage contains the correct approval words. A
+retrieval system should ideally preserve enough surrounding context to
+reconstruct the complete procedure.

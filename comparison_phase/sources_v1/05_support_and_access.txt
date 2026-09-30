@@ -1,0 +1,58 @@
+AtlasDesk support uses different workflows for different requests.
+Password-reset requests use the account-access workflow. Billing
+disputes use the billing-review workflow. Suspected outages use incident
+triage. The workflows share vocabulary but have different required
+actions.
+
+The account-access workflow begins with identity verification using the
+approved method. The agent checks whether the account is locked,
+expired, or restricted. If recovery is allowed, the agent sends approved
+recovery instructions. Agents must not bypass verification or disclose
+authentication secrets because a customer claims to be in a hurry.
+
+The billing-review workflow begins by recording the invoice number and
+billing period. The agent compares the disputed line item with the
+corresponding billing record. If the charge is correct, the agent
+explains the calculation. If it is incorrect, the agent documents the
+discrepancy and requests an adjustment through the approval workflow.
+
+The incident-triage workflow begins by determining whether reported
+behavior is isolated or widespread. The agent checks the service-status
+dashboard and searches for an existing incident. If an active incident
+matches the symptoms, the ticket is linked to that incident instead of
+creating a duplicate. If no incident exists and the evidence indicates
+broad impact, the report is escalated.
+
+Some requests combine workflows. If a customer cannot access an account
+and also says they were charged for a service they could not use, the
+access issue and billing issue should be handled according to their
+respective workflows. One ticket can contain both issues, but the agent
+should not assume that one workflow resolves both.
+
+Escalation does not always mean transferring the entire conversation. An
+agent may retain ticket ownership while requesting specialist review.
+The specialist response is attached to the ticket, and the original
+agent remains responsible for communicating the approved outcome unless
+ownership changes.
+
+First-response time and resolution time are separate measurements.
+First-response time is the elapsed time from ticket creation to the
+first human response. Resolution time is the elapsed time from ticket
+creation until the ticket is marked resolved. A ticket can have a short
+first-response time and a long resolution time.
+
+AtlasDesk access is based on effective permissions rather than job title
+alone. A Supervisor role normally permits knowledge approval and team
+analytics, but it does not automatically permit retention or billing
+configuration. Access groups can add or restrict capabilities.
+
+Access-group membership can be assigned directly to a user or inherited
+through a team. If a user has conflicting access rules, an explicit deny
+takes precedence over a general allow. Moving a user from one team to
+another changes team membership but does not automatically remove direct
+access-group assignments.
+
+Temporary access grants have expiration timestamps. When the timestamp
+passes, the grant becomes inactive even if the user remains on the team
+that originally requested the access. Temporary grants are recorded in
+the audit log when created, modified, and expired.

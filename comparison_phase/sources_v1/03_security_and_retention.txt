@@ -1,0 +1,57 @@
+An AtlasDesk security incident is an event in which the confidentiality,
+integrity, or availability of customer data or services may be affected.
+A support ticket about a suspected problem is not automatically a
+security incident. An incident record contains an identifier, severity,
+start time, affected service, current status, and incident commander.
+
+Severity is based on customer impact. Severity One means a widespread
+customer-facing outage or confirmed broad data exposure. Severity Two
+means significant degradation affecting a subset of customers or a
+critical feature. Severity Three covers limited impact with a documented
+workaround. Severity Four covers an internal issue with no
+customer-visible effect.
+
+When an incident is declared, the incident commander assigns owners for
+investigation, communications, and remediation. The communications owner
+prepares customer updates. The remediation owner tracks technical
+changes. The incident commander coordinates the work.
+
+The first public update should state what is known, what is not known,
+and what customers should do, if anything. It should not speculate about
+the root cause. A later update may state a confirmed cause after the
+investigation has established enough evidence. A status update and a
+root-cause statement are therefore different things.
+
+AtlasDesk keeps audit logs for administrative actions. An audit record
+includes the actor, action, target object, timestamp, and result. Failed
+administrative actions are also recorded. The standard audit-log
+retention period is 180 days.
+
+Conversation content follows a separate workspace retention policy.
+Standard settings are 30, 90, or 365 days. Changing conversation
+retention does not change the 180-day audit-log period. Retention begins
+from the timestamp of the conversation’s final message, not from ticket
+creation.
+
+A legal hold temporarily suspends deletion for records covered by the
+hold. If a conversation is past its normal retention period but is under
+legal hold, it remains protected from deletion until the hold is
+released. After release, normal retention processing can resume.
+
+Deletion is asynchronous. When a conversation becomes eligible for
+deletion, a background process evaluates it. A conversation may
+therefore remain visible temporarily after becoming eligible. When a
+customer asks why an old conversation is still visible, support should
+check the eligibility timestamp, legal-hold status, and
+deletion-processing status.
+
+If an employee discovers suspicious access, they should preserve the
+relevant identifiers and notify the security response group rather than
+deleting or modifying records. Removing evidence can make timeline
+reconstruction more difficult.
+
+A service incident and a security incident can overlap but are not
+identical. A service incident may involve downtime with no security
+consequence. A security incident may involve unauthorized access without
+an outage. When both dimensions are present, the operational and
+security records are tracked separately and linked together.

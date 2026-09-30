@@ -1,0 +1,49 @@
+AtlasDesk is a fictional customer-support platform. It has an Inbox for
+customer conversations, a Knowledge Hub for approved information, and an
+Operations Console for administrative settings. The platform
+distinguishes a conversation, a ticket, and an incident. A conversation
+is the exchange between a customer and the support organization. A
+ticket is a tracked work item that can contain one or more
+conversations. An incident is an operational event affecting the
+availability or behavior of the platform.
+
+AtlasDesk uses a retrieval-assisted answer system called GuideFlow.
+GuideFlow first normalizes the user’s message, then retrieves candidate
+passages from approved knowledge, ranks the candidates, and gives the
+highest-ranked eligible passages to an answer generator. If no passage
+clears the minimum relevance threshold, GuideFlow asks an agent to
+review the question rather than inventing an answer.
+
+Knowledge articles have four states: Draft, Review, Approved, and
+Archived. Draft articles are editable. Review articles are waiting for
+supervisor approval. Approved articles may be used for customer-facing
+answer generation. Archived articles remain available to administrators
+for historical reference but are excluded from normal customer-facing
+retrieval.
+
+The retrieval system also uses metadata filters. A passage can have a
+very high semantic similarity score and still be excluded if its article
+is Archived, if it belongs to the wrong product area, or if it fails a
+language requirement. For example, an Archived passage with a similarity
+score of 0.84 can lose to an Approved passage with a score of 0.79
+because eligibility is checked before final selection.
+
+GuideFlow records retrieval diagnostics. A diagnostic record contains a
+query identifier, article identifiers considered during retrieval,
+selected passage identifiers, and a confidence band. When redaction mode
+is enabled, the diagnostic record does not contain the customer’s raw
+message. This means an administrator can investigate retrieval behavior
+without necessarily seeing the original conversation text.
+
+The platform has three default roles. Agents can work tickets and use
+approved knowledge. Supervisors can approve knowledge articles and
+review team analytics. Administrators can change workspace configuration
+such as retention, billing, and access settings. A supervisor does not
+automatically become an administrator merely because the supervisor can
+approve an article.
+
+AtlasDesk separates customer-facing knowledge from operational state. A
+billing record can explain why a charge occurred, while an approved
+knowledge article can explain that charge to a customer. GuideFlow
+therefore retrieves from the knowledge layer first and accesses
+operational data only through explicitly configured integrations.
