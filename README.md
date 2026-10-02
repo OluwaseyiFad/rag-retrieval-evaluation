@@ -32,3 +32,10 @@ recursive with overlap chunking with prepended LLM generated context.
 
 Small improvements were noticed with the most correct result now appearing into the first place. The top-3 results are no better overall. 
 However, the sources text are too small, 45 queries is limited, and the quality of context generated has to be evaluated itself for maximum gains. The contexts generated generated here are more like a summary of the chunk in of itself, hence the context generation prompt has to be properly tuned.
+
+
+# Hybrid Search (Sparse + Dense) with Reranking
+
+The current implementation is dense retrieval which aims at querying based on semantic similarity using embeddings. While sparse retrieval is keyword based, meaning it searches based on occurences of keyword similarity between queries and sources.
+
+These two implementation are not production-optimal on their own, but combining them is great because they are able to complement each other's blindspot. A necessary step in this process is reranking as will be demonstrated in the relevant source files in `hybrid_search_and_reranking` folder.

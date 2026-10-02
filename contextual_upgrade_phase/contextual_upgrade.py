@@ -1,54 +1,14 @@
-import json
-import torch
-from transformers import pipeline
-from pathlib import Path
 import faiss
 from sentence_transformers import SentenceTransformer
 
-from comparison_phase.recursive_chunking import recursive_chunk_text
 from comparison_phase.retrieval import write_results, retrieve
+from .chunking import generate_chunks_with_context
 from sources.queries import queries
+from sources.documents import all_documents
 
-CONTEXT_CACHE = Path("contextual_upgrade_phase/contexts.json")
-
-source_folder = Path("sources")
-
-all_documents = []
-
-for txt_path in source_folder.glob("*.txt"):
-    text = txt_path.read_text(encoding="utf-8")
-    all_documents.append({
-            "text": text,
-            "source": txt_path.name
-    })
-   
-# print("All documents: ", all_documents) 
 
 model = SentenceTransformer("all-MiniLM-L6-V2")
 
-
-DOCUMENT_CONTEXT_PROMPT = """
-<document>
-{doc_content}
-</document>
-"""
-
-CHUNK_CONTEXT_PROMPT = """
-Here is the chunk we want to situate within the whole document
-<chunk>
-{chunk_content}
-</chunk>
-Please give in 1-2 sentences a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk.
-Answer only with the succinct context and nothing else.
-"""
-
-model_id = "HuggingFaceTB/SmolLM2-1.7B-Instruct"
-pipe = pipeline(
-    "text-generation",
-    model=model_id,
-    dtype=torch.bfloat16,
-    device_map="auto",
-)
 
 # Create index
 def create_index(chunks, model, with_context):
@@ -64,39 +24,7 @@ def create_index(chunks, model, with_context):
     return index
 
 
-# Generate context to be prepended to each chunk
-def situate_context(doc, chunk):
-    combined_content = f"{DOCUMENT_CONTEXT_PROMPT.format(doc_content=doc)}\n{CHUNK_CONTEXT_PROMPT.format(chunk_content=chunk)}"
-    messages = [
-        {
-            "role": "user", 
-            "content": combined_content
-        },
-    ]
-    response = pipe(
-        messages,
-        max_new_tokens=100, # keeps context + chunk under 256-token limit
-        do_sample=False, # same contexts on every run
-        
-    )
-    return response[0]["generated_text"][-1]['content'].strip()
-
-# To cache and reuse generated contexts
-# If prompt or chunks change, delete contexts.json
-if CONTEXT_CACHE.exists():
-    all_chunks = json.loads(CONTEXT_CACHE.read_text(encoding="utf-8"))
-else:
-    all_chunks = []
-    for document in all_documents:
-        for chunk_number, chunk in enumerate(recursive_chunk_text(document["text"])):
-            all_chunks.append({
-                "context": situate_context(document["text"], chunk),
-                "text": chunk,
-                "source": document["source"],
-                "chunk": chunk_number,
-            })
-    CONTEXT_CACHE.write_text(json.dumps(all_chunks, indent=2), encoding="utf-8")
-
+all_chunks = generate_chunks_with_context(all_documents)
 
 # Checks that nothing gets cut off
 limit = model.max_seq_length

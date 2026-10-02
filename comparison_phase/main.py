@@ -1,5 +1,4 @@
 import faiss
-from pathlib import Path
 from sentence_transformers import SentenceTransformer
 
 
@@ -7,21 +6,9 @@ from .semantic_chunking import semantic_chunk_text
 from .fixed_chunking import fixed_size_chunk_text
 from .recursive_chunking import recursive_chunk_text
 from sources.queries import queries
+from sources.documents import all_documents
 from .retrieval import retrieve, write_results
 
-
-
-
-source_folder = Path("sources")
-
-all_documents = []
-
-for txt_path in source_folder.glob("*.txt"):
-    text = txt_path.read_text(encoding="utf-8")
-    all_documents.append({
-            "text": text,
-            "source": txt_path.name
-    })
 
 model = SentenceTransformer("all-MiniLM-L6-V2")
 
