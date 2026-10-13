@@ -36,6 +36,10 @@ However, the sources text are too small, 45 queries is limited, and the quality 
 
 # Hybrid Search (Sparse + Dense) with Reranking
 
-The current implementation is dense retrieval which aims at querying based on semantic similarity using embeddings. While sparse retrieval is keyword based, meaning it searches based on occurences of keyword similarity between queries and sources.
+The current implementation is dense retrieval which aims at querying based on semantic similarity using embeddings. While sparse retrieval is keyword based, meaning it searches based on occurences of keyword similarity between queries and sources. Dense uses cosine similarity between -1 and 1 for scoring while Sparse (BM25) adds up a score for every query word that appears in the chunk. 
 
 These two implementation are not production-optimal on their own, but combining them is great because they are able to complement each other's blindspot. A necessary step in this process is reranking as will be demonstrated in the relevant source files in `hybrid_search_and_reranking` folder.
+
+Both method (dense and sparse retrieval) are treated as distinct pipelines in this implementation as it has been found to work better than combining both as a single hand-tuned blended score. 
+
+Reciprocal Rank Fusion is used in this work to rerank the chunks. It is important to note that there are other rerankers, however RRF was chosen in the study for its lightweightedness and implementation ease. The efficacy of RRF is strongly linked to the value of smoothering constant (k) hence thorough tuning is advised for optimal results.

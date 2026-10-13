@@ -1,7 +1,7 @@
 import faiss
 from sentence_transformers import SentenceTransformer
 
-from comparison_phase.retrieval import write_results, retrieve
+from chunking_comparison_phase.retrieval import write_results, retrieve
 from .chunking import generate_chunks_with_context
 from sources.queries import queries
 from sources.documents import all_documents

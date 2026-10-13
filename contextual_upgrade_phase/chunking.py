@@ -3,7 +3,7 @@ import torch
 from pathlib import Path
 from transformers import pipeline
 
-from comparison_phase.recursive_chunking import recursive_chunk_text
+from chunking_comparison_phase.recursive_chunking import recursive_chunk_text
 
 CONTEXT_CACHE = Path("contextual_upgrade_phase/contexts.json")
 
