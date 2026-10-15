@@ -29,7 +29,7 @@ def retrieve(query, index, chunks, model, top_k=3):
 
 
 # Create index
-def create_index(chunks, model, with_context):
+def create_index(chunks, model=SentenceTransformer("all-MiniLM-L6-V2"), with_context=True):
     if with_context:
         texts = [f"Context: {chunk['context']}\nContent: {chunk['text']}" for chunk in chunks]
     else:
