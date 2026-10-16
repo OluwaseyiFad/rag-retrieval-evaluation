@@ -8,17 +8,8 @@ from sources.documents import all_documents
 from sources.queries import queries
 
 
-model = SentenceTransformer("all-MiniLM-L6-V2")
-
-chunks = generate_chunks_with_context(all_documents)
-
-bm25_index = create_sparse_index(chunks)
-embeddings_index = create_index(chunks)
-
-
 def rrf(dense_results, sparse_results, k=60, top_k=3):
     fused = {}
-    k = 60
     for results in (dense_results, sparse_results):
         for rank, result in enumerate(results, start=1):
             key = (result["source"], result["chunk"])
@@ -28,13 +19,19 @@ def rrf(dense_results, sparse_results, k=60, top_k=3):
     return sorted(fused.values(), key=lambda r: r["score"], reverse=True)[:top_k]
 
 
-        
+if __name__ == "__main__":
+    model = SentenceTransformer("all-MiniLM-L6-V2")
 
-with open("hybrid_retrieval_with_rrf_result.txt", "w", encoding="utf-8") as f:
-    for query in queries:
-        dense_results = dense_retrieve(query["query"], embeddings_index, chunks, model, top_k=3)
-        sparse_results = sparse_retrieve(query["query"],  bm25_index, chunks, 3)
-        rrf_results = rrf(dense_results, sparse_results)
-        f.write(f"\nquery: {query["query"]}")
-        write_results("Hybrid (Sparse + Dense) Retrieval with RRF Reranker", rrf_results, f)
-        f.write("\n\n\n\n")
+    chunks = generate_chunks_with_context(all_documents)
+
+    bm25_index = create_sparse_index(chunks=chunks)
+    embeddings_index = create_index(chunks=chunks, model=model)
+  
+    with open("hybrid_retrieval_with_rrf_result.txt", "w", encoding="utf-8") as f:
+        for query in queries:
+            dense_results = dense_retrieve(query["query"], embeddings_index, chunks, model, 10)
+            sparse_results = sparse_retrieve(query["query"],  bm25_index, chunks, 10)
+            rrf_results = rrf(dense_results, sparse_results)
+            f.write(f"\nquery: {query["query"]}")
+            write_results("Hybrid (Sparse + Dense) Retrieval with RRF Reranker", rrf_results, f)
+            f.write("\n\n\n\n")

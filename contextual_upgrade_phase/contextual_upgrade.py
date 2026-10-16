@@ -24,29 +24,29 @@ def create_index(chunks, model, with_context):
     return index
 
 
-all_chunks = generate_chunks_with_context(all_documents)
+if __name__ == "__main__":
+    all_chunks = generate_chunks_with_context(all_documents)
 
-# Checks that nothing gets cut off
-limit = model.max_seq_length
-over = [
-    (c["source"], c["chunk"], n)
-    for c in all_chunks
-    if (n := len(model.tokenizer(f"Context: {c['context']}\nContent: {c['text']}")["input_ids"])) > limit
-]
-print(f"{len(over)}/{len(all_chunks)} chunks exceed {limit} tokens:", over[:10])
+    # Checks that nothing gets cut off
+    limit = model.max_seq_length
+    over = [
+        (c["source"], c["chunk"], n)
+        for c in all_chunks
+        if (n := len(model.tokenizer(f"Context: {c['context']}\nContent: {c['text']}")["input_ids"])) > limit
+    ]
+    print(f"{len(over)}/{len(all_chunks)} chunks exceed {limit} tokens:", over[:10])
 
+    index_with_context = create_index(all_chunks, model, True)
+    index_without_context = create_index(all_chunks, model, False)
 
-index_with_context = create_index(all_chunks, model, True)
-index_without_context = create_index(all_chunks, model, False)
-
-with open("result.txt", "w", encoding="utf-8") as f:
-    for query in queries:
-        with_context_results = retrieve(query["query"], index_with_context, all_chunks, model, top_k=3)
-        without_context_results = retrieve(query["query"], index_without_context, all_chunks, model, top_k=3)
-        f.write(f"\nquery: {query["query"]}")
-        write_results("Recursive with context prepended", with_context_results, f)
-        write_results("Recursive without context preprended", without_context_results, f)
-        f.write("\n\n\n\n")
+    with open("with_or_without_context_comparison_result.txt", "w", encoding="utf-8") as f:
+        for query in queries:
+            with_context_results = retrieve(query["query"], index_with_context, all_chunks, model, top_k=3)
+            without_context_results = retrieve(query["query"], index_without_context, all_chunks, model, top_k=3)
+            f.write(f"\nquery: {query["query"]}")
+            write_results("Recursive with context prepended", with_context_results, f)
+            write_results("Recursive without context preprended", without_context_results, f)
+            f.write("\n\n\n\n")
 
 
 

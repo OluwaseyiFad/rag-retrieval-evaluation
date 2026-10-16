@@ -22,7 +22,6 @@ def create_sparse_index(chunks):
 
 def retrieve(query, bm25_index, chunks, top_k):
     tokenized_query = tokenize(query)
-    print(f"Tokenized query: {tokenized_query}")
     # Get scores for all chunks against the query
     scores = bm25_index.get_scores(tokenized_query)
     # Sort indices to find the highest scoring chunks (highest first)
@@ -40,12 +39,13 @@ def retrieve(query, bm25_index, chunks, top_k):
     return results
 
 
-chunks = generate_chunks_with_context(all_documents)
-bm25_index = create_sparse_index(chunks)
+if __name__ == "__main__":
+    chunks = generate_chunks_with_context(all_documents)
+    bm25_index = create_sparse_index(chunks)
 
-with open("sparse_retrieval_result.txt", "w", encoding="utf-8") as f:
-    for query in queries:
-        results = retrieve(query["query"],  bm25_index, chunks, 3)
-        f.write(f"\nquery: {query["query"]}")
-        write_results("Recursive with context using sparse retrieval", results, f)
-        f.write("\n\n\n\n")
+    with open("sparse_retrieval_result.txt", "w", encoding="utf-8") as f:
+        for query in queries:
+            results = retrieve(query["query"],  bm25_index, chunks, 3)
+            f.write(f"\nquery: {query["query"]}")
+            write_results("Recursive with context using sparse retrieval", results, f)
+            f.write("\n\n\n\n")

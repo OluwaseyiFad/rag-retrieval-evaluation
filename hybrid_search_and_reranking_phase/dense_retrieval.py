@@ -7,9 +7,6 @@ from sources.queries import queries
 from sources.documents import all_documents
 
 
-model = SentenceTransformer("all-MiniLM-L6-V2")
-
-
 # Retrieval
 def retrieve(query, index, chunks, model, top_k=3):
     query_embedding = model.encode([query], normalize_embeddings=True, convert_to_numpy=True)
@@ -29,7 +26,7 @@ def retrieve(query, index, chunks, model, top_k=3):
 
 
 # Create index
-def create_index(chunks, model=SentenceTransformer("all-MiniLM-L6-V2"), with_context=True):
+def create_index(chunks, model, with_context=True):
     if with_context:
         texts = [f"Context: {chunk['context']}\nContent: {chunk['text']}" for chunk in chunks]
     else:
@@ -42,22 +39,24 @@ def create_index(chunks, model=SentenceTransformer("all-MiniLM-L6-V2"), with_con
     return index
 
 
-all_chunks = generate_chunks_with_context(all_documents)
+if __name__ == "__main__":
+    model = SentenceTransformer("all-MiniLM-L6-V2")
+    all_chunks = generate_chunks_with_context(all_documents)
 
-# Checks that nothing gets cut off
-limit = model.max_seq_length
-over = [
-    (c["source"], c["chunk"], n)
-    for c in all_chunks
-    if (n := len(model.tokenizer(f"Context: {c['context']}\nContent: {c['text']}")["input_ids"])) > limit
-]
-print(f"{len(over)}/{len(all_chunks)} chunks exceed {limit} tokens:", over[:10])
+    # Checks that nothing gets cut off
+    limit = model.max_seq_length
+    over = [
+        (c["source"], c["chunk"], n)
+        for c in all_chunks
+        if (n := len(model.tokenizer(f"Context: {c['context']}\nContent: {c['text']}")["input_ids"])) > limit
+    ]
+    print(f"{len(over)}/{len(all_chunks)} chunks exceed {limit} tokens:", over[:10])
 
-index_with_context = create_index(all_chunks, model, True)
+    index_with_context = create_index(all_chunks, model, True)
 
-with open("dense_retrieval_result.txt", "w", encoding="utf-8") as f:
-    for query in queries:
-        results = retrieve(query["query"], index_with_context, all_chunks, model, top_k=3)
-        f.write(f"\nquery: {query["query"]}")
-        write_results("Recursive with context using dense retrieval", results, f)
-        f.write("\n\n\n\n")
+    with open("dense_retrieval_result.txt", "w", encoding="utf-8") as f:
+        for query in queries:
+            results = retrieve(query["query"], index_with_context, all_chunks, model, top_k=3)
+            f.write(f"\nquery: {query["query"]}")
+            write_results("Recursive with context using dense retrieval", results, f)
+            f.write("\n\n\n\n")

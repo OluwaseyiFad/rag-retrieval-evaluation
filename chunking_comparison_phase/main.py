@@ -38,10 +38,9 @@ def generate_chunks(chunk_func, documents):
                 "chunk": chunk_number
             })
     return all_chunks
-
-
-
-def main():
+            
+            
+if __name__ == "__main__":
     fixed_chunks = generate_chunks(fixed_size_chunk_text, all_documents)
     recursive_chunks = generate_chunks(recursive_chunk_text, all_documents)
     semantic_chunks = generate_chunks(semantic_chunk_text, all_documents)
@@ -76,7 +75,3 @@ def main():
             write_results("Recursive", recursive_results, f)
             write_results("Semantic", semantic_results, f)
             f.write("\n\n\n\n")
-            
-            
-if __name__ == "__main__":
-    main()
