@@ -19,7 +19,7 @@ def rrf(dense_results, sparse_results, k=60):
             fused[key]["score"] += (1 / (rank+k))  # If a chunk gets found twice, it gets scored twice
     return sorted(fused.values(), key=lambda r: r["score"], reverse=True)
 
-
+# Cross Encoder Reranking 
 def rerank(query, candidates, reranker, top_k=3):
     pairs = [(query, candidate["text"]) for candidate in candidates]
     scores = reranker.predict(pairs)  # Higher means more relevant
