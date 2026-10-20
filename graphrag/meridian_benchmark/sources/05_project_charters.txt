@@ -1,0 +1,7 @@
+Portfolio charters — approved January 12, 2026
+
+Project Harbor targets Ledger service and is sponsored by Elena Moss. Project Beacon targets Gatehouse and is sponsored by Victor Hale. Project Orchard targets Beacon Warehouse and is sponsored by Elena Moss. Project Relay targets Dispatch Hub and is sponsored by Dana Wu. Project Compass targets Watchtower and is sponsored by Victor Hale.
+
+These five are the entire active delivery portfolio for January–September 2026. A target service is the system whose capabilities a project changes. Sponsorship provides funding and prioritization; it does not establish engineering ownership.
+
+Project Beacon has no mandate over Beacon Warehouse. Project Harbor is not Harbor Operations, the facilities team. The word Relay in Project Relay does not refer to Vault Relay. Dependencies and supplier contracts are recorded separately from these charters.

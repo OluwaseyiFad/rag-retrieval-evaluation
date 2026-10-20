@@ -1,0 +1,7 @@
+Commercial Operations meeting — September 16, 2026
+
+Priya Nair remains the commercial escalation contact for all four runtime suppliers. Alex Kim remains the acceptance reviewer for assurance and residency artifacts. Alex Rivera must receive approved pilot date changes before contacting customers. None of these roles may approve a software deployment by virtue of this meeting.
+
+For the next quarter, every promised supplier date needs a named escalation contact and a separate receipt milestone. Every assurance receipt also needs a separate acceptance decision. Acknowledging a complaint does not count as delivering its artifact.
+
+The committee has not established a financial loss or a vendor-caused production outage. Project slips and production triggers must be reported separately. Cobalt Analytics' survey renewal was completed on time; that vendor has no runtime interface and is outside the engineering delivery portfolio.

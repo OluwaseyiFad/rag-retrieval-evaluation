@@ -1,0 +1,7 @@
+INC-084 — August 25, 2026 post-incident report
+
+Watchtower lost monitoring visibility for 39 minutes, affecting Tern Energy's monitored tenant. VR rotated a credential without the required overlap window. Validation used a static credential and never exercised rotation. Responders restored the old credential temporarily and then rehearsed an overlapping rotation.
+
+Detection came from a customer report of missing telemetry. The dashboard checked the collector process was alive, rather than whether fresh telemetry was arriving. Corrective work adds a rotating-credential fixture, a rotation compatibility gate, and a telemetry-freshness alert.
+
+Watchtower exposed the visibility gap, while VR contained the trigger. No application outage was demonstrated. The incident does not establish that a missing supplier attestation caused the rotation defect; assurance delivery and runtime causality require separate evidence.

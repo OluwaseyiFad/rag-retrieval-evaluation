@@ -1,0 +1,7 @@
+Cobalt Clearing addendum — signed February 2, 2026
+
+Contract CC-17 requires Cobalt Clearing to provide a representative clearing sandbox and seven calendar days of advance notice before incompatible API changes. Priya Nair is Meridian Harbor's commercial contact. Cobalt must acknowledge a sandbox escalation within two business days.
+
+The sandbox is for acceptance work and is not a production failover environment. Its response-time obligation is not a guarantee of delivery by the requested project date. Cobalt Analytics is outside this agreement.
+
+The addendum records supplier obligations, not evidence that a particular internal project has passed acceptance. Engineering acceptance remains a separate gate. Commercial escalation and technical rollback may proceed in parallel, but a commercial acknowledgement cannot close a technical incident.

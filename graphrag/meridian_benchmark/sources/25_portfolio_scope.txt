@@ -1,0 +1,7 @@
+Records office scope note — September 30, 2026
+
+This collection covers Meridian Harbor's engineering portfolio from January 1 through September 30, 2026. The five incident reports in this collection are the complete set of customer-impacting incidents recorded for that portfolio during the window. They are not a record of events after September 30 or of every event in the facilities organization.
+
+The charter register is the complete active engineering project list. Each project has one target service, one sponsor, and one pilot customer during the window. Supplier slips are documented in individual project reviews. Those reviews and the incident reports describe different kinds of outcomes.
+
+Names, aliases, and dates should be interpreted within this scope. Absence of evidence for a causal link is not proof of causation or proof that no link could ever exist. No record in this collection measures realized financial losses or post-remediation production reliability.

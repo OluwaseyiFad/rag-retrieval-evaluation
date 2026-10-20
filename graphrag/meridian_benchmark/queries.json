@@ -1,0 +1,346 @@
+[
+  {
+    "id": "S01", "type": "single_hop",
+    "query": "Who leads Payments Engineering?",
+    "expected_facts": ["Priya Shah leads Payments Engineering."],
+    "evidence_documents": ["01_leadership_directory.txt"]
+  },
+  {
+    "id": "S02", "type": "single_hop",
+    "query": "Which team owns Flowline?",
+    "expected_facts": ["Data Platform owns Flowline."],
+    "evidence_documents": ["02_service_ownership.txt"]
+  },
+  {
+    "id": "S03", "type": "single_hop",
+    "query": "What is LDG another name for?",
+    "expected_facts": ["LDG refers to Ledger service."],
+    "evidence_documents": ["03_runtime_dependencies.txt"]
+  },
+  {
+    "id": "S04", "type": "single_hop",
+    "query": "Which vendor supplies Noticeboard's delivery gateway?",
+    "expected_facts": ["Lumen Post supplies Noticeboard's delivery gateway."],
+    "evidence_documents": ["04_supplier_interfaces.txt"]
+  },
+  {
+    "id": "S05", "type": "single_hop",
+    "query": "Who sponsors Project Orchard?",
+    "expected_facts": ["Elena Moss sponsors Project Orchard."],
+    "evidence_documents": ["05_project_charters.txt"]
+  },
+  {
+    "id": "S06", "type": "single_hop",
+    "query": "Which customer pilots Project Compass?",
+    "expected_facts": ["Tern Energy is the pilot customer for Project Compass."],
+    "evidence_documents": ["06_customer_rollouts.txt"]
+  },
+  {
+    "id": "S07", "type": "single_hop",
+    "query": "How much advance notice must Cobalt Clearing give for an incompatible API change?",
+    "expected_facts": ["Cobalt Clearing must give seven calendar days of advance notice."],
+    "evidence_documents": ["07_contract_cobalt.txt"]
+  },
+  {
+    "id": "S08", "type": "single_hop",
+    "query": "Who can record security acceptance under Sable Trust's assurance schedule?",
+    "expected_facts": ["Alex Kim can record security acceptance."],
+    "evidence_documents": ["08_contract_sable.txt"]
+  },
+  {
+    "id": "S09", "type": "single_hop",
+    "query": "How long did INC-031's settlement outage last?",
+    "expected_facts": ["INC-031 lasted 47 minutes."],
+    "evidence_documents": ["15_incident_march.txt"]
+  },
+  {
+    "id": "S10", "type": "single_hop",
+    "query": "Who leads Harbor Operations?",
+    "expected_facts": ["Owen Park leads Harbor Operations."],
+    "evidence_documents": ["23_harbor_operations.txt"]
+  },
+  {
+    "id": "H01", "type": "multi_hop", "hop_count": 3,
+    "query": "Who leads the engineering team responsible for the system change that triggered the March settlement outage? Explain the system-to-team-to-lead chain.",
+    "expected_facts": ["The March outage was triggered by a Ledger service schema change (LDG is Ledger service).", "Payments Engineering owns Ledger service.", "Priya Shah leads Payments Engineering and is the responsible lead."],
+    "evidence_documents": ["15_incident_march.txt", "03_runtime_dependencies.txt", "02_service_ownership.txt", "01_leadership_directory.txt"]
+  },
+  {
+    "id": "H02", "type": "multi_hop", "hop_count": 3,
+    "query": "Who leads the engineering team responsible for the system change behind April's valid-login failures? Explain the chain.",
+    "expected_facts": ["A Gatehouse TTL change triggered INC-044 (GH is Gatehouse).", "Identity Engineering owns Gatehouse.", "Omar Bell leads Identity Engineering and is the responsible lead."],
+    "evidence_documents": ["16_incident_april.txt", "03_runtime_dependencies.txt", "02_service_ownership.txt", "01_leadership_directory.txt"]
+  },
+  {
+    "id": "H03", "type": "multi_hop", "hop_count": 3,
+    "query": "Who leads the team owning the component whose pagination change caused June's stale shipment reports? Identify the trigger rather than only the affected consumer, and explain the chain.",
+    "expected_facts": ["Flowline's pagination change triggered INC-062 (FL is Flowline); Beacon Warehouse exposed stale reports.", "Data Platform owns Flowline.", "Mei Chen leads Data Platform and is the responsible lead."],
+    "evidence_documents": ["17_incident_june.txt", "03_runtime_dependencies.txt", "02_service_ownership.txt", "01_leadership_directory.txt"]
+  },
+  {
+    "id": "H04", "type": "multi_hop", "hop_count": 3,
+    "query": "Who leads the team owning the component whose callback change caused July's missed notices? Explain the trigger-to-owner-to-lead chain.",
+    "expected_facts": ["Noticeboard's callback change triggered INC-073; Dispatch Hub was the affected consumer.", "Customer Operations owns Noticeboard.", "Luis Ortega leads Customer Operations and is the responsible lead."],
+    "evidence_documents": ["18_incident_july.txt", "02_service_ownership.txt", "01_leadership_directory.txt"]
+  },
+  {
+    "id": "H05", "type": "multi_hop", "hop_count": 3,
+    "query": "Who leads the team responsible for the credential rotation that caused August's monitoring gap? Explain the chain.",
+    "expected_facts": ["Vault Relay rotated a credential without overlap and triggered INC-084 (VR is Vault Relay).", "Reliability Engineering owns Vault Relay.", "Nora Reed leads Reliability Engineering and is the responsible lead."],
+    "evidence_documents": ["19_incident_august.txt", "03_runtime_dependencies.txt", "02_service_ownership.txt", "01_leadership_directory.txt"]
+  },
+  {
+    "id": "H06", "type": "multi_hop", "hop_count": 2,
+    "query": "How much additional validation reserve was approved for Project Harbor? Explain how its sponsor determines the amount.",
+    "expected_facts": ["Elena Moss sponsors Project Harbor.", "Elena Moss authorized $40,000 per sponsored initiative, so Harbor's approved reserve is $40,000, not recorded spending."],
+    "evidence_documents": ["05_project_charters.txt", "21_budget_minutes.txt"]
+  },
+  {
+    "id": "H07", "type": "multi_hop", "hop_count": 3,
+    "query": "Which pilot customer is associated with the project targeting the system that exposed June's stale shipment reports? Trace the affected system through its project to the customer.",
+    "expected_facts": ["Beacon Warehouse exposed June's stale reports (BW is Beacon Warehouse).", "Project Orchard targets Beacon Warehouse.", "Juniper Freight is Project Orchard's pilot customer."],
+    "evidence_documents": ["17_incident_june.txt", "03_runtime_dependencies.txt", "05_project_charters.txt", "06_customer_rollouts.txt"]
+  },
+  {
+    "id": "H08", "type": "multi_hop", "hop_count": 2,
+    "query": "Who sponsors the project whose pilot slipped because LP's residency addendum arrived late? Explain the project identification and sponsorship.",
+    "expected_facts": ["Project Relay's pilot slipped because LP's residency addendum arrived late.", "Dana Wu sponsors Project Relay."],
+    "evidence_documents": ["13_relay_update.txt", "05_project_charters.txt"]
+  },
+  {
+    "id": "H09", "type": "multi_hop", "hop_count": 3,
+    "query": "Who leads the team owning Project Beacon's target service? Trace the project, target, team, and lead.",
+    "expected_facts": ["Project Beacon targets Gatehouse, not Beacon Warehouse.", "Identity Engineering owns Gatehouse.", "Omar Bell leads Identity Engineering and is the responsible lead."],
+    "evidence_documents": ["05_project_charters.txt", "02_service_ownership.txt", "01_leadership_directory.txt"]
+  },
+  {
+    "id": "H10", "type": "multi_hop", "hop_count": 3,
+    "query": "Which project targets the consumer of Pinebridge Data's supplier-facing service? Trace vendor to service, consumer, and project.",
+    "expected_facts": ["Pinebridge Data supplies Flowline's ingestion connector.", "Beacon Warehouse consumes Flowline.", "Project Orchard targets Beacon Warehouse."],
+    "evidence_documents": ["04_supplier_interfaces.txt", "03_runtime_dependencies.txt", "05_project_charters.txt"]
+  },
+  {
+    "id": "C01", "type": "connection",
+    "query": "How is Ledger service connected to Cobalt Clearing? Give the runtime path and distinguish direct from indirect dependence.",
+    "expected_facts": ["Ledger service consumes Settlement Router.", "Settlement Router uses Cobalt Clearing's clearing API.", "Ledger service therefore depends indirectly on Cobalt Clearing through Settlement Router."],
+    "evidence_documents": ["03_runtime_dependencies.txt", "04_supplier_interfaces.txt"]
+  },
+  {
+    "id": "C02", "type": "connection",
+    "query": "How is Gatehouse connected to Sable Trust? Give the runtime path.",
+    "expected_facts": ["Gatehouse consumes Session Cache.", "Session Cache uses Sable Trust's key attestation feed.", "Gatehouse is indirectly connected to Sable Trust through Session Cache."],
+    "evidence_documents": ["03_runtime_dependencies.txt", "04_supplier_interfaces.txt"]
+  },
+  {
+    "id": "C03", "type": "connection",
+    "query": "How is Beacon Warehouse connected to Pinebridge Data? Give the runtime path.",
+    "expected_facts": ["Beacon Warehouse consumes Flowline.", "Flowline uses Pinebridge Data's ingestion connector.", "Beacon Warehouse depends indirectly on Pinebridge Data through Flowline."],
+    "evidence_documents": ["03_runtime_dependencies.txt", "04_supplier_interfaces.txt"]
+  },
+  {
+    "id": "C04", "type": "connection",
+    "query": "How is Dispatch connected to Lumen Post? Resolve the service name and give the runtime path.",
+    "expected_facts": ["Dispatch means Dispatch Hub, which consumes Noticeboard.", "Noticeboard uses Lumen Post's delivery gateway.", "Dispatch Hub depends indirectly on Lumen Post through Noticeboard."],
+    "evidence_documents": ["03_runtime_dependencies.txt", "04_supplier_interfaces.txt"]
+  },
+  {
+    "id": "C05", "type": "connection",
+    "query": "How is Watchtower connected to ST? Resolve the vendor name and give the runtime path.",
+    "expected_facts": ["Watchtower consumes Vault Relay.", "Vault Relay uses Sable Trust's credential appliance; ST means Sable Trust.", "Watchtower depends indirectly on Sable Trust through Vault Relay."],
+    "evidence_documents": ["03_runtime_dependencies.txt", "04_supplier_interfaces.txt"]
+  },
+  {
+    "id": "C06", "type": "connection",
+    "query": "What connects Project Beacon and Project Compass at the supplier level? Explain both service paths and whether the projects have a declared direct runtime dependency on each other.",
+    "expected_facts": ["Project Beacon targets Gatehouse, which consumes Session Cache, whose feed is supplied by Sable Trust.", "Project Compass targets Watchtower, which consumes Vault Relay, whose appliance is supplied by Sable Trust.", "They share Sable Trust exposure; no direct runtime dependency between their target services is declared."],
+    "evidence_documents": ["05_project_charters.txt", "03_runtime_dependencies.txt", "04_supplier_interfaces.txt"]
+  },
+  {
+    "id": "C07", "type": "connection",
+    "query": "How is Northstar Clinics' pilot connected to Cobalt Clearing through the project and runtime service chain?",
+    "expected_facts": ["Northstar Clinics pilots Project Harbor.", "Project Harbor targets Ledger service.", "Ledger service consumes Settlement Router.", "Settlement Router uses Cobalt Clearing's clearing API."],
+    "evidence_documents": ["06_customer_rollouts.txt", "05_project_charters.txt", "03_runtime_dependencies.txt", "04_supplier_interfaces.txt"]
+  },
+  {
+    "id": "C08", "type": "connection",
+    "query": "How is Priya Shah connected to the supplier delay affecting Project Harbor, and how does her role differ from Priya Nair's? Use the ownership and delivery records.",
+    "expected_facts": ["Priya Shah leads Payments Engineering.", "Payments Engineering owns Ledger service, Project Harbor's target.", "Cobalt's late sandbox delayed Project Harbor.", "Priya Nair is the commercial contact for Cobalt; she is distinct from Priya Shah, the engineering lead."],
+    "evidence_documents": ["01_leadership_directory.txt", "02_service_ownership.txt", "05_project_charters.txt", "10_harbor_update.txt", "07_contract_cobalt.txt"]
+  },
+  {
+    "id": "C09", "type": "connection",
+    "query": "How are Elena Moss and Juniper Freight connected in the active engineering portfolio? Explain the project relationship and target system.",
+    "expected_facts": ["Elena Moss sponsors Project Orchard.", "Juniper Freight pilots Project Orchard.", "Project Orchard targets Beacon Warehouse."],
+    "evidence_documents": ["05_project_charters.txt", "06_customer_rollouts.txt"]
+  },
+  {
+    "id": "C10", "type": "connection",
+    "query": "How is Alex Kim's contractual acceptance role connected to the delivery slips of Project Beacon and Project Compass? Explain the shared supplier obligation and each delayed artifact.",
+    "expected_facts": ["Sable Trust requires signed revision-specific attestations and Alex Kim's security acceptance before a new revision is used in a pilot.", "Project Beacon waited for a late signed key attestation and Alex Kim required expiry evidence.", "Project Compass waited for a late revised appliance attestation and Alex Kim required revision-specific evidence and a rotation rehearsal.", "Receipt or acceptance of an old revision is insufficient for the new revision's pilot."],
+    "evidence_documents": ["08_contract_sable.txt", "11_beacon_update.txt", "14_compass_update.txt"]
+  },
+  {
+    "id": "A01", "type": "aggregation",
+    "query": "Which active projects depend indirectly on Sable Trust through their target services, and which delayed deliverable affected each? Give the complete project set and paths.",
+    "expected_facts": ["Project Beacon targets Gatehouse, which consumes Session Cache supplied by Sable Trust; its signed key attestation was nine days late.", "Project Compass targets Watchtower, which consumes Vault Relay supplied by Sable Trust; its revised appliance attestation was eleven days late.", "The complete matching project set is Project Beacon and Project Compass."],
+    "expected_set": ["Project Beacon", "Project Compass"],
+    "evidence_documents": ["05_project_charters.txt", "03_runtime_dependencies.txt", "04_supplier_interfaces.txt", "11_beacon_update.txt", "14_compass_update.txt"]
+  },
+  {
+    "id": "A02", "type": "aggregation",
+    "query": "Which pilot customers had their associated project's pilot date moved because a supplier artifact arrived late? List each customer, project, and delayed artifact across the full portfolio.",
+    "expected_facts": ["Northstar Clinics: Project Harbor; Cobalt's sandbox.", "Alder Bank: Project Beacon; Sable's signed key attestation.", "Juniper Freight: Project Orchard; Pinebridge's connector harness.", "Solstice Retail: Project Relay; Lumen's residency addendum.", "Tern Energy: Project Compass; Sable's revised appliance attestation."],
+    "expected_set": ["Northstar Clinics", "Alder Bank", "Juniper Freight", "Solstice Retail", "Tern Energy"],
+    "evidence_documents": ["06_customer_rollouts.txt", "10_harbor_update.txt", "11_beacon_update.txt", "12_orchard_update.txt", "13_relay_update.txt", "14_compass_update.txt"]
+  },
+  {
+    "id": "A03", "type": "aggregation",
+    "query": "Which sponsors had projects delayed by supplier artifacts, and which projects belong to each sponsor? Give the complete grouping.",
+    "expected_facts": ["Elena Moss: Project Harbor (late Cobalt sandbox) and Project Orchard (late Pinebridge harness).", "Victor Hale: Project Beacon (late Sable key attestation) and Project Compass (late Sable appliance attestation).", "Dana Wu: Project Relay (late Lumen residency addendum)."],
+    "expected_set": ["Elena Moss: Project Harbor", "Elena Moss: Project Orchard", "Victor Hale: Project Beacon", "Victor Hale: Project Compass", "Dana Wu: Project Relay"],
+    "evidence_documents": ["05_project_charters.txt", "10_harbor_update.txt", "11_beacon_update.txt", "12_orchard_update.txt", "13_relay_update.txt", "14_compass_update.txt"]
+  },
+  {
+    "id": "A04", "type": "aggregation",
+    "query": "Which engineering leads own the triggering components across all five customer-impacting incidents in the window? Pair every incident with its trigger, team, and lead.",
+    "expected_facts": ["INC-031: Ledger service; Payments Engineering; Priya Shah.", "INC-044: Gatehouse; Identity Engineering; Omar Bell.", "INC-062: Flowline; Data Platform; Mei Chen.", "INC-073: Noticeboard; Customer Operations; Luis Ortega.", "INC-084: Vault Relay; Reliability Engineering; Nora Reed."],
+    "expected_set": ["INC-031: Priya Shah", "INC-044: Omar Bell", "INC-062: Mei Chen", "INC-073: Luis Ortega", "INC-084: Nora Reed"],
+    "evidence_documents": ["15_incident_march.txt", "16_incident_april.txt", "17_incident_june.txt", "18_incident_july.txt", "19_incident_august.txt", "03_runtime_dependencies.txt", "02_service_ownership.txt", "01_leadership_directory.txt", "25_portfolio_scope.txt"]
+  },
+  {
+    "id": "A05", "type": "aggregation",
+    "query": "As of September 30, which engineering leads remain accountable for open detection actions from the five incidents, and what alert and due date applies to each?",
+    "expected_facts": ["Priya Shah: INC-031 failed-submission alert; open, due October 9.", "Omar Bell: INC-044 failed-login alert; open, due October 9.", "Mei Chen: INC-062 row-count reconciliation alert; open, due October 16.", "Luis Ortega: INC-073 delivery-confirmation alert; open, due October 16.", "Nora Reed: INC-084 telemetry-freshness alert; open, due October 23."],
+    "expected_set": ["Priya Shah", "Omar Bell", "Mei Chen", "Luis Ortega", "Nora Reed"],
+    "evidence_documents": ["20_remediation_tracker.txt", "15_incident_march.txt", "16_incident_april.txt", "17_incident_june.txt", "18_incident_july.txt", "19_incident_august.txt", "03_runtime_dependencies.txt", "02_service_ownership.txt", "01_leadership_directory.txt"]
+  },
+  {
+    "id": "A06", "type": "aggregation",
+    "query": "Across the active portfolio, which projects have targets that consume a Sable Trust supplier-facing service, and what total additional validation reserve was approved for those projects? Show each allocation and the service paths.",
+    "expected_facts": ["Project Beacon: Gatehouse consumes Session Cache, whose feed comes from Sable Trust.", "Project Compass: Watchtower consumes Vault Relay, whose appliance comes from Sable Trust.", "Victor Hale sponsors both projects and approved $25,000 per initiative.", "Project Beacon has $25,000 and Project Compass has $25,000, totaling $50,000 of approved reserves, not spending."],
+    "expected_set": ["Project Beacon", "Project Compass"],
+    "evidence_documents": ["05_project_charters.txt", "03_runtime_dependencies.txt", "04_supplier_interfaces.txt", "21_budget_minutes.txt"]
+  },
+  {
+    "id": "A07", "type": "aggregation",
+    "query": "Which pilot customers are associated with Elena Moss's projects, and what revised pilot date applies to each after the documented supplier slip?",
+    "expected_facts": ["Elena Moss sponsors Project Harbor and Project Orchard.", "Northstar Clinics pilots Project Harbor; revised pilot date April 24, 2026.", "Juniper Freight pilots Project Orchard; revised pilot date June 26, 2026."],
+    "expected_set": ["Northstar Clinics", "Juniper Freight"],
+    "evidence_documents": ["05_project_charters.txt", "06_customer_rollouts.txt", "10_harbor_update.txt", "12_orchard_update.txt"]
+  },
+  {
+    "id": "A08", "type": "aggregation",
+    "query": "Which distinct vendors supply the components that directly triggered the June, July, and August incidents? Identify each incident's triggering component and vendor, rather than inferring the supplier from the affected consumer's name.",
+    "expected_facts": ["INC-062: Flowline triggered the incident; Pinebridge Data supplies its connector.", "INC-073: Noticeboard triggered the incident; Lumen Post supplies its gateway.", "INC-084: Vault Relay triggered the incident; Sable Trust supplies its appliance.", "These are supplier relationships, not proof the vendors caused the incidents."],
+    "expected_set": ["Pinebridge Data", "Lumen Post", "Sable Trust"],
+    "evidence_documents": ["17_incident_june.txt", "18_incident_july.txt", "19_incident_august.txt", "03_runtime_dependencies.txt", "04_supplier_interfaces.txt"]
+  },
+  {
+    "id": "A09", "type": "aggregation",
+    "query": "Which projects had supplier artifacts at least ten days late, who sponsors them, and what are their revised pilot dates? Use artifact lateness, not the number of days the pilot moved.",
+    "expected_facts": ["Project Harbor: Cobalt sandbox twelve days late; Elena Moss; revised pilot April 24, 2026.", "Project Orchard: Pinebridge harness fourteen days late; Elena Moss; revised pilot June 26, 2026.", "Project Compass: Sable appliance attestation eleven days late; Victor Hale; revised pilot August 28, 2026.", "Project Beacon (nine days) and Project Relay (six days) do not meet the threshold."],
+    "expected_set": ["Project Harbor", "Project Orchard", "Project Compass"],
+    "evidence_documents": ["10_harbor_update.txt", "11_beacon_update.txt", "12_orchard_update.txt", "13_relay_update.txt", "14_compass_update.txt", "05_project_charters.txt"]
+  },
+  {
+    "id": "A10", "type": "aggregation",
+    "query": "Which pilot customers are associated with projects whose target services are owned by teams that demonstrated either ingestion backfill or notice retries in September's recovery exercise? Give each team, target, project, and customer.",
+    "expected_facts": ["Data Platform demonstrated ingestion backfill, owns Beacon Warehouse, Project Orchard targets Beacon Warehouse, and Juniper Freight pilots Project Orchard.", "Customer Operations demonstrated notice retries, owns Dispatch Hub, Project Relay targets Dispatch Hub, and Solstice Retail pilots Project Relay.", "The complete matching customer set is Juniper Freight and Solstice Retail."],
+    "expected_set": ["Juniper Freight", "Solstice Retail"],
+    "evidence_documents": ["24_recovery_exercise.txt", "02_service_ownership.txt", "05_project_charters.txt", "06_customer_rollouts.txt"]
+  },
+  {
+    "id": "G01", "type": "global_theme",
+    "query": "Across January–September 2026, what recurring mechanisms caused customer-impacting incidents? Synthesize patterns with examples across the portfolio and distinguish observed triggers from supplier delays.",
+    "reference_points": [
+      {"point": "Incompatible internal changes recur: schema, TTL, pagination, callback, and rotation contracts.", "documents": ["15_incident_march.txt", "16_incident_april.txt", "17_incident_june.txt", "18_incident_july.txt", "19_incident_august.txt"]},
+      {"point": "Simplified fixtures omit boundaries and failure behavior; examples span old fields, short sessions, multiple pages, rejected acknowledgements, and rotation.", "documents": ["15_incident_march.txt", "16_incident_april.txt", "17_incident_june.txt", "18_incident_july.txt", "19_incident_august.txt"]},
+      {"point": "Customer tickets/reports detected every incident while dashboards measured incomplete success or liveness proxies.", "documents": ["15_incident_march.txt", "16_incident_april.txt", "17_incident_june.txt", "18_incident_july.txt", "19_incident_august.txt"]},
+      {"point": "Supplier slips are delivery evidence, not established production root causes.", "documents": ["22_procurement_minutes.txt", "25_portfolio_scope.txt"]}
+    ]
+  },
+  {
+    "id": "G02", "type": "global_theme",
+    "query": "What patterns explain delivery slippage across the engineering portfolio? Cover the variety of supplier artifacts, readiness decisions, and resulting milestone changes.",
+    "reference_points": [
+      {"point": "All five projects moved pilots after late supplier artifacts: sandbox, key attestation, harness, residency addendum, appliance attestation.", "documents": ["10_harbor_update.txt", "11_beacon_update.txt", "12_orchard_update.txt", "13_relay_update.txt", "14_compass_update.txt"]},
+      {"point": "Readiness relied on promises, a video, verbal assurance, or acceptance of an older revision instead of usable current evidence.", "documents": ["10_harbor_update.txt", "11_beacon_update.txt", "12_orchard_update.txt", "13_relay_update.txt", "14_compass_update.txt"]},
+      {"point": "Sable recurs in two projects; commercial receipt, technical acceptance, and security acceptance require separate milestones.", "documents": ["11_beacon_update.txt", "14_compass_update.txt", "22_procurement_minutes.txt"]}
+    ]
+  },
+  {
+    "id": "G03", "type": "global_theme",
+    "query": "What does the collection reveal about the gap between internal testing and real customer behavior? Compare examples across projects and incidents, then propose evidence-grounded improvements.",
+    "reference_points": [
+      {"point": "Harbor's stub omitted negative amounts, while the March incident's fixture omitted an older field; these are distinct coverage gaps.", "documents": ["10_harbor_update.txt", "15_incident_march.txt"]},
+      {"point": "Synthetic identities miss expiry and short-session boundaries; one-page fixtures miss pagination; success-only stubs miss rejected acknowledgements; static credentials miss rotation.", "documents": ["11_beacon_update.txt", "12_orchard_update.txt", "14_compass_update.txt", "16_incident_april.txt", "17_incident_june.txt", "18_incident_july.txt", "19_incident_august.txt"]},
+      {"point": "Representative boundary fixtures and compatibility gates are supported remedies; exercises demonstrate recovery execution but do not measure improved production reliability.", "documents": ["20_remediation_tracker.txt", "24_recovery_exercise.txt", "25_portfolio_scope.txt"]}
+    ]
+  },
+  {
+    "id": "G04", "type": "global_theme",
+    "query": "Assess detection weaknesses across the incident portfolio and recommend what outcome-based monitoring should measure. Separate recommendations from work already completed as of September 30.",
+    "reference_points": [
+      {"point": "All five incidents were detected by customer tickets or reports.", "documents": ["15_incident_march.txt", "16_incident_april.txt", "17_incident_june.txt", "18_incident_july.txt", "19_incident_august.txt"]},
+      {"point": "Measure failed submissions, failed logins, reconciled row counts, confirmed deliveries, and fresh telemetry rather than attempts, completed jobs, queues, or process liveness.", "documents": ["15_incident_march.txt", "16_incident_april.txt", "17_incident_june.txt", "18_incident_july.txt", "19_incident_august.txt", "24_recovery_exercise.txt"]},
+      {"point": "All five detection actions remain open on September 30, despite closed fixtures and gates and successful recovery rehearsals.", "documents": ["20_remediation_tracker.txt", "24_recovery_exercise.txt"]}
+    ]
+  },
+  {
+    "id": "G05", "type": "global_theme",
+    "query": "Where is shared supplier exposure concentrated, and how should portfolio leaders prioritize follow-up? Discuss observed slips, dependency paths, and the limits of attributing production failures to suppliers.",
+    "reference_points": [
+      {"point": "Sable spans Session Cache/Gatehouse/Project Beacon and Vault Relay/Watchtower/Project Compass, with separate late attestations.", "documents": ["03_runtime_dependencies.txt", "04_supplier_interfaces.txt", "05_project_charters.txt", "11_beacon_update.txt", "14_compass_update.txt"]},
+      {"point": "Other runtime suppliers are Cobalt, Pinebridge, and Lumen with distinct deliverables and slips; Cobalt Analytics is a separate non-runtime vendor.", "documents": ["04_supplier_interfaces.txt", "10_harbor_update.txt", "12_orchard_update.txt", "13_relay_update.txt", "22_procurement_minutes.txt"]},
+      {"point": "Prioritizing shared Sable assurance follow-up is a reasoned recommendation; internal production changes are the demonstrated incident triggers and no financial loss was established.", "documents": ["08_contract_sable.txt", "15_incident_march.txt", "16_incident_april.txt", "17_incident_june.txt", "18_incident_july.txt", "19_incident_august.txt", "22_procurement_minutes.txt"]}
+    ]
+  },
+  {
+    "id": "G06", "type": "global_theme",
+    "query": "How do accountability and approval roles differ across engineering ownership, project sponsorship, procurement, security, and customer communication? Explain how those boundaries matter in the documented delays and incidents.",
+    "reference_points": [
+      {"point": "Team leads own remediation through service ownership; sponsors fund and prioritize rather than own deployments.", "documents": ["01_leadership_directory.txt", "02_service_ownership.txt", "05_project_charters.txt", "21_budget_minutes.txt"]},
+      {"point": "Priya Nair handles commercial escalation, Alex Kim accepts assurance/residency artifacts, Alex Rivera coordinates customer communications; Priya Shah is a distinct engineering lead.", "documents": ["01_leadership_directory.txt", "07_contract_cobalt.txt", "08_contract_sable.txt", "09_contract_pinebridge_lumen.txt", "22_procurement_minutes.txt"]},
+      {"point": "Delivery receipt and old-revision acceptance do not replace current security acceptance; approved pilot changes must reach customer communications.", "documents": ["11_beacon_update.txt", "13_relay_update.txt", "14_compass_update.txt", "22_procurement_minutes.txt"]}
+    ]
+  },
+  {
+    "id": "G07", "type": "global_theme",
+    "query": "As of September 30, what progress has the portfolio made on resilience, what material gaps remain, and what evidence would justify claiming improvement? Use incidents, remediation status, and recovery exercises.",
+    "reference_points": [
+      {"point": "All five incidents have closed compatibility gates and representative fixtures by September 25.", "documents": ["20_remediation_tracker.txt"]},
+      {"point": "Exercises demonstrated replay, short-session validation, backfill, retries, and overlapping rotation, matching incident recovery needs.", "documents": ["15_incident_march.txt", "16_incident_april.txt", "17_incident_june.txt", "18_incident_july.txt", "19_incident_august.txt", "24_recovery_exercise.txt"]},
+      {"point": "Detection actions remain open with October targets; exercises do not close them or establish reduced production detection time.", "documents": ["20_remediation_tracker.txt", "24_recovery_exercise.txt"]},
+      {"point": "Evidence of production alert behavior and measured reliability would be needed for stronger claims; post-remediation reliability is not measured in this collection.", "documents": ["24_recovery_exercise.txt", "25_portfolio_scope.txt"]}
+    ]
+  },
+  {
+    "id": "G08", "type": "global_theme",
+    "query": "What recurring evidence-quality problems appear in both project readiness and operational monitoring? Compare the two settings and propose a common improvement principle with concrete examples.",
+    "reference_points": [
+      {"point": "Project readiness used promises, demonstrations, verbal assurances, and outdated revision acceptance instead of received and accepted artifacts.", "documents": ["10_harbor_update.txt", "11_beacon_update.txt", "12_orchard_update.txt", "13_relay_update.txt", "14_compass_update.txt"]},
+      {"point": "Operational dashboards measured success-only submissions, login attempts, completed jobs, enqueued notices, or live collectors instead of customer outcomes.", "documents": ["15_incident_march.txt", "16_incident_april.txt", "17_incident_june.txt", "18_incident_july.txt", "19_incident_august.txt"]},
+      {"point": "Require current, representative evidence linked to the actual acceptance condition or customer outcome; preserve distinctions between promise, receipt, acceptance, liveness, and success.", "documents": ["22_procurement_minutes.txt", "24_recovery_exercise.txt", "20_remediation_tracker.txt"]}
+    ]
+  },
+  {
+    "id": "G09", "type": "global_theme",
+    "query": "Prepare an executive assessment of customer consequences across the portfolio. Distinguish delayed pilots, observed production impact, recovery outcomes, and claims the records cannot support.",
+    "reference_points": [
+      {"point": "Five named pilots moved dates following supplier artifact delays, with customers mapped through the pilot register.", "documents": ["06_customer_rollouts.txt", "10_harbor_update.txt", "11_beacon_update.txt", "12_orchard_update.txt", "13_relay_update.txt", "14_compass_update.txt"]},
+      {"point": "Production effects varied: settlement failures, login failures, stale shipment reports, missed notices, and monitoring visibility loss, rather than five identical application outages.", "documents": ["15_incident_march.txt", "16_incident_april.txt", "17_incident_june.txt", "18_incident_july.txt", "19_incident_august.txt"]},
+      {"point": "Recovery included replay/backfill/retry and restored configurations; no settlement record loss, credential compromise, residual ingestion loss, or undelivered queued notices was reported; August did not demonstrate an application outage.", "documents": ["15_incident_march.txt", "16_incident_april.txt", "17_incident_june.txt", "18_incident_july.txt", "19_incident_august.txt"]},
+      {"point": "Pilot association alone does not prove production impact; realized financial loss and post-remediation reliability are unmeasured, and vendor delay does not establish outage causation.", "documents": ["06_customer_rollouts.txt", "22_procurement_minutes.txt", "25_portfolio_scope.txt"]}
+    ]
+  },
+  {
+    "id": "G10", "type": "global_theme",
+    "query": "Recommend priorities for the next quarter using evidence from delivery reviews, incident reports, contracts, funding, and remediation status. Explain tradeoffs and distinguish your recommendations from recorded decisions.",
+    "reference_points": [
+      {"point": "Complete open detection actions due October 9, 16, and 23; closed fixtures and gates reduce specific gaps but do not prove production improvement.", "documents": ["20_remediation_tracker.txt", "24_recovery_exercise.txt"]},
+      {"point": "Strengthen representative acceptance artifacts and separate promise/receipt/acceptance milestones; use contract-specific sandbox, harness, residency, and revision requirements.", "documents": ["07_contract_cobalt.txt", "08_contract_sable.txt", "09_contract_pinebridge_lumen.txt", "10_harbor_update.txt", "11_beacon_update.txt", "12_orchard_update.txt", "13_relay_update.txt", "14_compass_update.txt", "22_procurement_minutes.txt"]},
+      {"point": "Shared Sable exposure supports coordinated assurance follow-up across two projects, while each project's technical readiness still needs its own evidence.", "documents": ["03_runtime_dependencies.txt", "04_supplier_interfaces.txt", "05_project_charters.txt", "11_beacon_update.txt", "14_compass_update.txt"]},
+      {"point": "Use approved validation reserves ($40,000 each Elena initiative, $25,000 each Victor initiative, $15,000 Dana initiative) as capacity, not assumed spending or proven savings; communicate approved date changes through Alex Rivera.", "documents": ["05_project_charters.txt", "21_budget_minutes.txt", "22_procurement_minutes.txt"]}
+    ]
+  }
+]

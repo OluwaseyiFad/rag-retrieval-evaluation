@@ -1,0 +1,7 @@
+September 24 recovery exercise notes
+
+Payments Engineering demonstrated settlement replay against an old-schema fixture. Identity Engineering demonstrated short-session validation. Data Platform demonstrated a multi-page ingestion backfill. Customer Operations demonstrated notice retries after a rejected acknowledgement. Reliability Engineering demonstrated an overlapping credential rotation.
+
+These rehearsals established that recovery procedures could execute in the exercise environment. They did not close the new production alert actions; production alert status remains in the corrective action tracker. None of the rehearsals measured an improvement in production detection time.
+
+The facilitator requested evidence of successful outcomes rather than process liveness. A running collector, completed job, or enqueued message is insufficient evidence of the customer outcome. Attendance was voluntary and does not establish service ownership. Alex Rivera observed the exercise to prepare customer explanations.

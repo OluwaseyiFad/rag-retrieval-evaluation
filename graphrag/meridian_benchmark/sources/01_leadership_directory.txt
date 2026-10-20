@@ -1,0 +1,8 @@
+Meridian Harbor — engineering directory
+Record date: 2026-09-30. Team leadership has been unchanged since January 1.
+
+Priya Shah leads Payments Engineering. Omar Bell leads Identity Engineering. Mei Chen leads Data Platform. Luis Ortega leads Customer Operations. Nora Reed leads Reliability Engineering. Each lead is accountable for their team's remediation work, even when a project sponsor belongs to another department.
+
+Priya Nair is the procurement manager and belongs to Commercial Operations. She is not Priya Shah. Alex Kim is the Security Assurance reviewer; Alex Rivera is the customer success manager. These are four distinct employees. Procurement negotiations go to Priya Nair; security acceptance goes to Alex Kim; customer communications go to Alex Rivera.
+
+The team named Harbor Operations handles office facilities. It is not an engineering group. This directory records reporting relationships, not software ownership or project sponsorship.

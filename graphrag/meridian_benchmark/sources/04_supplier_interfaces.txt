@@ -1,0 +1,5 @@
+Supplier integration register — effective January 1 through September 30, 2026
+
+Settlement Router uses the clearing API supplied by Cobalt Clearing, also called Cobalt. Session Cache uses the key attestation feed supplied by Sable Trust, also called ST. Flowline uses the ingestion connector supplied by Pinebridge Data, also called Pinebridge. Noticeboard uses the delivery gateway supplied by Lumen Post, also called LP. Vault Relay uses the credential appliance supplied by Sable Trust.
+
+This lists the complete set of supplier-facing service interfaces in the benchmark period. It does not list upstream consumers of those services. Vendor names identify contractual organizations, not internal teams. Cobalt Analytics is a separate market research vendor; it supplies no runtime interface and has no connection to Cobalt Clearing. Purchase order prefixes are administrative labels, not software names.

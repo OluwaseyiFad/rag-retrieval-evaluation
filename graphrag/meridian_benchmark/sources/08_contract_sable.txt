@@ -1,0 +1,7 @@
+Sable Trust assurance schedule — signed January 22, 2026
+
+Sable Trust must supply a signed attestation bundle for every key or appliance revision. Meridian Harbor requires Alex Kim's security acceptance before using a new revision in a customer pilot. Priya Nair owns commercial escalation. The same assurance schedule covers both supplier interfaces listed in the integration register.
+
+A revised bundle must identify the applicable revision and include expiry metadata. A delivery receipt is not security acceptance. An expired bundle must be renewed even if the underlying revision has not changed.
+
+The schedule distinguishes procurement from security review: Priya Nair may negotiate dates, but only Alex Kim can record acceptance under this schedule. It does not name internal project targets, service owners, or pilot customers.

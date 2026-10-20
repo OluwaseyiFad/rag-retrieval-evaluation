@@ -1,0 +1,7 @@
+Project Harbor delivery review — April 8, 2026
+
+Cobalt's representative sandbox arrived twelve days late. Project Harbor consequently moved its pilot from April 10 to April 24. An earlier January mock API had been delivered on time, so the late sandbox should not be described as a missed delivery of every Cobalt artifact.
+
+The readiness board had marked the sandbox dependency green based on a promised date rather than evidence of receipt. During the wait, the project used a local stub. The stub did not model negative settlement amounts. Before the rescheduled pilot, the team added a negative-amount acceptance case and required an artifact link for green status.
+
+The date change concerns the pilot milestone. This update does not establish any production outage or identify a service owner.

@@ -1,0 +1,9 @@
+Corrective action review — September 30, 2026
+
+INC-031: compatibility gate closed September 4; representative fixture closed September 4; failure alert still open, due October 9.
+INC-044: compatibility gate closed September 5; representative fixture closed September 5; failure alert still open, due October 9.
+INC-062: compatibility gate closed September 11; representative fixture closed September 11; reconciliation alert still open, due October 16.
+INC-073: compatibility gate closed September 18; representative fixture closed September 18; confirmation alert still open, due October 16.
+INC-084: compatibility gate closed September 25; representative fixture closed September 25; freshness alert still open, due October 23.
+
+Closed means reviewed evidence was attached. Open dates are targets, not commitments already met. This snapshot covers all actions in these three categories for the five listed incidents. It does not show that a later incident has occurred or that any completed action eliminated all risk.

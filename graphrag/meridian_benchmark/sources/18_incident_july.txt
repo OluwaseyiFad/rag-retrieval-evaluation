@@ -1,0 +1,7 @@
+INC-073 — July 22, 2026 post-incident report
+
+Dispatch failed to deliver customer notices for 28 minutes, affecting Solstice Retail. A Noticeboard callback contract change rejected acknowledgements. The validation stub always returned a success response and did not simulate rejected acknowledgements. Responders rolled back the callback change and retried the queued notices.
+
+Detection came from a customer ticket because the dashboard counted enqueued notices rather than confirmed deliveries. Corrective work adds a rejected-acknowledgement fixture, a callback compatibility gate, and a delivery-confirmation alert. All queued notices were eventually delivered.
+
+Dispatch was the affected consumer, while Noticeboard contained the trigger. The record does not attribute the trigger to a vendor delivery delay. Service ownership, upstream dependencies, and pilot associations are maintained in separate records to prevent assumptions based on similar names.

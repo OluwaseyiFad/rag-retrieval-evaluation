@@ -1,0 +1,7 @@
+Runtime architecture note — September 18, 2026
+
+Ledger service consumes Settlement Router to send settlement batches. Gatehouse consumes Session Cache for login sessions. Beacon Warehouse consumes Flowline for ingestion. Dispatch Hub consumes Noticeboard to deliver customer notifications. Watchtower consumes Vault Relay to access monitoring credentials.
+
+These are direct operational dependencies, oriented from consumer to provider. No other direct service dependency is declared in this snapshot. Sharing a vendor is not a direct runtime dependency.
+
+The ledger is also called LDG; both names refer to Ledger service. GH is Gatehouse. BW is Beacon Warehouse, and FL is Flowline. Dispatch Hub is sometimes shortened to Dispatch. VR is Vault Relay. Project Beacon and Harbor Operations are never service aliases. Engineers should preserve these distinctions in incident tickets and dependency reviews.

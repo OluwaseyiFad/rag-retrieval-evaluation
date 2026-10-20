@@ -1,0 +1,7 @@
+INC-062 — June 23, 2026 post-incident report
+
+BW served stale shipment reports for 61 minutes, affecting Juniper Freight. An FL pagination change skipped the second page of an ingestion batch. A one-page static fixture passed validation and missed the boundary. Responders reverted the pagination change and backfilled the omitted records.
+
+Detection came from a customer reconciliation ticket. The dashboard showed completed jobs without checking source-to-destination row counts. Corrective work adds a multi-page fixture, a pagination compatibility gate, and a row-count reconciliation alert.
+
+The report distinguishes affected system from triggering system: BW exposed the stale reports, while FL contained the triggering change. No data loss remained after the backfill. The supplier harness delay appears in delivery records; it is not established here as the incident's root cause.

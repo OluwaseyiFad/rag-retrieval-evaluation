@@ -1,0 +1,7 @@
+INC-044 — April 21, 2026 post-incident report
+
+GH rejected valid logins for 32 minutes. Alder Bank experienced failed sign-ins. A cache TTL configuration change removed sessions earlier than the application contract allowed. Validation used synthetic identities with long-lived sessions and did not cover the short TTL boundary.
+
+Detection came from a customer ticket; the login dashboard counted attempts without distinguishing successful sign-ins. Responders restored the previous TTL and repopulated affected sessions. No credential compromise was observed.
+
+The corrective plan adds a short-session fixture, a configuration compatibility gate, and a failed-login alert. The incident was caused by Meridian Harbor's TTL change; there is no evidence that a late supplier artifact triggered it. Organizational accountability and the relevant delivery initiative must be resolved from their own registers rather than inferred from the incident title.

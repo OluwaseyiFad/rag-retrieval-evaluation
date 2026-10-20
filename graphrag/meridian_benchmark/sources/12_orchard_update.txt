@@ -1,0 +1,7 @@
+Project Orchard delivery review — June 10, 2026
+
+Pinebridge's connector harness arrived fourteen days late. Project Orchard moved its pilot from June 12 to June 26. The readiness board had gone green after a demonstration video, before a runnable harness was available.
+
+While waiting, the project used a small static fixture. It contained only one page of records and concealed a pagination boundary. The revised acceptance procedure requires a representative multi-page fixture and an executable harness link before readiness can turn green. Priya Nair requested a revised supplier delivery plan, and the team reserved an additional validation window.
+
+The slip is attributed to the harness delivery. The demonstration video was useful for training but did not satisfy the contracted artifact requirement or prove readiness at production volume.

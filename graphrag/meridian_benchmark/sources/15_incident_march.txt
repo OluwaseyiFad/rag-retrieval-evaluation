@@ -1,0 +1,7 @@
+INC-031 — March 18, 2026 post-incident report
+
+A schema change in LDG caused a settlement outage lasting 47 minutes. Northstar Clinics experienced failed settlement submissions. The triggering defect was acceptance of a field rename without a compatibility check. A local stub used during validation lacked the older field name and therefore passed the change.
+
+Detection came from a customer ticket because the success-only dashboard omitted failed submissions. Responders rolled back the schema change and replayed the rejected batch after validation. No loss of settlement records was observed.
+
+Corrective work requires an old-schema fixture, a producer-consumer compatibility gate, and a failed-submission alert. This report establishes the triggering system and observed impact; engineering ownership is determined by the service register. The vendor sandbox delay is tracked separately from this incident's demonstrated trigger.

@@ -1,0 +1,7 @@
+Project Beacon delivery review — May 13, 2026
+
+ST's signed key attestation arrived nine days late. Project Beacon moved its pilot from May 15 to May 29. A supplier email promising delivery had been accepted as readiness evidence, although the signed bundle was still missing.
+
+The project continued internal rehearsals with synthetic identities. Those rehearsals did not exercise expiry metadata. Alex Kim withheld security acceptance until the revised signed bundle and expiry evidence were reviewed. Procurement had initially treated the delivery receipt as sufficient; the project now tracks receipt and acceptance as separate milestones.
+
+This is Project Beacon, the login initiative. The similarly named warehouse is not within its scope. The revised pilot date is a delivery decision, not a claim about the length of a production incident.

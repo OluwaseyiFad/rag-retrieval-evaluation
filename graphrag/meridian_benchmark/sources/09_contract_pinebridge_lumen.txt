@@ -1,0 +1,7 @@
+Connector and messaging purchasing notes — February 6, 2026
+
+Pinebridge Data must deliver a connector test harness with representative volume fixtures. Its acceptance package must include a pagination example. Lumen Post must deliver a signed residency addendum before Meridian Harbor can enable a new region. A signed addendum documents permitted processing locations; it is not a load-test result.
+
+Priya Nair coordinates commercial follow-up for both suppliers. Alex Kim reviews the residency addendum. Neither supplier is authorized to waive an internal readiness gate.
+
+Pinebridge's harness and Lumen's addendum are different deliverables. Their dates should not be combined into a single supplier milestone. Purchasing acceptance establishes that the artifact was received, while technical or security acceptance establishes whether it is usable.

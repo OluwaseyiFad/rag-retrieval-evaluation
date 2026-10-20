@@ -1,0 +1,7 @@
+Project Relay delivery review — July 8, 2026
+
+LP's residency addendum arrived six days late. Project Relay moved its pilot from July 10 to July 17. A verbal assurance about processing locations had previously been marked as completion of the residency gate.
+
+Internal rehearsals continued in the existing region while the new region remained disabled. Alex Kim required a signed location list before enabling the pilot region. The board now distinguishes a supplier promise, receipt of a document, and acceptance of that document. Priya Nair escalated the missing signature through the commercial channel.
+
+The slip was a compliance artifact delay, not a shortage of messaging capacity. This project is not Vault Relay. No production outage is declared in this delivery review, and a rehearsal in the existing region does not establish readiness in the new region.

@@ -1,0 +1,7 @@
+Project Compass delivery review — August 12, 2026
+
+Sable's revised appliance attestation arrived eleven days late. Project Compass moved its pilot from August 14 to August 28. The readiness board had carried forward acceptance of the previous revision, even though the planned pilot required the new revision.
+
+The team retained the previous appliance during rehearsals. Its test configuration used a static credential and did not exercise rotation. Alex Kim requested revision-specific evidence and a rotation rehearsal before acceptance. Priya Nair reopened commercial escalation for the revised bundle.
+
+The old revision remained authorized for its existing use. That authorization did not extend to the new pilot revision. The board now records the revision identifier alongside every assurance artifact, and an older signature cannot be used to close a new revision's gate.

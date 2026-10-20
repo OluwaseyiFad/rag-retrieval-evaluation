@@ -1,0 +1,7 @@
+Engineering service register — September 30, 2026
+
+Payments Engineering owns Ledger service and Settlement Router. Identity Engineering owns Gatehouse and Session Cache. Data Platform owns Beacon Warehouse and Flowline. Customer Operations owns Dispatch Hub and Noticeboard. Reliability Engineering owns Watchtower and Vault Relay.
+
+Ownership means responsibility for deployment approval and corrective actions. A consumer of a service does not acquire ownership. The register applies throughout January–September 2026; no service transferred teams during that period.
+
+Beacon Warehouse is a data system. Project Beacon is a delivery initiative and must not be treated as a service alias. Harbor Operations is absent from this register because it owns no engineering service. Project Harbor is likewise a separate entity. Product display names in customer correspondence do not supersede this register.
