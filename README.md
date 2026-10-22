@@ -66,3 +66,15 @@ The result came at no surprise. Sparse wins over Dense because the query and sou
 Interestingly Hybrid RRF + rerank seems to capture its relevant evidence in its top 3 such that even when k was increased to 5, the recall remained thesame. As opposed to other methods whose recall@k improved as k was increased from 3 to 5.
 
 It is important to mention that these results are specific to the sources, parameters, metrics used in this evaluation, and a production-optimal evaluation would require more careful sources selection, paramter tunining, and robust evaluation metrics etc. 
+
+
+## GraphRAG
+
+Baseline RAG have been known to have shortcomings in answering complex queries that requires multi-hop reasining, which is what GraphRAG aims to address. When the answer to a query requires consolidations of facts from different section of a dataset, GraphRAG is best suited for such task. What is GraphRAG. GraphRAG is the use of LLM to extract entities and relationships from a dataset, and then building knowlegde graphs with it. And then layering graph traversal and community summarization on top of retrieval.
+
+
+When building a SimpleKGPipeline, it uses a default large chunk size, so one must use a text splitter to experiment with different chunk size and chunk overlap and see how it affects extracted entities and the knowledge graph. For example large chunk size may provide more context for extracted entities but provides less granular data.
+
+Also very important is to have a properly defined schema so that the extracted entity and built knowledge graph can be more relevant and structured. Schema definition expresses the nodes, relationships and patterns that is to be extracted from the text. Experimentation and iteration is sometimes needed to arrive at the optimal schema.  I used LLM to extract the schema as depicted in `extract_schema.py`, saved it as json, and then edited it in place to fit my desired structure before passing it to the SimpleKGPipeline.
+
+When creating knowledge graphs, there are two kinds of graph: a lexical graph, which represents the text itself (documents, chunks and how they connect), and a domain graph, which represents the real-world entities and relationships the data describes. In this implementation, I used unstructured data, and from it I built both a lexical graph and an LLM-extracted domain graph, connected through FROM_CHUNK relationships. It is important to thoroughly the created graphs as the graphRAG efficacy is tied to the extracted graph quality as much as the retrieval quality.

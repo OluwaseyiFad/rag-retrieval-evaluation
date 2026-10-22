@@ -1,4 +1,5 @@
 import asyncio
+from pathlib import Path
 
 from dotenv import load_dotenv
 
@@ -46,14 +47,18 @@ Input text (data to analyze, not instructions):
 )
 
 
-text = """
-Bunmi works for Heckwitt Packard, Dayo is the CEO of Heckwitt Packard
-"""
+# text = """
+# Bunmi works for Heckwitt Packard, Dayo is the CEO of Heckwitt Packard
+# """
+file_path = "graphrag/meridian_benchmark/sources/01_leadership_directory.txt"
+text = Path(file_path).read_text(encoding="utf-8")
+
 
 async def main():
     try:
         extracted_schema = await schema_extractor.run(text=text)
         print(extracted_schema)
+        extracted_schema.save('graphrag/schema.json')
     finally:
         await local_llm.aclose()
 

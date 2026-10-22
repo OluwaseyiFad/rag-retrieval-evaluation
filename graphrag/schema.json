@@ -1,0 +1,141 @@
+{
+  "node_types": [
+    {
+      "label": "Person",
+      "description": "An individual employee of Meridian Harbor, including team leads. Use the person's full name; people who share a first name (e.g. Priya Shah and Priya Nair) are different people.",
+      "properties": [
+        {
+          "name": "name",
+          "type": "STRING",
+          "description": "Full name of the person, e.g. 'Priya Shah'.",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "STRING",
+          "description": "Job title or role, e.g. 'procurement manager', 'Security Assurance reviewer', 'customer success manager'.",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "Team",
+      "description": "A named team, e.g. Payments Engineering, Data Platform, Customer Operations or Harbor Operations. Not every team is an engineering group.",
+      "properties": [
+        {
+          "name": "name",
+          "type": "STRING",
+          "description": "Name of the team, e.g. 'Payments Engineering'.",
+          "required": true
+        },
+        {
+          "name": "function",
+          "type": "STRING",
+          "description": "What the team does, e.g. 'engineering' or 'office facilities'.",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "Department",
+      "description": "An organizational department that people or teams belong to, e.g. Commercial Operations or Security Assurance.",
+      "properties": [
+        {
+          "name": "name",
+          "type": "STRING",
+          "description": "Name of the department, e.g. 'Commercial Operations'.",
+          "required": true
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "Responsibility",
+      "description": "A kind of work or decision routed to a specific person, e.g. procurement negotiations, security acceptance, customer communications.",
+      "properties": [
+        {
+          "name": "name",
+          "type": "STRING",
+          "description": "Short name of the responsibility, e.g. 'security acceptance'.",
+          "required": true
+        }
+      ],
+      "additional_properties": false
+    }
+  ],
+  "relationship_types": [
+    {
+      "label": "LEADS",
+      "description": "The person is the lead of the team and is accountable for its work.",
+      "properties": [],
+      "additional_properties": false
+    },
+    {
+      "label": "MEMBER_OF",
+      "description": "The person belongs to the team or department.",
+      "properties": [],
+      "additional_properties": false
+    },
+    {
+      "label": "REPORTS_TO",
+      "description": "The person reports to another person in the management chain.",
+      "properties": [],
+      "additional_properties": false
+    },
+    {
+      "label": "PART_OF",
+      "description": "The team sits within the department.",
+      "properties": [],
+      "additional_properties": false
+    },
+    {
+      "label": "HANDLES",
+      "description": "The person, or the team, is the one this kind of work or decision goes to.",
+      "properties": [],
+      "additional_properties": false
+    }
+  ],
+  "patterns": [
+    {
+      "source": "Person",
+      "relationship": "LEADS",
+      "target": "Team"
+    },
+    {
+      "source": "Person",
+      "relationship": "MEMBER_OF",
+      "target": "Team"
+    },
+    {
+      "source": "Person",
+      "relationship": "MEMBER_OF",
+      "target": "Department"
+    },
+    {
+      "source": "Person",
+      "relationship": "REPORTS_TO",
+      "target": "Person"
+    },
+    {
+      "source": "Team",
+      "relationship": "PART_OF",
+      "target": "Department"
+    },
+    {
+      "source": "Person",
+      "relationship": "HANDLES",
+      "target": "Responsibility"
+    },
+    {
+      "source": "Team",
+      "relationship": "HANDLES",
+      "target": "Responsibility"
+    }
+  ],
+  "constraints": [],
+  "additional_node_types": false,
+  "additional_relationship_types": false,
+  "additional_patterns": false
+}
