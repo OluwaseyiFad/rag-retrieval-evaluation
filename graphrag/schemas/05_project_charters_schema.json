@@ -1,0 +1,73 @@
+{
+  "node_types": [
+    {
+      "label": "Project",
+      "description": "",
+      "properties": [
+        {
+          "name": "name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "Service",
+      "description": "",
+      "properties": [
+        {
+          "name": "name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "Sponsor",
+      "description": "",
+      "properties": [
+        {
+          "name": "name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    }
+  ],
+  "relationship_types": [
+    {
+      "label": "TARGETS",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    },
+    {
+      "label": "SPONSORED_BY",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    }
+  ],
+  "patterns": [
+    {
+      "source": "Project",
+      "relationship": "TARGETS",
+      "target": "Service"
+    },
+    {
+      "source": "Project",
+      "relationship": "SPONSORED_BY",
+      "target": "Sponsor"
+    }
+  ],
+  "constraints": [],
+  "additional_node_types": false,
+  "additional_relationship_types": false,
+  "additional_patterns": false
+}

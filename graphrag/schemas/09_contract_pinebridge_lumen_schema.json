@@ -1,0 +1,117 @@
+{
+  "node_types": [
+    {
+      "label": "Supplier",
+      "description": "",
+      "properties": [
+        {
+          "name": "Name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "Artifact",
+      "description": "",
+      "properties": [
+        {
+          "name": "Name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "Person",
+      "description": "",
+      "properties": [
+        {
+          "name": "Name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    }
+  ],
+  "relationship_types": [
+    {
+      "label": "COORDINATES_FOLLOW_UP",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    },
+    {
+      "label": "REVIEW",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    },
+    {
+      "label": "DELIVERS",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    },
+    {
+      "label": "ACCEPTS",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    },
+    {
+      "label": "REQUIRES_ADDENDUM",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    },
+    {
+      "label": "ENABLING_REGION",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    }
+  ],
+  "patterns": [
+    {
+      "source": "Supplier",
+      "relationship": "DELIVERS",
+      "target": "Artifact"
+    },
+    {
+      "source": "Person",
+      "relationship": "COORDINATES_FOLLOW_UP",
+      "target": "Supplier"
+    },
+    {
+      "source": "Person",
+      "relationship": "REVIEW",
+      "target": "Artifact"
+    },
+    {
+      "source": "Supplier",
+      "relationship": "REQUIRES_ADDENDUM",
+      "target": "Artifact"
+    },
+    {
+      "source": "Supplier",
+      "relationship": "ACCEPTS",
+      "target": "Artifact"
+    },
+    {
+      "source": "Supplier",
+      "relationship": "ENABLING_REGION",
+      "target": "Artifact"
+    }
+  ],
+  "constraints": [],
+  "additional_node_types": false,
+  "additional_relationship_types": false,
+  "additional_patterns": false
+}

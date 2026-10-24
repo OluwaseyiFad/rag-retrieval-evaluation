@@ -1,0 +1,173 @@
+{
+  "node_types": [
+    {
+      "label": "LedgerService",
+      "description": "",
+      "properties": [
+        {
+          "name": "name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "SettlementRouter",
+      "description": "",
+      "properties": [
+        {
+          "name": "name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "Gatehouse",
+      "description": "",
+      "properties": [
+        {
+          "name": "name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "SessionCache",
+      "description": "",
+      "properties": [
+        {
+          "name": "name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "BeaconWarehouse",
+      "description": "",
+      "properties": [
+        {
+          "name": "name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "Flowline",
+      "description": "",
+      "properties": [
+        {
+          "name": "name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "DispatchHub",
+      "description": "",
+      "properties": [
+        {
+          "name": "name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "Noticeboard",
+      "description": "",
+      "properties": [
+        {
+          "name": "name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "Watchtower",
+      "description": "",
+      "properties": [
+        {
+          "name": "name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "VaultRelay",
+      "description": "",
+      "properties": [
+        {
+          "name": "name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    }
+  ],
+  "relationship_types": [
+    {
+      "label": "CONSUMES",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    }
+  ],
+  "patterns": [
+    {
+      "source": "LedgerService",
+      "relationship": "CONSUMES",
+      "target": "SettlementRouter"
+    },
+    {
+      "source": "Gatehouse",
+      "relationship": "CONSUMES",
+      "target": "SessionCache"
+    },
+    {
+      "source": "BeaconWarehouse",
+      "relationship": "CONSUMES",
+      "target": "Flowline"
+    },
+    {
+      "source": "DispatchHub",
+      "relationship": "CONSUMES",
+      "target": "Noticeboard"
+    },
+    {
+      "source": "Watchtower",
+      "relationship": "CONSUMES",
+      "target": "VaultRelay"
+    }
+  ],
+  "constraints": [],
+  "additional_node_types": false,
+  "additional_relationship_types": false,
+  "additional_patterns": false
+}

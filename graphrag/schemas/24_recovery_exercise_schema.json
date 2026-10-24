@@ -1,0 +1,163 @@
+{
+  "node_types": [
+    {
+      "label": "Rehearsal",
+      "description": "",
+      "properties": [
+        {
+          "name": "Description",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "EngineeringTeam",
+      "description": "",
+      "properties": [
+        {
+          "name": "Name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "Demonstration",
+      "description": "",
+      "properties": [
+        {
+          "name": "Description",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "Procedure",
+      "description": "",
+      "properties": [
+        {
+          "name": "Description",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "Alert",
+      "description": "",
+      "properties": [
+        {
+          "name": "Status",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "Exercise",
+      "description": "",
+      "properties": [
+        {
+          "name": "Date",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "Observation",
+      "description": "",
+      "properties": [
+        {
+          "name": "Description",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    }
+  ],
+  "relationship_types": [
+    {
+      "label": "PERFORMED_DURING",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    },
+    {
+      "label": "DEMONSTRATED",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    },
+    {
+      "label": "RECORDED_IN",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    },
+    {
+      "label": "HAS_EVIDENCE",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    },
+    {
+      "label": "OBSERVED_BY",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    }
+  ],
+  "patterns": [
+    {
+      "source": "Rehearsal",
+      "relationship": "PERFORMED_DURING",
+      "target": "Exercise"
+    },
+    {
+      "source": "Demonstration",
+      "relationship": "DEMONSTRATED",
+      "target": "Rehearsal"
+    },
+    {
+      "source": "Procedure",
+      "relationship": "RECORDED_IN",
+      "target": "Rehearsal"
+    },
+    {
+      "source": "Alert",
+      "relationship": "RECORDED_IN",
+      "target": "Rehearsal"
+    },
+    {
+      "source": "Observation",
+      "relationship": "RECORDED_IN",
+      "target": "Rehearsal"
+    },
+    {
+      "source": "Observation",
+      "relationship": "OBSERVED_BY",
+      "target": "Observation"
+    }
+  ],
+  "constraints": [],
+  "additional_node_types": false,
+  "additional_relationship_types": false,
+  "additional_patterns": false
+}

@@ -1,0 +1,218 @@
+{
+  "node_types": [
+    {
+      "label": "HarborOperations",
+      "description": "",
+      "properties": [
+        {
+          "name": "name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "Person",
+      "description": "",
+      "properties": [
+        {
+          "name": "name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "Project",
+      "description": "",
+      "properties": [
+        {
+          "name": "name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "Agreement",
+      "description": "",
+      "properties": [
+        {
+          "name": "name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "Room",
+      "description": "",
+      "properties": [
+        {
+          "name": "name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "ConferenceRoom",
+      "description": "",
+      "properties": [
+        {
+          "name": "name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "Badge",
+      "description": "",
+      "properties": [
+        {
+          "name": "name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "Maintenance",
+      "description": "",
+      "properties": [
+        {
+          "name": "name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "Upgrade",
+      "description": "",
+      "properties": [
+        {
+          "name": "name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "Sheet",
+      "description": "",
+      "properties": [
+        {
+          "name": "name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    }
+  ],
+  "relationship_types": [
+    {
+      "label": "LEADS",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    },
+    {
+      "label": "MANAGES",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    },
+    {
+      "label": "DELIVERED",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    },
+    {
+      "label": "RENEWED",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    },
+    {
+      "label": "RESERVED",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    },
+    {
+      "label": "PRESENTED",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    }
+  ],
+  "patterns": [
+    {
+      "source": "HarborOperations",
+      "relationship": "LEADS",
+      "target": "Person"
+    },
+    {
+      "source": "HarborOperations",
+      "relationship": "MANAGES",
+      "target": "Badge"
+    },
+    {
+      "source": "HarborOperations",
+      "relationship": "MANAGES",
+      "target": "Room"
+    },
+    {
+      "source": "HarborOperations",
+      "relationship": "MANAGES",
+      "target": "Maintenance"
+    },
+    {
+      "source": "HarborOperations",
+      "relationship": "DELIVERED",
+      "target": "Upgrade"
+    },
+    {
+      "source": "Person",
+      "relationship": "RENEWED",
+      "target": "Agreement"
+    },
+    {
+      "source": "Person",
+      "relationship": "RESERVED",
+      "target": "Room"
+    },
+    {
+      "source": "Person",
+      "relationship": "PRESENTED",
+      "target": "ConferenceRoom"
+    }
+  ],
+  "constraints": [],
+  "additional_node_types": false,
+  "additional_relationship_types": false,
+  "additional_patterns": false
+}

@@ -1,0 +1,84 @@
+{
+  "node_types": [
+    {
+      "label": "Incident",
+      "description": "",
+      "properties": [
+        {
+          "name": "Name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "Alert",
+      "description": "",
+      "properties": [
+        {
+          "name": "Name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "Review",
+      "description": "",
+      "properties": [
+        {
+          "name": "Date",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    }
+  ],
+  "relationship_types": [
+    {
+      "label": "HAS_ALERT",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    },
+    {
+      "label": "HAS_REVIEW",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    },
+    {
+      "label": "CLOSED_BY",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    }
+  ],
+  "patterns": [
+    {
+      "source": "Incident",
+      "relationship": "HAS_ALERT",
+      "target": "Alert"
+    },
+    {
+      "source": "Incident",
+      "relationship": "HAS_REVIEW",
+      "target": "Review"
+    },
+    {
+      "source": "Review",
+      "relationship": "CLOSED_BY",
+      "target": "Incident"
+    }
+  ],
+  "constraints": [],
+  "additional_node_types": false,
+  "additional_relationship_types": false,
+  "additional_patterns": false
+}

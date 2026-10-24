@@ -1,0 +1,149 @@
+{
+  "node_types": [
+    {
+      "label": "Incident",
+      "description": "",
+      "properties": [
+        {
+          "name": "Name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "LogInAttempt",
+      "description": "",
+      "properties": [
+        {
+          "name": "Name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "ConfigurationChange",
+      "description": "",
+      "properties": [
+        {
+          "name": "Name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "OrganizationalAccountability",
+      "description": "",
+      "properties": [
+        {
+          "name": "Name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "DeliveryInitiative",
+      "description": "",
+      "properties": [
+        {
+          "name": "Name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    }
+  ],
+  "relationship_types": [
+    {
+      "label": "CAUSED_BY",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    },
+    {
+      "label": "RECOVERED_FROM",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    },
+    {
+      "label": "HAS_CORRECTIVE_PLAN",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    },
+    {
+      "label": "HAS_DETECTION_SOURCE",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    },
+    {
+      "label": "HAS_INCIDENT_CAUSE",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    },
+    {
+      "label": "HAS_ORGANIZATIONAL_ACCOUNTABILITY",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    },
+    {
+      "label": "HAS_DELIVERY_INITIATIVE",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    }
+  ],
+  "patterns": [
+    {
+      "source": "Incident",
+      "relationship": "CAUSED_BY",
+      "target": "ConfigurationChange"
+    },
+    {
+      "source": "Incident",
+      "relationship": "HAS_CORRECTIVE_PLAN",
+      "target": "DeliveryInitiative"
+    },
+    {
+      "source": "Incident",
+      "relationship": "HAS_DETECTION_SOURCE",
+      "target": "LogInAttempt"
+    },
+    {
+      "source": "Incident",
+      "relationship": "HAS_INCIDENT_CAUSE",
+      "target": "OrganizationalAccountability"
+    },
+    {
+      "source": "Incident",
+      "relationship": "HAS_ORGANIZATIONAL_ACCOUNTABILITY",
+      "target": "OrganizationalAccountability"
+    },
+    {
+      "source": "Incident",
+      "relationship": "HAS_DELIVERY_INITIATIVE",
+      "target": "DeliveryInitiative"
+    }
+  ],
+  "constraints": [],
+  "additional_node_types": false,
+  "additional_relationship_types": false,
+  "additional_patterns": false
+}

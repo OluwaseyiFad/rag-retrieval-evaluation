@@ -1,0 +1,103 @@
+{
+  "node_types": [
+    {
+      "label": "Committee",
+      "description": "",
+      "properties": [
+        {
+          "name": "name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "Initiative",
+      "description": "",
+      "properties": [
+        {
+          "name": "name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "Sponsor",
+      "description": "",
+      "properties": [
+        {
+          "name": "name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "Allocation",
+      "description": "",
+      "properties": [
+        {
+          "name": "amount",
+          "type": "INTEGER",
+          "description": "",
+          "required": false
+        },
+        {
+          "name": "valid_until",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    }
+  ],
+  "relationship_types": [
+    {
+      "label": "AUTHORIZED_ALLOCATION",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    },
+    {
+      "label": "HAS_INITIATIVE",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    },
+    {
+      "label": "PREFERENCES",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    }
+  ],
+  "patterns": [
+    {
+      "source": "Committee",
+      "relationship": "HAS_INITIATIVE",
+      "target": "Initiative"
+    },
+    {
+      "source": "Sponsor",
+      "relationship": "AUTHORIZED_ALLOCATION",
+      "target": "Allocation"
+    },
+    {
+      "source": "Committee",
+      "relationship": "PREFERENCES",
+      "target": "Committee"
+    }
+  ],
+  "constraints": [],
+  "additional_node_types": false,
+  "additional_relationship_types": false,
+  "additional_patterns": false
+}

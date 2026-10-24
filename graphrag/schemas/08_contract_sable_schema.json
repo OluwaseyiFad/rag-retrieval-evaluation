@@ -1,0 +1,232 @@
+{
+  "node_types": [
+    {
+      "label": "AssuranceSchedule",
+      "description": "",
+      "properties": [
+        {
+          "name": "Name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        },
+        {
+          "name": "SignedDate",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "AttestationBundle",
+      "description": "",
+      "properties": [
+        {
+          "name": "Name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        },
+        {
+          "name": "ExpiryMetadata",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "CommercialEscalation",
+      "description": "",
+      "properties": [
+        {
+          "name": "Name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "Person",
+      "description": "",
+      "properties": [
+        {
+          "name": "Name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "Project",
+      "description": "",
+      "properties": [
+        {
+          "name": "Name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "Revision",
+      "description": "",
+      "properties": [
+        {
+          "name": "Name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "SupplierInterface",
+      "description": "",
+      "properties": [
+        {
+          "name": "Name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "CustomerPilot",
+      "description": "",
+      "properties": [
+        {
+          "name": "Name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    }
+  ],
+  "relationship_types": [
+    {
+      "label": "SUPPLIES_ATTESTATION_BUNDLE",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    },
+    {
+      "label": "REQUIRES_SECURITY_ACCEPTANCE",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    },
+    {
+      "label": "OWNS",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    },
+    {
+      "label": "COVERS",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    },
+    {
+      "label": "IDENTIFIES_REVISION",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    },
+    {
+      "label": "REQUIRES_RENEWAL",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    },
+    {
+      "label": "DISTINGUISHES_PROCUREMENT_FROM_SECURITY_REVIEW",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    },
+    {
+      "label": "NEGOTIATES_DATES",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    },
+    {
+      "label": "RECORDS_ACCEPTANCE",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    }
+  ],
+  "patterns": [
+    {
+      "source": "AssuranceSchedule",
+      "relationship": "COVERS",
+      "target": "SupplierInterface"
+    },
+    {
+      "source": "AssuranceSchedule",
+      "relationship": "IDENTIFIES_REVISION",
+      "target": "AttestationBundle"
+    },
+    {
+      "source": "AttestationBundle",
+      "relationship": "REQUIRES_RENEWAL",
+      "target": "AssuranceSchedule"
+    },
+    {
+      "source": "Person",
+      "relationship": "OWNS",
+      "target": "CommercialEscalation"
+    },
+    {
+      "source": "Person",
+      "relationship": "NEGOTIATES_DATES",
+      "target": "AssuranceSchedule"
+    },
+    {
+      "source": "Person",
+      "relationship": "RECORDS_ACCEPTANCE",
+      "target": "AssuranceSchedule"
+    },
+    {
+      "source": "AssuranceSchedule",
+      "relationship": "DISTINGUISHES_PROCUREMENT_FROM_SECURITY_REVIEW",
+      "target": "Person"
+    },
+    {
+      "source": "Person",
+      "relationship": "REQUIRES_SECURITY_ACCEPTANCE",
+      "target": "CustomerPilot"
+    },
+    {
+      "source": "SupplierInterface",
+      "relationship": "SUPPLIES_ATTESTATION_BUNDLE",
+      "target": "AttestationBundle"
+    },
+    {
+      "source": "AttestationBundle",
+      "relationship": "IDENTIFIES_REVISION",
+      "target": "Revision"
+    }
+  ],
+  "constraints": [],
+  "additional_node_types": false,
+  "additional_relationship_types": false,
+  "additional_patterns": false
+}

@@ -1,0 +1,145 @@
+{
+  "node_types": [
+    {
+      "label": "Dispatch",
+      "description": "",
+      "properties": [
+        {
+          "name": "name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "Noticeboard",
+      "description": "",
+      "properties": [
+        {
+          "name": "name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "Customer",
+      "description": "",
+      "properties": [
+        {
+          "name": "name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "Notice",
+      "description": "",
+      "properties": [
+        {
+          "name": "name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "Ticket",
+      "description": "",
+      "properties": [
+        {
+          "name": "name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    }
+  ],
+  "relationship_types": [
+    {
+      "label": "AFFECTED_BY",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    },
+    {
+      "label": "TRIGGERED_BY",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    },
+    {
+      "label": "COUNTED",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    },
+    {
+      "label": "DELIVERED",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    },
+    {
+      "label": "RETRIED",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    },
+    {
+      "label": "HAS_FIXTURE",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    },
+    {
+      "label": "HAS_GATE",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    },
+    {
+      "label": "HAS_ALERT",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    }
+  ],
+  "patterns": [
+    {
+      "source": "Dispatch",
+      "relationship": "AFFECTED_BY",
+      "target": "Notice"
+    },
+    {
+      "source": "Noticeboard",
+      "relationship": "TRIGGERED_BY",
+      "target": "Dispatch"
+    },
+    {
+      "source": "Notice",
+      "relationship": "DELIVERED",
+      "target": "Customer"
+    },
+    {
+      "source": "Notice",
+      "relationship": "RETRIED",
+      "target": "Notice"
+    }
+  ],
+  "constraints": [],
+  "additional_node_types": false,
+  "additional_relationship_types": false,
+  "additional_patterns": false
+}

@@ -1,0 +1,132 @@
+{
+  "node_types": [
+    {
+      "label": "Contract",
+      "description": "",
+      "properties": [
+        {
+          "name": "name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "Addendum",
+      "description": "",
+      "properties": [
+        {
+          "name": "name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "ClearingSandbox",
+      "description": "",
+      "properties": [
+        {
+          "name": "name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "CommercialContact",
+      "description": "",
+      "properties": [
+        {
+          "name": "name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "TechnicalIncident",
+      "description": "",
+      "properties": [
+        {
+          "name": "name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    }
+  ],
+  "relationship_types": [
+    {
+      "label": "REQUIRES",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    },
+    {
+      "label": "ACKNOWLEDGES",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    },
+    {
+      "label": "NOTES_OBLIGATIONS",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    },
+    {
+      "label": "RECORDS",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    },
+    {
+      "label": "HAS_RESPONSE_TIME_OBLIGATION",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    }
+  ],
+  "patterns": [
+    {
+      "source": "Contract",
+      "relationship": "REQUIRES",
+      "target": "ClearingSandbox"
+    },
+    {
+      "source": "Contract",
+      "relationship": "REQUIRES",
+      "target": "CommercialContact"
+    },
+    {
+      "source": "Addendum",
+      "relationship": "RECORDS",
+      "target": "TechnicalIncident"
+    },
+    {
+      "source": "Addendum",
+      "relationship": "RECORDS",
+      "target": "ClearingSandbox"
+    },
+    {
+      "source": "ClearingSandbox",
+      "relationship": "HAS_RESPONSE_TIME_OBLIGATION",
+      "target": "Contract"
+    }
+  ],
+  "constraints": [],
+  "additional_node_types": false,
+  "additional_relationship_types": false,
+  "additional_patterns": false
+}

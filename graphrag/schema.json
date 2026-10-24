@@ -2,18 +2,18 @@
   "node_types": [
     {
       "label": "Person",
-      "description": "An individual employee of Meridian Harbor, including team leads. Use the person's full name; people who share a first name (e.g. Priya Shah and Priya Nair) are different people.",
+      "description": "An individual at Meridian Harbor or a named contact (leads, sponsors, commercial and security staff). Always use the full name; people sharing a first name (Priya Shah / Priya Nair, Alex Kim / Alex Rivera) are different people.",
       "properties": [
         {
           "name": "name",
           "type": "STRING",
-          "description": "Full name of the person, e.g. 'Priya Shah'.",
+          "description": "Full name, e.g. 'Priya Nair'.",
           "required": true
         },
         {
           "name": "title",
           "type": "STRING",
-          "description": "Job title or role, e.g. 'procurement manager', 'Security Assurance reviewer', 'customer success manager'.",
+          "description": "Job title or function, e.g. 'procurement manager', 'Security Assurance reviewer', 'customer success manager'.",
           "required": false
         }
       ],
@@ -21,12 +21,12 @@
     },
     {
       "label": "Team",
-      "description": "A named team, e.g. Payments Engineering, Data Platform, Customer Operations or Harbor Operations. Not every team is an engineering group.",
+      "description": "A named team. Engineering teams own services; Harbor Operations is a facilities team, not an engineering team.",
       "properties": [
         {
           "name": "name",
           "type": "STRING",
-          "description": "Name of the team, e.g. 'Payments Engineering'.",
+          "description": "Team name, e.g. 'Payments Engineering', 'Harbor Operations'.",
           "required": true
         },
         {
@@ -40,26 +40,283 @@
     },
     {
       "label": "Department",
-      "description": "An organizational department that people or teams belong to, e.g. Commercial Operations or Security Assurance.",
+      "description": "An organizational department, e.g. Commercial Operations or Security Assurance.",
       "properties": [
         {
           "name": "name",
           "type": "STRING",
-          "description": "Name of the department, e.g. 'Commercial Operations'.",
+          "description": "Department name.",
           "required": true
         }
       ],
       "additional_properties": false
     },
     {
-      "label": "Responsibility",
-      "description": "A kind of work or decision routed to a specific person, e.g. procurement negotiations, security acceptance, customer communications.",
+      "label": "Service",
+      "description": "An internal runtime software service or data system owned by an engineering team, e.g. Ledger service, Gatehouse, Beacon Warehouse. Not a project: Project Beacon is not Beacon Warehouse.",
       "properties": [
         {
           "name": "name",
           "type": "STRING",
-          "description": "Short name of the responsibility, e.g. 'security acceptance'.",
+          "description": "Canonical service name, e.g. 'Ledger service'.",
           "required": true
+        },
+        {
+          "name": "aliases",
+          "type": "STRING",
+          "description": "Short names or abbreviations, e.g. 'LDG', 'GH', 'BW', 'VR'.",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "Project",
+      "description": "A delivery project in the active portfolio, e.g. Project Harbor, Beacon, Orchard, Relay, Compass. Not the same as a service or team with a similar name.",
+      "properties": [
+        {
+          "name": "name",
+          "type": "STRING",
+          "description": "Project name, e.g. 'Project Harbor'.",
+          "required": true
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "Customer",
+      "description": "A pilot or affected customer organization, e.g. Northstar Clinics, Alder Bank.",
+      "properties": [
+        {
+          "name": "name",
+          "type": "STRING",
+          "description": "Customer name.",
+          "required": true
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "Supplier",
+      "description": "An external vendor under contract that supplies a runtime interface or deliverable, e.g. Cobalt Clearing, Sable Trust, Pinebridge Data, Lumen Post. Cobalt Analytics is a different vendor with no runtime interface.",
+      "properties": [
+        {
+          "name": "name",
+          "type": "STRING",
+          "description": "Full supplier name, e.g. 'Cobalt Clearing'.",
+          "required": true
+        },
+        {
+          "name": "aliases",
+          "type": "STRING",
+          "description": "Short names, e.g. 'Cobalt', 'ST', 'LP'.",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "SupplierInterface",
+      "description": "A supplier-provided interface that an internal service uses, e.g. clearing API, key attestation feed, ingestion connector, delivery gateway, credential appliance.",
+      "properties": [
+        {
+          "name": "name",
+          "type": "STRING",
+          "description": "Interface name, e.g. 'clearing API'.",
+          "required": true
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "Contract",
+      "description": "A contract, addendum or assurance schedule with a supplier, e.g. CC-17 or the Sable Trust assurance schedule.",
+      "properties": [
+        {
+          "name": "name",
+          "type": "STRING",
+          "description": "Contract or document identifier/name.",
+          "required": true
+        },
+        {
+          "name": "signed_date",
+          "type": "STRING",
+          "description": "Date signed, as written in the text.",
+          "required": false
+        },
+        {
+          "name": "terms",
+          "type": "STRING",
+          "description": "Key obligations, e.g. notice periods or response times.",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "Deliverable",
+      "description": "An artifact a supplier must deliver or a project must produce, e.g. clearing sandbox, attestation bundle, connector test harness, residency addendum, mock API, stub.",
+      "properties": [
+        {
+          "name": "name",
+          "type": "STRING",
+          "description": "Deliverable name.",
+          "required": true
+        },
+        {
+          "name": "status",
+          "type": "STRING",
+          "description": "Delivery or acceptance status, e.g. 'delivered late', 'expired'.",
+          "required": false
+        },
+        {
+          "name": "date",
+          "type": "STRING",
+          "description": "Promised or actual date, as written in the text.",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "Milestone",
+      "description": "A dated project or supplier milestone, such as a pilot date or a receipt milestone.",
+      "properties": [
+        {
+          "name": "name",
+          "type": "STRING",
+          "description": "Milestone name.",
+          "required": true
+        },
+        {
+          "name": "date",
+          "type": "STRING",
+          "description": "Date, as written in the text.",
+          "required": false
+        },
+        {
+          "name": "previous_date",
+          "type": "STRING",
+          "description": "Original date if it was moved.",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "Incident",
+      "description": "A customer-impacting production incident, e.g. INC-031.",
+      "properties": [
+        {
+          "name": "name",
+          "type": "STRING",
+          "description": "Incident identifier, e.g. 'INC-031'.",
+          "required": true
+        },
+        {
+          "name": "date",
+          "type": "STRING",
+          "description": "Date of the incident or report.",
+          "required": false
+        },
+        {
+          "name": "impact",
+          "type": "STRING",
+          "description": "Observed impact, e.g. '47 minute settlement outage'.",
+          "required": false
+        },
+        {
+          "name": "trigger",
+          "type": "STRING",
+          "description": "Triggering defect or change.",
+          "required": false
+        },
+        {
+          "name": "detection",
+          "type": "STRING",
+          "description": "How it was detected.",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "CorrectiveAction",
+      "description": "A corrective action item tied to an incident, such as a compatibility gate, representative fixture or alert.",
+      "properties": [
+        {
+          "name": "name",
+          "type": "STRING",
+          "description": "Action name, e.g. 'compatibility gate', 'failure alert'.",
+          "required": true
+        },
+        {
+          "name": "category",
+          "type": "STRING",
+          "description": "Category: gate, fixture or alert.",
+          "required": false
+        },
+        {
+          "name": "status",
+          "type": "STRING",
+          "description": "'open' or 'closed'.",
+          "required": false
+        },
+        {
+          "name": "due_date",
+          "type": "STRING",
+          "description": "Due date if open, as written in the text.",
+          "required": false
+        },
+        {
+          "name": "closed_date",
+          "type": "STRING",
+          "description": "Date closed.",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "Allocation",
+      "description": "A funding allocation approved by a sponsor for a project.",
+      "properties": [
+        {
+          "name": "name",
+          "type": "STRING",
+          "description": "Short label for the allocation.",
+          "required": true
+        },
+        {
+          "name": "amount",
+          "type": "INTEGER",
+          "description": "Amount in dollars.",
+          "required": false
+        },
+        {
+          "name": "valid_until",
+          "type": "STRING",
+          "description": "Date it is available until.",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "Rehearsal",
+      "description": "A recovery rehearsal or demonstration performed by a team in an exercise.",
+      "properties": [
+        {
+          "name": "name",
+          "type": "STRING",
+          "description": "Short name of the rehearsal, e.g. 'settlement replay'.",
+          "required": true
+        },
+        {
+          "name": "date",
+          "type": "STRING",
+          "description": "Date performed.",
+          "required": false
         }
       ],
       "additional_properties": false
@@ -68,7 +325,7 @@
   "relationship_types": [
     {
       "label": "LEADS",
-      "description": "The person is the lead of the team and is accountable for its work.",
+      "description": "The person leads the team and is accountable for its work.",
       "properties": [],
       "additional_properties": false
     },
@@ -80,7 +337,7 @@
     },
     {
       "label": "REPORTS_TO",
-      "description": "The person reports to another person in the management chain.",
+      "description": "The person reports to another person.",
       "properties": [],
       "additional_properties": false
     },
@@ -91,8 +348,134 @@
       "additional_properties": false
     },
     {
-      "label": "HANDLES",
-      "description": "The person, or the team, is the one this kind of work or decision goes to.",
+      "label": "OWNS",
+      "description": "The team owns the service. Ownership means responsibility for deployment approval and corrective actions; consuming a service or sponsoring a project does not confer it.",
+      "properties": [],
+      "additional_properties": false
+    },
+    {
+      "label": "DEPENDS_ON",
+      "description": "The consumer service directly depends on the provider service at runtime. Direction is consumer to provider.",
+      "properties": [],
+      "additional_properties": false
+    },
+    {
+      "label": "USES_INTERFACE",
+      "description": "The service uses the supplier interface.",
+      "properties": [],
+      "additional_properties": false
+    },
+    {
+      "label": "SUPPLIES",
+      "description": "The supplier provides the interface.",
+      "properties": [],
+      "additional_properties": false
+    },
+    {
+      "label": "TARGETS",
+      "description": "The project changes this service.",
+      "properties": [],
+      "additional_properties": false
+    },
+    {
+      "label": "SPONSORS",
+      "description": "The person sponsors (funds and prioritizes) the project; this is not engineering ownership.",
+      "properties": [],
+      "additional_properties": false
+    },
+    {
+      "label": "PILOT_CUSTOMER_OF",
+      "description": "The customer is the pilot customer for the project.",
+      "properties": [],
+      "additional_properties": false
+    },
+    {
+      "label": "COORDINATES_COMMUNICATIONS_FOR",
+      "description": "The person coordinates pilot communications for the customer.",
+      "properties": [],
+      "additional_properties": false
+    },
+    {
+      "label": "WITH_SUPPLIER",
+      "description": "The contract is an agreement with the supplier.",
+      "properties": [],
+      "additional_properties": false
+    },
+    {
+      "label": "REQUIRES",
+      "description": "The contract or project requires the deliverable.",
+      "properties": [],
+      "additional_properties": false
+    },
+    {
+      "label": "DELIVERS",
+      "description": "The supplier delivers the deliverable.",
+      "properties": [],
+      "additional_properties": false
+    },
+    {
+      "label": "ESCALATION_CONTACT_FOR",
+      "description": "The person is the commercial escalation contact for the supplier.",
+      "properties": [],
+      "additional_properties": false
+    },
+    {
+      "label": "ACCEPTANCE_REVIEWER_FOR",
+      "description": "The person is the one who records security or acceptance review for the supplier or deliverable.",
+      "properties": [],
+      "additional_properties": false
+    },
+    {
+      "label": "HAS_MILESTONE",
+      "description": "The project has this milestone.",
+      "properties": [],
+      "additional_properties": false
+    },
+    {
+      "label": "DELAYED_BY",
+      "description": "The milestone was delayed by late delivery of the deliverable.",
+      "properties": [],
+      "additional_properties": false
+    },
+    {
+      "label": "AFFECTED_SERVICE",
+      "description": "The incident's trigger or impact was in this service.",
+      "properties": [],
+      "additional_properties": false
+    },
+    {
+      "label": "AFFECTED_CUSTOMER",
+      "description": "The customer experienced the incident.",
+      "properties": [],
+      "additional_properties": false
+    },
+    {
+      "label": "ADDRESSES",
+      "description": "The corrective action addresses the incident.",
+      "properties": [],
+      "additional_properties": false
+    },
+    {
+      "label": "AUTHORIZED",
+      "description": "The person authorized the allocation.",
+      "properties": [],
+      "additional_properties": false
+    },
+    {
+      "label": "ALLOCATED_TO",
+      "description": "The allocation is a reserve for the project.",
+      "properties": [],
+      "additional_properties": false
+    },
+    {
+      "label": "PERFORMED",
+      "description": "The team performed the rehearsal.",
+      "properties": [],
+      "additional_properties": false
+    },
+    {
+      "label": "COVERS_SERVICE",
+      "description": "The rehearsal exercised recovery for the service.",
       "properties": [],
       "additional_properties": false
     }
@@ -124,14 +507,124 @@
       "target": "Department"
     },
     {
+      "source": "Team",
+      "relationship": "OWNS",
+      "target": "Service"
+    },
+    {
+      "source": "Service",
+      "relationship": "DEPENDS_ON",
+      "target": "Service"
+    },
+    {
+      "source": "Service",
+      "relationship": "USES_INTERFACE",
+      "target": "SupplierInterface"
+    },
+    {
+      "source": "Supplier",
+      "relationship": "SUPPLIES",
+      "target": "SupplierInterface"
+    },
+    {
+      "source": "Project",
+      "relationship": "TARGETS",
+      "target": "Service"
+    },
+    {
       "source": "Person",
-      "relationship": "HANDLES",
-      "target": "Responsibility"
+      "relationship": "SPONSORS",
+      "target": "Project"
+    },
+    {
+      "source": "Customer",
+      "relationship": "PILOT_CUSTOMER_OF",
+      "target": "Project"
+    },
+    {
+      "source": "Person",
+      "relationship": "COORDINATES_COMMUNICATIONS_FOR",
+      "target": "Customer"
+    },
+    {
+      "source": "Contract",
+      "relationship": "WITH_SUPPLIER",
+      "target": "Supplier"
+    },
+    {
+      "source": "Contract",
+      "relationship": "REQUIRES",
+      "target": "Deliverable"
+    },
+    {
+      "source": "Project",
+      "relationship": "REQUIRES",
+      "target": "Deliverable"
+    },
+    {
+      "source": "Supplier",
+      "relationship": "DELIVERS",
+      "target": "Deliverable"
+    },
+    {
+      "source": "Person",
+      "relationship": "ESCALATION_CONTACT_FOR",
+      "target": "Supplier"
+    },
+    {
+      "source": "Person",
+      "relationship": "ACCEPTANCE_REVIEWER_FOR",
+      "target": "Supplier"
+    },
+    {
+      "source": "Person",
+      "relationship": "ACCEPTANCE_REVIEWER_FOR",
+      "target": "Deliverable"
+    },
+    {
+      "source": "Project",
+      "relationship": "HAS_MILESTONE",
+      "target": "Milestone"
+    },
+    {
+      "source": "Milestone",
+      "relationship": "DELAYED_BY",
+      "target": "Deliverable"
+    },
+    {
+      "source": "Incident",
+      "relationship": "AFFECTED_SERVICE",
+      "target": "Service"
+    },
+    {
+      "source": "Incident",
+      "relationship": "AFFECTED_CUSTOMER",
+      "target": "Customer"
+    },
+    {
+      "source": "CorrectiveAction",
+      "relationship": "ADDRESSES",
+      "target": "Incident"
+    },
+    {
+      "source": "Person",
+      "relationship": "AUTHORIZED",
+      "target": "Allocation"
+    },
+    {
+      "source": "Allocation",
+      "relationship": "ALLOCATED_TO",
+      "target": "Project"
     },
     {
       "source": "Team",
-      "relationship": "HANDLES",
-      "target": "Responsibility"
+      "relationship": "PERFORMED",
+      "target": "Rehearsal"
+    },
+    {
+      "source": "Rehearsal",
+      "relationship": "COVERS_SERVICE",
+      "target": "Service"
     }
   ],
   "constraints": [],

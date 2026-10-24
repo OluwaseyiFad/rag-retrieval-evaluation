@@ -1,0 +1,228 @@
+{
+  "node_types": [
+    {
+      "label": "Incident",
+      "description": "",
+      "properties": [
+        {
+          "name": "Name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "Watchtower",
+      "description": "",
+      "properties": [
+        {
+          "name": "Name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "VR",
+      "description": "",
+      "properties": [
+        {
+          "name": "Name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "Credential",
+      "description": "",
+      "properties": [
+        {
+          "name": "Name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "Collector",
+      "description": "",
+      "properties": [
+        {
+          "name": "Name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "Tenant",
+      "description": "",
+      "properties": [
+        {
+          "name": "Name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "Dashboard",
+      "description": "",
+      "properties": [
+        {
+          "name": "Name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "Customer",
+      "description": "",
+      "properties": [
+        {
+          "name": "Name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "Telemetry",
+      "description": "",
+      "properties": [
+        {
+          "name": "Name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    }
+  ],
+  "relationship_types": [
+    {
+      "label": "EXPOSED_VISIBILITY_GAP",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    },
+    {
+      "label": "CONTAINED_TRIGGER",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    },
+    {
+      "label": "REPORTED_MISSING_TELEMETRY",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    },
+    {
+      "label": "CHECKED_PROCESS_ALIVENESS",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    },
+    {
+      "label": "RESTORED_CREDENTIAL",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    },
+    {
+      "label": "REHEarsed_ROTATION",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    },
+    {
+      "label": "ADDED_FIXTURE",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    },
+    {
+      "label": "ADDED_ROTATION_COMPATIBILITY_GATE",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    },
+    {
+      "label": "ADDED_TELEMETRY_FRESHNESS_ALERT",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    }
+  ],
+  "patterns": [
+    {
+      "source": "Watchtower",
+      "relationship": "EXPOSED_VISIBILITY_GAP",
+      "target": "Incident"
+    },
+    {
+      "source": "VR",
+      "relationship": "CONTAINED_TRIGGER",
+      "target": "Incident"
+    },
+    {
+      "source": "Incident",
+      "relationship": "REPORTED_MISSING_TELEMETRY",
+      "target": "Customer"
+    },
+    {
+      "source": "Dashboard",
+      "relationship": "CHECKED_PROCESS_ALIVENESS",
+      "target": "Collector"
+    },
+    {
+      "source": "Watchtower",
+      "relationship": "RESTORED_CREDENTIAL",
+      "target": "Incident"
+    },
+    {
+      "source": "VR",
+      "relationship": "REHEarsed_ROTATION",
+      "target": "Incident"
+    },
+    {
+      "source": "VR",
+      "relationship": "ADDED_FIXTURE",
+      "target": "Incident"
+    },
+    {
+      "source": "VR",
+      "relationship": "ADDED_ROTATION_COMPATIBILITY_GATE",
+      "target": "Incident"
+    },
+    {
+      "source": "VR",
+      "relationship": "ADDED_TELEMETRY_FRESHNESS_ALERT",
+      "target": "Incident"
+    }
+  ],
+  "constraints": [],
+  "additional_node_types": false,
+  "additional_relationship_types": false,
+  "additional_patterns": false
+}

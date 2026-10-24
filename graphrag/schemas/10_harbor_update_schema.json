@@ -1,0 +1,182 @@
+{
+  "node_types": [
+    {
+      "label": "Project",
+      "description": "",
+      "properties": [
+        {
+          "name": "name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "Artifact",
+      "description": "",
+      "properties": [
+        {
+          "name": "name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "Date",
+      "description": "",
+      "properties": [
+        {
+          "name": "date",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "Milestone",
+      "description": "",
+      "properties": [
+        {
+          "name": "name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "MockAPI",
+      "description": "",
+      "properties": [
+        {
+          "name": "name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "Pilot",
+      "description": "",
+      "properties": [
+        {
+          "name": "name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "ReadinessBoard",
+      "description": "",
+      "properties": [
+        {
+          "name": "name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "Stub",
+      "description": "",
+      "properties": [
+        {
+          "name": "name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    }
+  ],
+  "relationship_types": [
+    {
+      "label": "HAS_MILESTONE",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    },
+    {
+      "label": "DELIVERED",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    },
+    {
+      "label": "REQUIRES",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    },
+    {
+      "label": "MARKED_AS",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    },
+    {
+      "label": "USED",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    },
+    {
+      "label": "CONTAINS",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    }
+  ],
+  "patterns": [
+    {
+      "source": "Project",
+      "relationship": "HAS_MILESTONE",
+      "target": "Milestone"
+    },
+    {
+      "source": "Artifact",
+      "relationship": "DELIVERED",
+      "target": "Date"
+    },
+    {
+      "source": "Pilot",
+      "relationship": "REQUIRES",
+      "target": "Stub"
+    },
+    {
+      "source": "ReadinessBoard",
+      "relationship": "MARKED_AS",
+      "target": "Artifact"
+    },
+    {
+      "source": "Project",
+      "relationship": "USED",
+      "target": "Stub"
+    },
+    {
+      "source": "Stub",
+      "relationship": "CONTAINS",
+      "target": "Artifact"
+    }
+  ],
+  "constraints": [],
+  "additional_node_types": false,
+  "additional_relationship_types": false,
+  "additional_patterns": false
+}

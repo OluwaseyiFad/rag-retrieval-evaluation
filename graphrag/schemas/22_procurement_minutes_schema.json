@@ -1,0 +1,231 @@
+{
+  "node_types": [
+    {
+      "label": "CommercialEscalationContact",
+      "description": "",
+      "properties": [
+        {
+          "name": "name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "AcceptanceReviewer",
+      "description": "",
+      "properties": [
+        {
+          "name": "name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "Supplier",
+      "description": "",
+      "properties": [
+        {
+          "name": "name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "Artifact",
+      "description": "",
+      "properties": [
+        {
+          "name": "name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "PilotDateChange",
+      "description": "",
+      "properties": [
+        {
+          "name": "name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "Complaint",
+      "description": "",
+      "properties": [
+        {
+          "name": "name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "Milestone",
+      "description": "",
+      "properties": [
+        {
+          "name": "name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "Committee",
+      "description": "",
+      "properties": [
+        {
+          "name": "name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "Vendor",
+      "description": "",
+      "properties": [
+        {
+          "name": "name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "Survey",
+      "description": "",
+      "properties": [
+        {
+          "name": "name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    }
+  ],
+  "relationship_types": [
+    {
+      "label": "REMAINS_COMMERCIAL_ESCALATION_CONTACT_FOR",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    },
+    {
+      "label": "REMAINS_ACCEPTANCE_REVIEWER_FOR",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    },
+    {
+      "label": "REQUIRES_APPROVED_PILOT_DATE_CHANGE_BEFORE_CONTACTING_CUSTOMERS",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    },
+    {
+      "label": "HAS_ESCALATION_CONTACT",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    },
+    {
+      "label": "HAS_RECEIPT_MILESTONE",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    },
+    {
+      "label": "REQUIRES_ACCEPTANCE_DECISION",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    },
+    {
+      "label": "REPORTS_PROJECT_SLIP",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    },
+    {
+      "label": "REPORTS_PRODUCTION_TRIGGER",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    },
+    {
+      "label": "COMPLETES_SURVEY_RENEWAL",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    }
+  ],
+  "patterns": [
+    {
+      "source": "CommercialEscalationContact",
+      "relationship": "REMAINS_COMMERCIAL_ESCALATION_CONTACT_FOR",
+      "target": "Supplier"
+    },
+    {
+      "source": "AcceptanceReviewer",
+      "relationship": "REMAINS_ACCEPTANCE_REVIEWER_FOR",
+      "target": "Artifact"
+    },
+    {
+      "source": "PilotDateChange",
+      "relationship": "REQUIRES_APPROVED_PILOT_DATE_CHANGE_BEFORE_CONTACTING_CUSTOMERS",
+      "target": "AcceptanceReviewer"
+    },
+    {
+      "source": "Supplier",
+      "relationship": "HAS_ESCALATION_CONTACT",
+      "target": "CommercialEscalationContact"
+    },
+    {
+      "source": "Supplier",
+      "relationship": "HAS_RECEIPT_MILESTONE",
+      "target": "Milestone"
+    },
+    {
+      "source": "Artifact",
+      "relationship": "REQUIRES_ACCEPTANCE_DECISION",
+      "target": "AcceptanceReviewer"
+    },
+    {
+      "source": "Survey",
+      "relationship": "COMPLETES_SURVEY_RENEWAL",
+      "target": "Vendor"
+    }
+  ],
+  "constraints": [],
+  "additional_node_types": false,
+  "additional_relationship_types": false,
+  "additional_patterns": false
+}

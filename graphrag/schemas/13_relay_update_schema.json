@@ -1,0 +1,217 @@
+{
+  "node_types": [
+    {
+      "label": "Project",
+      "description": "",
+      "properties": [
+        {
+          "name": "name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "ResidencyAddendum",
+      "description": "",
+      "properties": [
+        {
+          "name": "name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "Region",
+      "description": "",
+      "properties": [
+        {
+          "name": "name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "Location",
+      "description": "",
+      "properties": [
+        {
+          "name": "name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "Document",
+      "description": "",
+      "properties": [
+        {
+          "name": "name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "Person",
+      "description": "",
+      "properties": [
+        {
+          "name": "name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    }
+  ],
+  "relationship_types": [
+    {
+      "label": "HAS_DELIVERY_REVIEW",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    },
+    {
+      "label": "DELAYED",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    },
+    {
+      "label": "RELOCATED_PILOT",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    },
+    {
+      "label": "ASSURED_PROCESSING",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    },
+    {
+      "label": "REHEARSAL_CONTINUED",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    },
+    {
+      "label": "REQUIRES_SIGNED_LIST",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    },
+    {
+      "label": "DISTINGUISHES",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    },
+    {
+      "label": "ESCALATED",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    },
+    {
+      "label": "IS_COMPLIANCE_ARTIFACT",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    },
+    {
+      "label": "IS_NOT",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    },
+    {
+      "label": "DECLARES_NO_PRODUCTION_OUTAGE",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    },
+    {
+      "label": "ESTABLISHES_READINESS",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    }
+  ],
+  "patterns": [
+    {
+      "source": "Project",
+      "relationship": "HAS_DELIVERY_REVIEW",
+      "target": "Project"
+    },
+    {
+      "source": "ResidencyAddendum",
+      "relationship": "DELAYED",
+      "target": "Project"
+    },
+    {
+      "source": "Project",
+      "relationship": "RELOCATED_PILOT",
+      "target": "Project"
+    },
+    {
+      "source": "Project",
+      "relationship": "ASSURED_PROCESSING",
+      "target": "ResidencyAddendum"
+    },
+    {
+      "source": "Region",
+      "relationship": "REHEARSAL_CONTINUED",
+      "target": "Region"
+    },
+    {
+      "source": "Project",
+      "relationship": "REQUIRES_SIGNED_LIST",
+      "target": "Person"
+    },
+    {
+      "source": "Document",
+      "relationship": "DISTINGUISHES",
+      "target": "Document"
+    },
+    {
+      "source": "Document",
+      "relationship": "ESCALATED",
+      "target": "Person"
+    },
+    {
+      "source": "Document",
+      "relationship": "IS_COMPLIANCE_ARTIFACT",
+      "target": "Project"
+    },
+    {
+      "source": "Project",
+      "relationship": "IS_NOT",
+      "target": "Project"
+    },
+    {
+      "source": "Project",
+      "relationship": "DECLARES_NO_PRODUCTION_OUTAGE",
+      "target": "Project"
+    }
+  ],
+  "constraints": [],
+  "additional_node_types": false,
+  "additional_relationship_types": false,
+  "additional_patterns": false
+}

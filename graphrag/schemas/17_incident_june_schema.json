@@ -1,0 +1,158 @@
+{
+  "node_types": [
+    {
+      "label": "System",
+      "description": "",
+      "properties": [
+        {
+          "name": "name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "Incident",
+      "description": "",
+      "properties": [
+        {
+          "name": "name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "Report",
+      "description": "",
+      "properties": [
+        {
+          "name": "name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "Change",
+      "description": "",
+      "properties": [
+        {
+          "name": "name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "Ticket",
+      "description": "",
+      "properties": [
+        {
+          "name": "name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "Dashboard",
+      "description": "",
+      "properties": [
+        {
+          "name": "name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "Record",
+      "description": "",
+      "properties": [
+        {
+          "name": "name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    }
+  ],
+  "relationship_types": [
+    {
+      "label": "AFFECTED_BY",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    },
+    {
+      "label": "TRIGGERED_BY",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    },
+    {
+      "label": "REPORTED_IN",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    },
+    {
+      "label": "SHOWS",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    },
+    {
+      "label": "HAS_CORRECTIVE_ACTION",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    }
+  ],
+  "patterns": [
+    {
+      "source": "System",
+      "relationship": "AFFECTED_BY",
+      "target": "Incident"
+    },
+    {
+      "source": "Change",
+      "relationship": "TRIGGERED_BY",
+      "target": "Incident"
+    },
+    {
+      "source": "Report",
+      "relationship": "REPORTED_IN",
+      "target": "Incident"
+    },
+    {
+      "source": "Dashboard",
+      "relationship": "SHOWS",
+      "target": "Record"
+    },
+    {
+      "source": "Incident",
+      "relationship": "HAS_CORRECTIVE_ACTION",
+      "target": "Change"
+    }
+  ],
+  "constraints": [],
+  "additional_node_types": false,
+  "additional_relationship_types": false,
+  "additional_patterns": false
+}

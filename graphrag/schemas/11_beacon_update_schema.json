@@ -1,0 +1,193 @@
+{
+  "node_types": [
+    {
+      "label": "Project",
+      "description": "",
+      "properties": [
+        {
+          "name": "name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "Supplier",
+      "description": "",
+      "properties": [
+        {
+          "name": "name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "Email",
+      "description": "",
+      "properties": [
+        {
+          "name": "subject",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "Attestation",
+      "description": "",
+      "properties": [
+        {
+          "name": "status",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "Rehearsal",
+      "description": "",
+      "properties": [
+        {
+          "name": "name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "Person",
+      "description": "",
+      "properties": [
+        {
+          "name": "name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "Decision",
+      "description": "",
+      "properties": [
+        {
+          "name": "name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "Milestone",
+      "description": "",
+      "properties": [
+        {
+          "name": "name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    }
+  ],
+  "relationship_types": [
+    {
+      "label": "HAS_PROJECT",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    },
+    {
+      "label": "ISSUED_ATTESTATION",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    },
+    {
+      "label": "ACCEPTED_EVIDENCE",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    },
+    {
+      "label": "PERFORMED_REHEARSAL",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    },
+    {
+      "label": "WITHHELD_ACCEPTANCE",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    },
+    {
+      "label": "TRACKED_MILESTONE",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    },
+    {
+      "label": "MADE_DECISION",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    }
+  ],
+  "patterns": [
+    {
+      "source": "Project",
+      "relationship": "HAS_PROJECT",
+      "target": "Project"
+    },
+    {
+      "source": "Attestation",
+      "relationship": "ISSUED_ATTESTATION",
+      "target": "Supplier"
+    },
+    {
+      "source": "Email",
+      "relationship": "ACCEPTED_EVIDENCE",
+      "target": "Project"
+    },
+    {
+      "source": "Rehearsal",
+      "relationship": "PERFORMED_REHEARSAL",
+      "target": "Project"
+    },
+    {
+      "source": "Person",
+      "relationship": "WITHHELD_ACCEPTANCE",
+      "target": "Milestone"
+    },
+    {
+      "source": "Project",
+      "relationship": "TRACKED_MILESTONE",
+      "target": "Milestone"
+    },
+    {
+      "source": "Project",
+      "relationship": "MADE_DECISION",
+      "target": "Decision"
+    }
+  ],
+  "constraints": [],
+  "additional_node_types": false,
+  "additional_relationship_types": false,
+  "additional_patterns": false
+}

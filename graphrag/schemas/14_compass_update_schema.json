@@ -1,0 +1,259 @@
+{
+  "node_types": [
+    {
+      "label": "ProjectCompass",
+      "description": "",
+      "properties": [
+        {
+          "name": "name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "RevisedApplianceAttestation",
+      "description": "",
+      "properties": [
+        {
+          "name": "name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "Pilot",
+      "description": "",
+      "properties": [
+        {
+          "name": "name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "ReadinessBoard",
+      "description": "",
+      "properties": [
+        {
+          "name": "name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "Rehearsal",
+      "description": "",
+      "properties": [
+        {
+          "name": "name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "Team",
+      "description": "",
+      "properties": [
+        {
+          "name": "name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "Person",
+      "description": "",
+      "properties": [
+        {
+          "name": "name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "Credential",
+      "description": "",
+      "properties": [
+        {
+          "name": "name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "Evidence",
+      "description": "",
+      "properties": [
+        {
+          "name": "name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "CommercialEscalation",
+      "description": "",
+      "properties": [
+        {
+          "name": "name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    },
+    {
+      "label": "Revision",
+      "description": "",
+      "properties": [
+        {
+          "name": "name",
+          "type": "STRING",
+          "description": "",
+          "required": false
+        }
+      ],
+      "additional_properties": false
+    }
+  ],
+  "relationship_types": [
+    {
+      "label": "HAS_REVIEW",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    },
+    {
+      "label": "REVISION_OF",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    },
+    {
+      "label": "REQUIRES",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    },
+    {
+      "label": "HAS_EVIDENCE",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    },
+    {
+      "label": "HAS_CREDENTIAL",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    },
+    {
+      "label": "HAS_REHEARSAL",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    },
+    {
+      "label": "REOPENED",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    },
+    {
+      "label": "AUTHORIZED_FOR",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    },
+    {
+      "label": "RECORDS_REVISION_IDENTIFIER",
+      "description": "",
+      "properties": [],
+      "additional_properties": true
+    }
+  ],
+  "patterns": [
+    {
+      "source": "ProjectCompass",
+      "relationship": "HAS_REVIEW",
+      "target": "RevisedApplianceAttestation"
+    },
+    {
+      "source": "RevisedApplianceAttestation",
+      "relationship": "REVISION_OF",
+      "target": "Revision"
+    },
+    {
+      "source": "Revision",
+      "relationship": "REQUIRES",
+      "target": "Evidence"
+    },
+    {
+      "source": "RevisedApplianceAttestation",
+      "relationship": "REQUIRES",
+      "target": "Credential"
+    },
+    {
+      "source": "RevisedApplianceAttestation",
+      "relationship": "REQUIRES",
+      "target": "Rehearsal"
+    },
+    {
+      "source": "Rehearsal",
+      "relationship": "HAS_CREDENTIAL",
+      "target": "Credential"
+    },
+    {
+      "source": "Rehearsal",
+      "relationship": "HAS_REHEARSAL",
+      "target": "Team"
+    },
+    {
+      "source": "RevisedApplianceAttestation",
+      "relationship": "REOPENED",
+      "target": "CommercialEscalation"
+    },
+    {
+      "source": "Revision",
+      "relationship": "AUTHORIZED_FOR",
+      "target": "Pilot"
+    },
+    {
+      "source": "ReadinessBoard",
+      "relationship": "RECORDS_REVISION_IDENTIFIER",
+      "target": "Revision"
+    }
+  ],
+  "constraints": [],
+  "additional_node_types": false,
+  "additional_relationship_types": false,
+  "additional_patterns": false
+}
