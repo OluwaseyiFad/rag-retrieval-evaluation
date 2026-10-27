@@ -12,12 +12,12 @@ DATABASE = os.getenv("NEO4J_DATABASE", "neo4j")
 
 # Better to use a stronger and different model as judge
 local_llm = OpenAILLM(
-    model_name="qwen2.5:7b",
+    model_name="gemma3:27b",
     base_url="http://127.0.0.1:11434/v1",
     api_key="ollama",
     model_params={
         "temperature": 0,
-        "max_tokens": 50,  # Only need yes or no
+        "max_tokens": 250,
     },
     timeout=300,
     max_retries=0,
@@ -32,12 +32,28 @@ MATCH (a)-[r]->(b)-[:FROM_CHUNK]->(c)
 WHERE NOT type(r) IN ['FROM_CHUNK', 'FROM_DOCUMENT', 'NEXT_CHUNK']
 RETURN DISTINCT a.name AS a, type(r) AS r, b.name AS b
 """
+PROPERTIES_QUERY = """
+MATCH (d:Document {path: $stem})<-[:FROM_DOCUMENT]-(c:Chunk)<-[:FROM_CHUNK]-(n:__Entity__)
+RETURN DISTINCT n.name AS name, properties(n) AS props
+"""
 
 def triples_for_document(driver, stem):
-    records = driver.execute_query(
+    triples = driver.execute_query(
         TRIPLES_QUERY, stem=stem, database_=DATABASE, routing_="r"
     ).records
-    return [f"{r['a']} {r['r']} {r['b']}" for r in records]
+    lines = [f"{r['a']} {r['r']} {r['b']}" for r in triples]
+    
+    entities = driver.execute_query(
+        PROPERTIES_QUERY, stem=stem, database_=DATABASE, routing_="r"
+    ).records
+    
+    for entity in entities:
+        for k, v in entity["props"].items():
+            # Filter out props already in lines or not needed
+            if k not in ("name", "embedding", "id"):
+                lines.append(f"{entity['name']} has {k}: {v}")
+    return lines
+                
 
 
 def report(results):
@@ -52,27 +68,34 @@ def report(results):
             unsupported_cnts[result["type"]] += 1
     for k, v in supported_cnts.items():
         print(f"Type {k} facts is supported by the triples {v} times and unsupported {unsupported_cnts[k]} times")
-        
-    Path(__file__).with_name("coverage_baseline.json").write_text(json.dumps(results, indent=2))
+
+    Path(__file__).with_name("coverage_new_result.json").write_text(json.dumps(results, indent=2))
 
 
 
 async def judge(fact, triples):
     prompt = (
-        "Graph triples:\n" + "\n".join(triples) + f"\n\nFact: {fact}\n\n"
-        "Do the triples together state this fact, including every clause? "
-        "Answer only YES or NO."
+        "Graph facts:\n" + "\n".join(triples) + f"\n\nFact to check: {fact}\n\n"
+        "First quote the single graph fact that best matches it, or write "
+        "'none' if nothing matches. Then, on a new last line, answer only "
+        "YES or NO: do the graph facts together state the fact to check, "
+        "including every clause?"
     )
     try:
         reply = await local_llm.ainvoke(prompt)
-        # Better to investigate the LLM output return either YES OR NO
-        verdict = reply.content.strip().upper()
-        if verdict not in ("YES", "NO"):
-            print("LLM disobeyed instruction") # Must ensure this is not printed
-        return verdict.startswith("YES")
-    except Exception:
-        return None
-    
+        llm_answer = reply.content.strip()
+        last_line = llm_answer.splitlines()[-1] if llm_answer else ""
+        verdict = last_line.strip().strip("*_ .`").upper()
+        if verdict.startswith("YES"):
+            return True, llm_answer
+        elif verdict.startswith("NO"):
+            return False, llm_answer
+        else:
+            return None, llm_answer
+    except Exception as exc:
+        print(f"Error {exc} occured while judging ....")
+        return None, f"Error: {exc}"
+
 
 async def main():
     queries = json.loads(QUERIES.read_text())
@@ -87,17 +110,17 @@ async def main():
                     all_triples.add(t)
             triples = sorted(all_triples)  # To ensure similar order across runs
             for fact in q["expected_facts"]:
-                supported = await judge(fact, triples)
+                supported, judge_reply = await judge(fact, triples)
                 results.append({
                     "id": q["id"], "type": q["type"], "fact": fact,
                     "supported": supported, "n_triples": len(triples),
+                    "judge_reply": judge_reply,
                 })
     finally:
         driver.close()
         await local_llm.aclose()
-    
+
     report(results)
-        
-        
+
 if __name__ == "__main__":
     asyncio.run(main())
