@@ -1,4 +1,4 @@
-import asyncio, json, os
+import asyncio, json, os, sys
 from pathlib import Path
 from dotenv import load_dotenv
 from neo4j_graphrag.llm import OpenAILLM
@@ -10,14 +10,14 @@ QUERIES = Path(__file__).parent / "meridian_benchmark" / "queries.json"
 DATABASE = os.getenv("NEO4J_DATABASE", "neo4j")
 
 
-# Better to use a stronger and different model as judge
+# Better to use a stronger and different model family as judge
 local_llm = OpenAILLM(
     model_name="gemma3:27b",
     base_url="http://127.0.0.1:11434/v1",
     api_key="ollama",
     model_params={
         "temperature": 0,
-        "max_tokens": 250,
+        "max_tokens": 700,
     },
     timeout=300,
     max_retries=0,
@@ -69,18 +69,30 @@ def report(results):
     for k, v in supported_cnts.items():
         print(f"Type {k} facts is supported by the triples {v} times and unsupported {unsupported_cnts[k]} times")
 
-    Path(__file__).with_name("coverage_new_result.json").write_text(json.dumps(results, indent=2))
+    Path(__file__).with_name(f"coverage_{sys.argv[1] if len(sys.argv) > 1 else 'run'}.json").write_text(json.dumps(results, indent=2))
 
 
 
 async def judge(fact, triples):
     prompt = (
         "Graph facts:\n" + "\n".join(triples) + f"\n\nFact to check: {fact}\n\n"
-        "First quote the single graph fact that best matches it, or write "
-        "'none' if nothing matches. Then, on a new last line, answer only "
-        "YES or NO: do the graph facts together state the fact to check, "
-        "including every clause?"
+        "Relation names in the graph facts are equivalent to ordinary words: "
+        "DEPENDS_ON = depends on, consumes, uses; LEADS = leads, is the lead of; "
+        "OWNS = owns, is responsible for; MEMBER_OF = belongs to; "
+        "SPONSORS = sponsors; SUPPLIES = supplies, provides.\n"
+        "A clause may be supported by combining two or more graph facts that share an entity (for example 'A OWNS B' and 'C TARGETS B' together state that C targets something A owns); quote every fact you combine.\n"
+        "Split ONLY the fact to check into its clauses (a name, a role, an "
+        "amount, a date, a negation). Do not add clauses of your own. For each "
+        "clause write one line in the form:\n"
+        "CLAUSE: <the clause> | QUOTE: <the exact graph fact that states it, "
+        "or none>\n"
+        "A graph fact states a clause only if it contains the specific names, "
+        "numbers and dates in that clause. Do not guess beyond that.\n"
+        "Then, on a new last line, answer only YES if every clause has a "
+        "quote, otherwise NO."
     )
+
+
     try:
         reply = await local_llm.ainvoke(prompt)
         llm_answer = reply.content.strip()

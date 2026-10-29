@@ -1,0 +1,882 @@
+[
+  {
+    "id": "S01",
+    "type": "single_hop",
+    "fact": "Priya Shah leads Payments Engineering.",
+    "supported": true,
+    "n_triples": 20,
+    "judge_reply": "CLAUSE: Priya Shah | QUOTE: Priya Shah LEADS Payments Engineering\nCLAUSE: leads Payments Engineering | QUOTE: Priya Shah LEADS Payments Engineering\n\nYES"
+  },
+  {
+    "id": "S02",
+    "type": "single_hop",
+    "fact": "Data Platform owns Flowline.",
+    "supported": true,
+    "n_triples": 30,
+    "judge_reply": "CLAUSE: Data Platform owns Flowline | QUOTE: Data Platform OWNS Flowline\nCLAUSE: Flowline | QUOTE: Data Platform OWNS Flowline\nCLAUSE: Data Platform | QUOTE: Data Platform OWNS Flowline\n\nYES"
+  },
+  {
+    "id": "S03",
+    "type": "single_hop",
+    "fact": "LDG refers to Ledger service.",
+    "supported": true,
+    "n_triples": 15,
+    "judge_reply": "CLAUSE: LDG refers to Ledger service | QUOTE: Ledger service has aliases: LDG\nCLAUSE: Ledger service refers to Ledger service | QUOTE: Ledger service has aliases: LDG\n\nYES"
+  },
+  {
+    "id": "S04",
+    "type": "single_hop",
+    "fact": "Lumen Post supplies Noticeboard's delivery gateway.",
+    "supported": true,
+    "n_triples": 16,
+    "judge_reply": "CLAUSE: Lumen Post | QUOTE: Lumen Post SUPPLIES delivery gateway\nCLAUSE: Noticeboard's delivery gateway | QUOTE: Lumen Post SUPPLIES delivery gateway\n\nYES"
+  },
+  {
+    "id": "S05",
+    "type": "single_hop",
+    "fact": "Elena Moss sponsors Project Orchard.",
+    "supported": true,
+    "n_triples": 15,
+    "judge_reply": "CLAUSE: Elena Moss | QUOTE: Elena Moss SPONSORS Project Harbor\nCLAUSE: sponsors | QUOTE: Elena Moss SPONSORS Project Orchard\nCLAUSE: Project Orchard | QUOTE: Elena Moss SPONSORS Project Orchard\n\nYES"
+  },
+  {
+    "id": "S06",
+    "type": "single_hop",
+    "fact": "Tern Energy is the pilot customer for Project Compass.",
+    "supported": true,
+    "n_triples": 11,
+    "judge_reply": "CLAUSE: Tern Energy | QUOTE: Tern Energy PILOT_CUSTOMER_OF Project Compass\nCLAUSE: Project Compass | QUOTE: Tern Energy PILOT_CUSTOMER_OF Project Compass\nCLAUSE: is the pilot customer for | QUOTE: Tern Energy PILOT_CUSTOMER_OF Project Compass\n\nYES"
+  },
+  {
+    "id": "S07",
+    "type": "single_hop",
+    "fact": "Cobalt Clearing must give seven calendar days of advance notice.",
+    "supported": false,
+    "n_triples": 6,
+    "judge_reply": "CLAUSE: Cobalt Clearing must give | QUOTE: Cobalt Clearing DELIVERS representative clearing sandbox\nCLAUSE: seven calendar days of advance notice | QUOTE: none\nCLAUSE: Cobalt Clearing | QUOTE: CC-17 WITH_SUPPLIER Cobalt Clearing\n\nNO"
+  },
+  {
+    "id": "S08",
+    "type": "single_hop",
+    "fact": "Alex Kim can record security acceptance.",
+    "supported": false,
+    "n_triples": 7,
+    "judge_reply": "CLAUSE: Alex Kim | QUOTE: Alex Kim has title: Security Assurance reviewer\nCLAUSE: can record security acceptance | QUOTE: none\nCLAUSE: security acceptance | QUOTE: none\n\nNO"
+  },
+  {
+    "id": "S09",
+    "type": "single_hop",
+    "fact": "INC-031 lasted 47 minutes.",
+    "supported": true,
+    "n_triples": 7,
+    "judge_reply": "CLAUSE: INC-031 lasted 47 minutes | QUOTE: INC-031 has impact: 47 minute settlement outage\nCLAUSE: 47 minutes | QUOTE: INC-031 has impact: 47 minute settlement outage\n\nYES"
+  },
+  {
+    "id": "S10",
+    "type": "single_hop",
+    "fact": "Owen Park leads Harbor Operations.",
+    "supported": true,
+    "n_triples": 7,
+    "judge_reply": "CLAUSE: Owen Park | QUOTE: Owen Park LEADS Harbor Operations\nCLAUSE: Harbor Operations | QUOTE: Alex Rivera MEMBER_OF Harbor Operations\nCLAUSE: Harbor Operations | QUOTE: Harbor Operations has function: office facilities\nCLAUSE: Harbor Operations | QUOTE: Owen Park LEADS Harbor Operations\nCLAUSE: Harbor Operations | QUOTE: Priya Nair MEMBER_OF Harbor Operations\n\nYES"
+  },
+  {
+    "id": "H01",
+    "type": "multi_hop",
+    "fact": "The March outage was triggered by a Ledger service schema change (LDG is Ledger service).",
+    "supported": false,
+    "n_triples": 51,
+    "judge_reply": "CLAUSE: The March outage | QUOTE: none\nCLAUSE: was triggered by a Ledger service schema change | QUOTE: INC-031 has trigger: stale reports\nCLAUSE: (LDG is Ledger service) | QUOTE: Ledger service has aliases: LDG\n\nNO"
+  },
+  {
+    "id": "H01",
+    "type": "multi_hop",
+    "fact": "Payments Engineering owns Ledger service.",
+    "supported": true,
+    "n_triples": 51,
+    "judge_reply": "CLAUSE: Payments Engineering owns Ledger service | QUOTE: Payments Engineering OWNS Ledger service\nCLAUSE: Payments Engineering has function: engineering | QUOTE: Payments Engineering has function: engineering\n\nYES"
+  },
+  {
+    "id": "H01",
+    "type": "multi_hop",
+    "fact": "Priya Shah leads Payments Engineering and is the responsible lead.",
+    "supported": false,
+    "n_triples": 51,
+    "judge_reply": "CLAUSE: Priya Shah leads Payments Engineering | QUOTE: Priya Shah LEADS Payments Engineering\nCLAUSE: Priya Shah is the responsible lead | QUOTE: none\n\nNO"
+  },
+  {
+    "id": "H02",
+    "type": "multi_hop",
+    "fact": "A Gatehouse TTL change triggered INC-044 (GH is Gatehouse).",
+    "supported": false,
+    "n_triples": 47,
+    "judge_reply": "CLAUSE: A Gatehouse TTL change | QUOTE: none\nCLAUSE: triggered INC-044 | QUOTE: INC-044 AFFECTED_SERVICE Gatehouse\nCLAUSE: (GH is Gatehouse) | QUOTE: Gatehouse has aliases: GH\n\nNO"
+  },
+  {
+    "id": "H02",
+    "type": "multi_hop",
+    "fact": "Identity Engineering owns Gatehouse.",
+    "supported": true,
+    "n_triples": 47,
+    "judge_reply": "CLAUSE: Identity Engineering owns Gatehouse | QUOTE: Identity Engineering OWNS Gatehouse\nYES"
+  },
+  {
+    "id": "H02",
+    "type": "multi_hop",
+    "fact": "Omar Bell leads Identity Engineering and is the responsible lead.",
+    "supported": false,
+    "n_triples": 47,
+    "judge_reply": "CLAUSE: Omar Bell leads Identity Engineering | QUOTE: Omar Bell LEADS Identity Engineering\nCLAUSE: Omar Bell is the responsible lead | QUOTE: none\nNO"
+  },
+  {
+    "id": "H03",
+    "type": "multi_hop",
+    "fact": "Flowline's pagination change triggered INC-062 (FL is Flowline); Beacon Warehouse exposed stale reports.",
+    "supported": true,
+    "n_triples": 72,
+    "judge_reply": "CLAUSE: Flowline's pagination change triggered INC-062 | QUOTE: INC-062 has trigger: An FL pagination change skipped the second page of an ingestion batch\nCLAUSE: FL is Flowline | QUOTE: Flowline has aliases: FL\nCLAUSE: Beacon Warehouse exposed stale reports | QUOTE: INC-062 has impact: BW served stale shipment reports for 61 minutes\n\nYES"
+  },
+  {
+    "id": "H03",
+    "type": "multi_hop",
+    "fact": "Data Platform owns Flowline.",
+    "supported": true,
+    "n_triples": 72,
+    "judge_reply": "CLAUSE: Data Platform owns Flowline | QUOTE: Data Platform OWNS Flowline\nCLAUSE: Flowline | QUOTE: Data Platform OWNS Flowline\n\nYES"
+  },
+  {
+    "id": "H03",
+    "type": "multi_hop",
+    "fact": "Mei Chen leads Data Platform and is the responsible lead.",
+    "supported": false,
+    "n_triples": 72,
+    "judge_reply": "CLAUSE: Mei Chen leads Data Platform | QUOTE: Mei Chen LEADS Data Platform\nCLAUSE: Mei Chen is the responsible lead | QUOTE: none\nNO"
+  },
+  {
+    "id": "H04",
+    "type": "multi_hop",
+    "fact": "Noticeboard's callback change triggered INC-073; Dispatch Hub was the affected consumer.",
+    "supported": false,
+    "n_triples": 55,
+    "judge_reply": "CLAUSE: Noticeboard's callback change triggered INC-073 | QUOTE: INC-073 has trigger: Noticeboard callback contract change\nCLAUSE: Dispatch Hub was the affected consumer | QUOTE: INC-073 AFFECTED_SERVICE Dispatch\nNO"
+  },
+  {
+    "id": "H04",
+    "type": "multi_hop",
+    "fact": "Customer Operations owns Noticeboard.",
+    "supported": true,
+    "n_triples": 55,
+    "judge_reply": "CLAUSE: Customer Operations owns Noticeboard | QUOTE: Customer Operations OWNS Noticeboard\nCLAUSE: Noticeboard | QUOTE: Noticeboard USES_INTERFACE callback contract\nCLAUSE: Noticeboard | QUOTE: Dispatch Hub DEPENDS_ON Noticeboard\nCLAUSE: Noticeboard | QUOTE: INC-073 AFFECTED_SERVICE Noticeboard\n\nYES"
+  },
+  {
+    "id": "H04",
+    "type": "multi_hop",
+    "fact": "Luis Ortega leads Customer Operations and is the responsible lead.",
+    "supported": false,
+    "n_triples": 55,
+    "judge_reply": "CLAUSE: Luis Ortega leads Customer Operations | QUOTE: Luis Ortega LEADS Customer Operations\nCLAUSE: Luis Ortega is the responsible lead | QUOTE: none\nNO"
+  },
+  {
+    "id": "H05",
+    "type": "multi_hop",
+    "fact": "Vault Relay rotated a credential without overlap and triggered INC-084 (VR is Vault Relay).",
+    "supported": false,
+    "n_triples": 56,
+    "judge_reply": "CLAUSE: Vault Relay rotated a credential | QUOTE: none\nCLAUSE: without overlap | QUOTE: none\nCLAUSE: and triggered INC-084 | QUOTE: INC-084 AFFECTED_SERVICE Vault Relay\nCLAUSE: (VR is Vault Relay) | QUOTE: Vault Relay has aliases: VR\n\nNO"
+  },
+  {
+    "id": "H05",
+    "type": "multi_hop",
+    "fact": "Reliability Engineering owns Vault Relay.",
+    "supported": true,
+    "n_triples": 56,
+    "judge_reply": "CLAUSE: Reliability Engineering owns Vault Relay | QUOTE: Reliability Engineering OWNS Vault Relay\nCLAUSE: Reliability Engineering has function: engineering | QUOTE: Reliability Engineering has function: engineering\n\nYES"
+  },
+  {
+    "id": "H05",
+    "type": "multi_hop",
+    "fact": "Nora Reed leads Reliability Engineering and is the responsible lead.",
+    "supported": false,
+    "n_triples": 56,
+    "judge_reply": "CLAUSE: Nora Reed leads Reliability Engineering | QUOTE: Nora Reed LEADS Reliability Engineering\nCLAUSE: Nora Reed is the responsible lead | QUOTE: none\nNO"
+  },
+  {
+    "id": "H06",
+    "type": "multi_hop",
+    "fact": "Elena Moss sponsors Project Harbor.",
+    "supported": true,
+    "n_triples": 25,
+    "judge_reply": "CLAUSE: Elena Moss sponsors Project Harbor | QUOTE: Elena Moss SPONSORS Project Harbor\nYES"
+  },
+  {
+    "id": "H06",
+    "type": "multi_hop",
+    "fact": "Elena Moss authorized $40,000 per sponsored initiative, so Harbor's approved reserve is $40,000, not recorded spending.",
+    "supported": false,
+    "n_triples": 25,
+    "judge_reply": "CLAUSE: Elena Moss authorized $40,000 per sponsored initiative | QUOTE: validation reserve for each initiative Elena Moss sponsors has amount: 40000\nCLAUSE: Harbor's approved reserve is $40,000 | QUOTE: Elena Moss SPONSORS Project Harbor\nCLAUSE: Harbor's approved reserve is $40,000 | QUOTE: validation reserve for each initiative Elena Moss sponsors has amount: 40000\nCLAUSE: not recorded spending | QUOTE: none\n\nNO"
+  },
+  {
+    "id": "H07",
+    "type": "multi_hop",
+    "fact": "Beacon Warehouse exposed June's stale reports (BW is Beacon Warehouse).",
+    "supported": true,
+    "n_triples": 63,
+    "judge_reply": "CLAUSE: Beacon Warehouse exposed stale reports | QUOTE: INC-062 has impact: BW served stale shipment reports for 61 minutes\nCLAUSE: June's stale reports | QUOTE: INC-062 has date: 2026-06-23\nCLAUSE: Beacon Warehouse | QUOTE: Beacon Warehouse has aliases: BW\nCLAUSE: Beacon Warehouse | QUOTE: INC-031 AFFECTED_SERVICE Beacon Warehouse\nCLAUSE: Beacon Warehouse | QUOTE: INC-062 AFFECTED_SERVICE Beacon Warehouse\nCLAUSE: Beacon Warehouse | QUOTE: Project Orchard TARGETS Beacon Warehouse\n\nYES"
+  },
+  {
+    "id": "H07",
+    "type": "multi_hop",
+    "fact": "Project Orchard targets Beacon Warehouse.",
+    "supported": true,
+    "n_triples": 63,
+    "judge_reply": "CLAUSE: Project Orchard targets Beacon Warehouse | QUOTE: Project Orchard TARGETS Beacon Warehouse\nYES"
+  },
+  {
+    "id": "H07",
+    "type": "multi_hop",
+    "fact": "Juniper Freight is Project Orchard's pilot customer.",
+    "supported": false,
+    "n_triples": 63,
+    "judge_reply": "CLAUSE: Juniper Freight is a pilot customer | QUOTE: Juniper Freight PILOT_CUSTOMER_OF Project Orchard\nCLAUSE: Project Orchard is a project | QUOTE: Project Orchard TARGETS Beacon Warehouse\nNO"
+  },
+  {
+    "id": "H08",
+    "type": "multi_hop",
+    "fact": "Project Relay's pilot slipped because LP's residency addendum arrived late.",
+    "supported": false,
+    "n_triples": 31,
+    "judge_reply": "CLAUSE: Project Relay's pilot slipped | QUOTE: pilot DELAYED_BY residency addendum\nCLAUSE: LP's residency addendum arrived late | QUOTE: Lumen Post DELIVERS residency addendum\nCLAUSE: Lumen Post has aliases: LP | QUOTE: Lumen Post has aliases: LP\n\nNO"
+  },
+  {
+    "id": "H08",
+    "type": "multi_hop",
+    "fact": "Dana Wu sponsors Project Relay.",
+    "supported": false,
+    "n_triples": 31,
+    "judge_reply": "CLAUSE: Dana Wu sponsors Project Relay | QUOTE: Dana Wu SPONSORS Project Relay\nNO"
+  },
+  {
+    "id": "H09",
+    "type": "multi_hop",
+    "fact": "Project Beacon targets Gatehouse, not Beacon Warehouse.",
+    "supported": false,
+    "n_triples": 55,
+    "judge_reply": "CLAUSE: Project Beacon targets Gatehouse | QUOTE: Project Beacon TARGETS Gatehouse\nCLAUSE: Project Beacon does not target Beacon Warehouse | QUOTE: none\n\nNO"
+  },
+  {
+    "id": "H09",
+    "type": "multi_hop",
+    "fact": "Identity Engineering owns Gatehouse.",
+    "supported": true,
+    "n_triples": 55,
+    "judge_reply": "CLAUSE: Identity Engineering owns Gatehouse | QUOTE: Identity Engineering OWNS Gatehouse\nYES"
+  },
+  {
+    "id": "H09",
+    "type": "multi_hop",
+    "fact": "Omar Bell leads Identity Engineering and is the responsible lead.",
+    "supported": false,
+    "n_triples": 55,
+    "judge_reply": "CLAUSE: Omar Bell leads Identity Engineering | QUOTE: Omar Bell LEADS Identity Engineering\nCLAUSE: Omar Bell is the responsible lead | QUOTE: none\nNO"
+  },
+  {
+    "id": "H10",
+    "type": "multi_hop",
+    "fact": "Pinebridge Data supplies Flowline's ingestion connector.",
+    "supported": false,
+    "n_triples": 36,
+    "judge_reply": "CLAUSE: Pinebridge Data | QUOTE: Pinebridge Data SUPPLIES ingestion connector\nCLAUSE: supplies Flowline's ingestion connector | QUOTE: none\nNO"
+  },
+  {
+    "id": "H10",
+    "type": "multi_hop",
+    "fact": "Beacon Warehouse consumes Flowline.",
+    "supported": true,
+    "n_triples": 36,
+    "judge_reply": "CLAUSE: Beacon Warehouse | QUOTE: Beacon Warehouse DEPENDS_ON Flowline\nCLAUSE: consumes Flowline | QUOTE: Beacon Warehouse DEPENDS_ON Flowline\n\nYES"
+  },
+  {
+    "id": "H10",
+    "type": "multi_hop",
+    "fact": "Project Orchard targets Beacon Warehouse.",
+    "supported": true,
+    "n_triples": 36,
+    "judge_reply": "CLAUSE: Project Orchard | QUOTE: Project Orchard TARGETS Beacon Warehouse\nCLAUSE: Beacon Warehouse | QUOTE: Beacon Warehouse has aliases: BW\nCLAUSE: Beacon Warehouse | QUOTE: Project Orchard TARGETS Beacon Warehouse\n\nYES"
+  },
+  {
+    "id": "C01",
+    "type": "connection",
+    "fact": "Ledger service consumes Settlement Router.",
+    "supported": true,
+    "n_triples": 26,
+    "judge_reply": "CLAUSE: Ledger service | QUOTE: Ledger service DEPENDS_ON Settlement Router\nCLAUSE: consumes Settlement Router | QUOTE: Ledger service DEPENDS_ON Settlement Router\n\nYES"
+  },
+  {
+    "id": "C01",
+    "type": "connection",
+    "fact": "Settlement Router uses Cobalt Clearing's clearing API.",
+    "supported": false,
+    "n_triples": 26,
+    "judge_reply": "CLAUSE: Settlement Router | QUOTE: Ledger service DEPENDS_ON Settlement Router\nCLAUSE: uses Cobalt Clearing's clearing API | QUOTE: Settlement Router USES_INTERFACE clearing API\nCLAUSE: Cobalt Clearing | QUOTE: Cobalt Clearing has aliases: Cobalt\nCLAUSE: clearing API | QUOTE: Settlement Router USES_INTERFACE clearing API\n\nNO"
+  },
+  {
+    "id": "C01",
+    "type": "connection",
+    "fact": "Ledger service therefore depends indirectly on Cobalt Clearing through Settlement Router.",
+    "supported": false,
+    "n_triples": 26,
+    "judge_reply": "CLAUSE: Ledger service therefore depends indirectly on Cobalt Clearing | QUOTE: none\nCLAUSE: through Settlement Router | QUOTE: Ledger service DEPENDS_ON Settlement Router\nCLAUSE: Cobalt Clearing | QUOTE: none\n\nNO"
+  },
+  {
+    "id": "C02",
+    "type": "connection",
+    "fact": "Gatehouse consumes Session Cache.",
+    "supported": false,
+    "n_triples": 26,
+    "judge_reply": "CLAUSE: Gatehouse | QUOTE: Gatehouse DEPENDS_ON Session Cache\nCLAUSE: Session Cache | QUOTE: Session Cache has aliases: SC\nCLAUSE: consumes | QUOTE: Gatehouse DEPENDS_ON Session Cache\n\nNO"
+  },
+  {
+    "id": "C02",
+    "type": "connection",
+    "fact": "Session Cache uses Sable Trust's key attestation feed.",
+    "supported": false,
+    "n_triples": 26,
+    "judge_reply": "CLAUSE: Session Cache | QUOTE: Gatehouse DEPENDS_ON Session Cache\nCLAUSE: uses Sable Trust's key attestation feed | QUOTE: Sable Trust SUPPLIES key attestation feed\nCLAUSE: Session Cache uses Sable Trust's key attestation feed | QUOTE: none\n\nNO"
+  },
+  {
+    "id": "C02",
+    "type": "connection",
+    "fact": "Gatehouse is indirectly connected to Sable Trust through Session Cache.",
+    "supported": false,
+    "n_triples": 26,
+    "judge_reply": "CLAUSE: Gatehouse is connected to Sable Trust | QUOTE: none\nCLAUSE: The connection is indirect | QUOTE: none\nCLAUSE: The connection goes through Session Cache | QUOTE: none\n\nNO"
+  },
+  {
+    "id": "C03",
+    "type": "connection",
+    "fact": "Beacon Warehouse consumes Flowline.",
+    "supported": true,
+    "n_triples": 26,
+    "judge_reply": "CLAUSE: Beacon Warehouse | QUOTE: Beacon Warehouse DEPENDS_ON Flowline\nCLAUSE: consumes Flowline | QUOTE: Beacon Warehouse DEPENDS_ON Flowline\n\nYES"
+  },
+  {
+    "id": "C03",
+    "type": "connection",
+    "fact": "Flowline uses Pinebridge Data's ingestion connector.",
+    "supported": false,
+    "n_triples": 26,
+    "judge_reply": "CLAUSE: Flowline | QUOTE: Flowline has aliases: FL\nCLAUSE: Pinebridge Data | QUOTE: Pinebridge Data has aliases: Pinebridge\nCLAUSE: ingestion connector | QUOTE: Pinebridge Data SUPPLIES ingestion connector\nCLAUSE: uses | QUOTE: none\n\nNO"
+  },
+  {
+    "id": "C03",
+    "type": "connection",
+    "fact": "Beacon Warehouse depends indirectly on Pinebridge Data through Flowline.",
+    "supported": false,
+    "n_triples": 26,
+    "judge_reply": "CLAUSE: Beacon Warehouse depends on Pinebridge Data | QUOTE: none\nCLAUSE: Beacon Warehouse depends on Flowline | QUOTE: Beacon Warehouse DEPENDS_ON Flowline\nCLAUSE: Flowline depends on Pinebridge Data | QUOTE: none\n\nNO"
+  },
+  {
+    "id": "C04",
+    "type": "connection",
+    "fact": "Dispatch means Dispatch Hub, which consumes Noticeboard.",
+    "supported": false,
+    "n_triples": 26,
+    "judge_reply": "CLAUSE: Dispatch means Dispatch Hub | QUOTE: Dispatch Hub has aliases: DH\nCLAUSE: Dispatch Hub consumes Noticeboard | QUOTE: Dispatch Hub DEPENDS_ON Noticeboard\nNO"
+  },
+  {
+    "id": "C04",
+    "type": "connection",
+    "fact": "Noticeboard uses Lumen Post's delivery gateway.",
+    "supported": false,
+    "n_triples": 26,
+    "judge_reply": "CLAUSE: Noticeboard | QUOTE: Dispatch Hub DEPENDS_ON Noticeboard\nCLAUSE: Lumen Post's delivery gateway | QUOTE: Lumen Post SUPPLIES delivery gateway\nCLAUSE: uses | QUOTE: none\n\nNO"
+  },
+  {
+    "id": "C04",
+    "type": "connection",
+    "fact": "Dispatch Hub depends indirectly on Lumen Post through Noticeboard.",
+    "supported": false,
+    "n_triples": 26,
+    "judge_reply": "CLAUSE: Dispatch Hub depends indirectly on Lumen Post | QUOTE: Dispatch Hub DEPENDS_ON Noticeboard\nCLAUSE: Noticeboard depends indirectly on Lumen Post | QUOTE: none\nCLAUSE: Dispatch Hub depends on Lumen Post | QUOTE: none\n\nNO"
+  },
+  {
+    "id": "C05",
+    "type": "connection",
+    "fact": "Watchtower consumes Vault Relay.",
+    "supported": false,
+    "n_triples": 26,
+    "judge_reply": "CLAUSE: Watchtower | QUOTE: Watchtower DEPENDS_ON Vault Relay\nCLAUSE: consumes | QUOTE: none\nCLAUSE: Vault Relay | QUOTE: Vault Relay has aliases: VR\nCLAUSE: Vault Relay | QUOTE: Vault Relay USES_INTERFACE credential appliance\n\nNO"
+  },
+  {
+    "id": "C05",
+    "type": "connection",
+    "fact": "Vault Relay uses Sable Trust's credential appliance; ST means Sable Trust.",
+    "supported": true,
+    "n_triples": 26,
+    "judge_reply": "CLAUSE: Vault Relay uses Sable Trust's credential appliance | QUOTE: Vault Relay USES_INTERFACE credential appliance\nCLAUSE: ST means Sable Trust | QUOTE: Sable Trust has aliases: ST\n\nYES"
+  },
+  {
+    "id": "C05",
+    "type": "connection",
+    "fact": "Watchtower depends indirectly on Sable Trust through Vault Relay.",
+    "supported": true,
+    "n_triples": 26,
+    "judge_reply": "CLAUSE: Watchtower depends on Sable Trust | QUOTE: Watchtower DEPENDS_ON Vault Relay\nCLAUSE: Vault Relay depends on Sable Trust | QUOTE: Vault Relay USES_INTERFACE credential appliance\nCLAUSE: Sable Trust supplies credential appliance | QUOTE: Sable Trust SUPPLIES credential appliance\n\nYES"
+  },
+  {
+    "id": "C06",
+    "type": "connection",
+    "fact": "Project Beacon targets Gatehouse, which consumes Session Cache, whose feed is supplied by Sable Trust.",
+    "supported": false,
+    "n_triples": 36,
+    "judge_reply": "CLAUSE: Project Beacon targets Gatehouse | QUOTE: Project Beacon TARGETS Gatehouse\nCLAUSE: Gatehouse consumes Session Cache | QUOTE: Gatehouse DEPENDS_ON Session Cache\nCLAUSE: Session Cache's feed is supplied by Sable Trust | QUOTE: Sable Trust SUPPLIES key attestation feed\n\nNO"
+  },
+  {
+    "id": "C06",
+    "type": "connection",
+    "fact": "Project Compass targets Watchtower, which consumes Vault Relay, whose appliance is supplied by Sable Trust.",
+    "supported": false,
+    "n_triples": 36,
+    "judge_reply": "CLAUSE: Project Compass targets Watchtower | QUOTE: Project Compass TARGETS Watchtower\nCLAUSE: Watchtower consumes Vault Relay | QUOTE: Watchtower DEPENDS_ON Vault Relay\nCLAUSE: Vault Relay's appliance is supplied by Sable Trust | QUOTE: Vault Relay USES_INTERFACE credential appliance; Sable Trust SUPPLIES credential appliance\n\nNO"
+  },
+  {
+    "id": "C06",
+    "type": "connection",
+    "fact": "They share Sable Trust exposure; no direct runtime dependency between their target services is declared.",
+    "supported": false,
+    "n_triples": 36,
+    "judge_reply": "CLAUSE: They share Sable Trust exposure | QUOTE: Sable Trust SUPPLIES credential appliance\nCLAUSE: They share Sable Trust exposure | QUOTE: Sable Trust SUPPLIES key attestation feed\nCLAUSE: no direct runtime dependency between their target services is declared | QUOTE: none\n\nNO"
+  },
+  {
+    "id": "C07",
+    "type": "connection",
+    "fact": "Northstar Clinics pilots Project Harbor.",
+    "supported": false,
+    "n_triples": 47,
+    "judge_reply": "CLAUSE: Northstar Clinics pilots Project Harbor | QUOTE: Northstar Clinics PILOT_CUSTOMER_OF Project Harbor\nCLAUSE: Project Harbor | QUOTE: Project Harbor TARGETS Ledger service\nCLAUSE: Northstar Clinics | QUOTE: None\nCLAUSE: pilots | QUOTE: Northstar Clinics PILOT_CUSTOMER_OF Project Harbor\n\nNO"
+  },
+  {
+    "id": "C07",
+    "type": "connection",
+    "fact": "Project Harbor targets Ledger service.",
+    "supported": true,
+    "n_triples": 47,
+    "judge_reply": "CLAUSE: Project Harbor targets Ledger service | QUOTE: Project Harbor TARGETS Ledger service\nYES"
+  },
+  {
+    "id": "C07",
+    "type": "connection",
+    "fact": "Ledger service consumes Settlement Router.",
+    "supported": true,
+    "n_triples": 47,
+    "judge_reply": "CLAUSE: Ledger service | QUOTE: Ledger service DEPENDS_ON Settlement Router\nCLAUSE: consumes Settlement Router | QUOTE: Ledger service DEPENDS_ON Settlement Router\n\nYES"
+  },
+  {
+    "id": "C07",
+    "type": "connection",
+    "fact": "Settlement Router uses Cobalt Clearing's clearing API.",
+    "supported": false,
+    "n_triples": 47,
+    "judge_reply": "CLAUSE: Settlement Router uses clearing API | QUOTE: Settlement Router USES_INTERFACE clearing API\nCLAUSE: Cobalt Clearing's clearing API | QUOTE: none\nNO"
+  },
+  {
+    "id": "C08",
+    "type": "connection",
+    "fact": "Priya Shah leads Payments Engineering.",
+    "supported": true,
+    "n_triples": 74,
+    "judge_reply": "CLAUSE: Priya Shah leads Payments Engineering | QUOTE: Priya Shah LEADS Payments Engineering\nCLAUSE: Payments Engineering | QUOTE: Payments Engineering OWNS Ledger service\nCLAUSE: Payments Engineering | QUOTE: Payments Engineering OWNS Settlement Router\nCLAUSE: Payments Engineering | QUOTE: Payments Engineering has function: engineering\n\nYES"
+  },
+  {
+    "id": "C08",
+    "type": "connection",
+    "fact": "Payments Engineering owns Ledger service, Project Harbor's target.",
+    "supported": false,
+    "n_triples": 74,
+    "judge_reply": "CLAUSE: Payments Engineering owns Ledger service | QUOTE: Payments Engineering OWNS Ledger service\nCLAUSE: Project Harbor's target | QUOTE: Project Harbor TARGETS Ledger service\nNO"
+  },
+  {
+    "id": "C08",
+    "type": "connection",
+    "fact": "Cobalt's late sandbox delayed Project Harbor.",
+    "supported": false,
+    "n_triples": 74,
+    "judge_reply": "CLAUSE: Cobalt's late sandbox | QUOTE: representative sandbox has status: delivered late\nCLAUSE: delayed Project Harbor | QUOTE: Project Harbor REQUIRES representative sandbox\nCLAUSE: Cobalt | QUOTE: Cobalt Clearing DELIVERS representative sandbox\n\nNO"
+  },
+  {
+    "id": "C08",
+    "type": "connection",
+    "fact": "Priya Nair is the commercial contact for Cobalt; she is distinct from Priya Shah, the engineering lead.",
+    "supported": false,
+    "n_triples": 74,
+    "judge_reply": "CLAUSE: Priya Nair is the commercial contact for Cobalt | QUOTE: Priya Nair MEMBER_OF Commercial Operations\nCLAUSE: Priya Nair is the commercial contact for Cobalt | QUOTE: Priya Nair ESCALATION_CONTACT_FOR Cobalt Clearing\nCLAUSE: Priya Nair is distinct from Priya Shah | QUOTE: none\nCLAUSE: Priya Shah is the engineering lead | QUOTE: Priya Shah LEADS Payments Engineering\n\nNO"
+  },
+  {
+    "id": "C09",
+    "type": "connection",
+    "fact": "Elena Moss sponsors Project Orchard.",
+    "supported": false,
+    "n_triples": 26,
+    "judge_reply": "CLAUSE: Elena Moss sponsors Project Orchard | QUOTE: Elena Moss SPONSORS Project Orchard\nCLAUSE: Elena Moss sponsors Project Orchard | QUOTE: none\nCLAUSE: Elena Moss sponsors Project Orchard | QUOTE: none\n\nNO"
+  },
+  {
+    "id": "C09",
+    "type": "connection",
+    "fact": "Juniper Freight pilots Project Orchard.",
+    "supported": false,
+    "n_triples": 26,
+    "judge_reply": "CLAUSE: Juniper Freight pilots Project Orchard | QUOTE: Juniper Freight PILOT_CUSTOMER_OF Project Orchard\nCLAUSE: Juniper Freight pilots Project Orchard | QUOTE: none\nNO"
+  },
+  {
+    "id": "C09",
+    "type": "connection",
+    "fact": "Project Orchard targets Beacon Warehouse.",
+    "supported": false,
+    "n_triples": 26,
+    "judge_reply": "CLAUSE: Project Orchard targets Beacon Warehouse | QUOTE: Project Orchard TARGETS Beacon Warehouse\nCLAUSE: Beacon Warehouse has aliases: BW | QUOTE: Beacon Warehouse has aliases: BW\nNO"
+  },
+  {
+    "id": "C10",
+    "type": "connection",
+    "fact": "Sable Trust requires signed revision-specific attestations and Alex Kim's security acceptance before a new revision is used in a pilot.",
+    "supported": false,
+    "n_triples": 28,
+    "judge_reply": "CLAUSE: Sable Trust requires signed revision-specific attestations | QUOTE: Sable Trust SUPPLIES signed attestation bundle\nCLAUSE: Sable Trust requires signed revision-specific attestations | QUOTE: Sable Trust SUPPLIES signed key attestation\nCLAUSE: Alex Kim's security acceptance | QUOTE: Alex Kim ACCEPTANCE_REVIEWER_FOR expiry evidence\nCLAUSE: Alex Kim's security acceptance | QUOTE: Alex Kim ACCEPTANCE_REVIEWER_FOR revised signed bundle\nCLAUSE: Alex Kim's security acceptance | QUOTE: Alex Kim has title: Security Assurance reviewer\nCLAUSE: a new revision is used in a pilot | QUOTE: Project Compass HAS_MILESTONE pilot\nCLAUSE: a new revision is used in a pilot | QUOTE: Project Beacon HAS_MILESTONE pilot\n\nNO"
+  },
+  {
+    "id": "C10",
+    "type": "connection",
+    "fact": "Project Beacon waited for a late signed key attestation and Alex Kim required expiry evidence.",
+    "supported": false,
+    "n_triples": 28,
+    "judge_reply": "CLAUSE: Project Beacon waited for a late signed key attestation | QUOTE: Sable Trust SUPPLIES signed key attestation\nCLAUSE: Alex Kim required expiry evidence | QUOTE: Alex Kim ACCEPTANCE_REVIEWER_FOR expiry evidence\nNO"
+  },
+  {
+    "id": "C10",
+    "type": "connection",
+    "fact": "Project Compass waited for a late revised appliance attestation and Alex Kim required revision-specific evidence and a rotation rehearsal.",
+    "supported": false,
+    "n_triples": 28,
+    "judge_reply": "CLAUSE: Project Compass waited for a late revised appliance attestation | QUOTE: none\nCLAUSE: Alex Kim required revision-specific evidence | QUOTE: Alex Kim ACCEPTANCE_REVIEWER_FOR revised signed bundle\nCLAUSE: Alex Kim required a rotation rehearsal | QUOTE: INC-001 has detection: Rotation exercise\n\nNO"
+  },
+  {
+    "id": "C10",
+    "type": "connection",
+    "fact": "Receipt or acceptance of an old revision is insufficient for the new revision's pilot.",
+    "supported": false,
+    "n_triples": 28,
+    "judge_reply": "CLAUSE: Receipt or acceptance of an old revision | QUOTE: receipt has previous_date: 2023-08-25\nCLAUSE: Receipt or acceptance of an old revision | QUOTE: acceptance has previous_date: 2023-08-25\nCLAUSE: is insufficient for the new revision's pilot | QUOTE: None\nCLAUSE: is insufficient for the new revision's pilot | QUOTE: pilot has date: 2026-04-24\n\nNO"
+  },
+  {
+    "id": "A01",
+    "type": "aggregation",
+    "fact": "Project Beacon targets Gatehouse, which consumes Session Cache supplied by Sable Trust; its signed key attestation was nine days late.",
+    "supported": false,
+    "n_triples": 58,
+    "judge_reply": "CLAUSE: Project Beacon targets Gatehouse | QUOTE: Project Beacon TARGETS Gatehouse\nCLAUSE: Gatehouse consumes Session Cache | QUOTE: Gatehouse DEPENDS_ON Session Cache\nCLAUSE: Session Cache supplied by Sable Trust | QUOTE: Session Cache has aliases: SC; Sable Trust SUPPLIES signed key attestation\nCLAUSE: its signed key attestation was nine days late | QUOTE: none\n\nNO"
+  },
+  {
+    "id": "A01",
+    "type": "aggregation",
+    "fact": "Project Compass targets Watchtower, which consumes Vault Relay supplied by Sable Trust; its revised appliance attestation was eleven days late.",
+    "supported": false,
+    "n_triples": 58,
+    "judge_reply": "CLAUSE: Project Compass targets Watchtower | QUOTE: Project Compass TARGETS Watchtower\nCLAUSE: Watchtower consumes Vault Relay | QUOTE: Watchtower DEPENDS_ON Vault Relay\nCLAUSE: Vault Relay supplied by Sable Trust | QUOTE: Sable Trust SUPPLIES credential appliance\nCLAUSE: Sable Trust SUPPLIES appliance attestation | QUOTE: Sable Trust SUPPLIES appliance attestation\nCLAUSE: its revised appliance attestation was eleven days late | QUOTE: none\n\nNO"
+  },
+  {
+    "id": "A01",
+    "type": "aggregation",
+    "fact": "The complete matching project set is Project Beacon and Project Compass.",
+    "supported": false,
+    "n_triples": 58,
+    "judge_reply": "CLAUSE: The complete matching project set is Project Beacon | QUOTE: None\nCLAUSE: The complete matching project set is Project Compass | QUOTE: None\n\nNO"
+  },
+  {
+    "id": "A02",
+    "type": "aggregation",
+    "fact": "Northstar Clinics: Project Harbor; Cobalt's sandbox.",
+    "supported": true,
+    "n_triples": 65,
+    "judge_reply": "CLAUSE: Northstar Clinics: Project Harbor | QUOTE: Northstar Clinics PILOT_CUSTOMER_OF Project Harbor\nCLAUSE: Cobalt's sandbox | QUOTE: Cobalt Clearing DELIVERS representative sandbox\nCLAUSE: Cobalt's sandbox | QUOTE: Cobalt Clearing has aliases: Cobalt\n\nYES"
+  },
+  {
+    "id": "A02",
+    "type": "aggregation",
+    "fact": "Alder Bank: Project Beacon; Sable's signed key attestation.",
+    "supported": true,
+    "n_triples": 65,
+    "judge_reply": "CLAUSE: Alder Bank: Project Beacon | QUOTE: Alder Bank PILOT_CUSTOMER_OF Project Beacon\nCLAUSE: Sable's signed key attestation | QUOTE: Sable Trust SUPPLIES signed key attestation\nYES"
+  },
+  {
+    "id": "A02",
+    "type": "aggregation",
+    "fact": "Juniper Freight: Project Orchard; Pinebridge's connector harness.",
+    "supported": true,
+    "n_triples": 65,
+    "judge_reply": "CLAUSE: Juniper Freight: Project Orchard | QUOTE: Juniper Freight PILOT_CUSTOMER_OF Project Orchard\nCLAUSE: Pinebridge's connector harness | QUOTE: Pinebridge Data DELIVERS connector harness\nCLAUSE: Pinebridge's connector harness | QUOTE: connector harness has date: 2026-06-12\n\nYES"
+  },
+  {
+    "id": "A02",
+    "type": "aggregation",
+    "fact": "Solstice Retail: Project Relay; Lumen's residency addendum.",
+    "supported": true,
+    "n_triples": 65,
+    "judge_reply": "CLAUSE: Solstice Retail | QUOTE: Solstice Retail PILOT_CUSTOMER_OF Project Relay\nCLAUSE: Project Relay | QUOTE: Solstice Retail PILOT_CUSTOMER_OF Project Relay\nCLAUSE: Lumen's residency addendum | QUOTE: Lumen Post DELIVERS residency addendum\nCLAUSE: Lumen | QUOTE: Lumen Post DELIVERS residency addendum\n\nYES"
+  },
+  {
+    "id": "A02",
+    "type": "aggregation",
+    "fact": "Tern Energy: Project Compass; Sable's revised appliance attestation.",
+    "supported": false,
+    "n_triples": 65,
+    "judge_reply": "CLAUSE: Tern Energy: Project Compass | QUOTE: Tern Energy PILOT_CUSTOMER_OF Project Compass\nCLAUSE: Sable's revised appliance attestation | QUOTE: Sable Trust SUPPLIES appliance attestation\nCLAUSE: Sable's revised appliance attestation | QUOTE: Sable Trust SUPPLIES signed key attestation\n\nNO"
+  },
+  {
+    "id": "A03",
+    "type": "aggregation",
+    "fact": "Elena Moss: Project Harbor (late Cobalt sandbox) and Project Orchard (late Pinebridge harness).",
+    "supported": false,
+    "n_triples": 69,
+    "judge_reply": "CLAUSE: Elena Moss | QUOTE: Elena Moss SPONSORS Project Harbor\nCLAUSE: Project Harbor | QUOTE: Elena Moss SPONSORS Project Harbor\nCLAUSE: late Cobalt sandbox | QUOTE: Cobalt Clearing DELIVERS representative sandbox\nCLAUSE: representative sandbox | QUOTE: Cobalt Clearing DELIVERS representative sandbox\nCLAUSE: Project Orchard | QUOTE: Elena Moss SPONSORS Project Orchard\nCLAUSE: late Pinebridge harness | QUOTE: Pinebridge Data DELIVERS connector harness\nCLAUSE: connector harness | QUOTE: Pinebridge Data DELIVERS connector harness\n\nNO"
+  },
+  {
+    "id": "A03",
+    "type": "aggregation",
+    "fact": "Victor Hale: Project Beacon (late Sable key attestation) and Project Compass (late Sable appliance attestation).",
+    "supported": false,
+    "n_triples": 69,
+    "judge_reply": "CLAUSE: Victor Hale | QUOTE: Victor Hale SPONSORS Project Beacon\nCLAUSE: Project Beacon | QUOTE: Victor Hale SPONSORS Project Beacon\nCLAUSE: late Sable key attestation | QUOTE: None\nCLAUSE: Victor Hale | QUOTE: Victor Hale SPONSORS Project Compass\nCLAUSE: Project Compass | QUOTE: Victor Hale SPONSORS Project Compass\nCLAUSE: late Sable appliance attestation | QUOTE: None\n\nNO"
+  },
+  {
+    "id": "A03",
+    "type": "aggregation",
+    "fact": "Dana Wu: Project Relay (late Lumen residency addendum).",
+    "supported": false,
+    "n_triples": 69,
+    "judge_reply": "CLAUSE: Dana Wu | QUOTE: Dana Wu SPONSORS Project Relay\nCLAUSE: Project Relay | QUOTE: Dana Wu SPONSORS Project Relay\nCLAUSE: late Lumen residency addendum | QUOTE: pilot DELAYED_BY residency addendum\nCLAUSE: late Lumen residency addendum | QUOTE: Lumen Post DELIVERS residency addendum\n\nNO"
+  },
+  {
+    "id": "A04",
+    "type": "aggregation",
+    "fact": "INC-031: Ledger service; Payments Engineering; Priya Shah.",
+    "supported": true,
+    "n_triples": 97,
+    "judge_reply": "CLAUSE: INC-031 | QUOTE: INC-031 AFFECTED_SERVICE Ledger service\nCLAUSE: Ledger service; Payments Engineering | QUOTE: Payments Engineering OWNS Ledger service\nCLAUSE: Priya Shah | QUOTE: Priya Shah LEADS Payments Engineering\n\nYES"
+  },
+  {
+    "id": "A04",
+    "type": "aggregation",
+    "fact": "INC-044: Gatehouse; Identity Engineering; Omar Bell.",
+    "supported": true,
+    "n_triples": 97,
+    "judge_reply": "CLAUSE: INC-044 | QUOTE: INC-044 AFFECTED_SERVICE Gatehouse\nCLAUSE: Gatehouse | QUOTE: Gatehouse DEPENDS_ON Session Cache\nCLAUSE: Identity Engineering | QUOTE: Identity Engineering OWNS Gatehouse\nCLAUSE: Omar Bell | QUOTE: Omar Bell LEADS Identity Engineering\n\nYES"
+  },
+  {
+    "id": "A04",
+    "type": "aggregation",
+    "fact": "INC-062: Flowline; Data Platform; Mei Chen.",
+    "supported": false,
+    "n_triples": 97,
+    "judge_reply": "CLAUSE: INC-062 | QUOTE: INC-062 AFFECTED_SERVICE Beacon Warehouse\nCLAUSE: Flowline | QUOTE: Data Platform OWNS Flowline\nCLAUSE: Mei Chen | QUOTE: Mei Chen LEADS Data Platform\n\nNO"
+  },
+  {
+    "id": "A04",
+    "type": "aggregation",
+    "fact": "INC-073: Noticeboard; Customer Operations; Luis Ortega.",
+    "supported": true,
+    "n_triples": 97,
+    "judge_reply": "CLAUSE: INC-073 | QUOTE: INC-073 AFFECTED_SERVICE Dispatch\nCLAUSE: INC-073: Noticeboard | QUOTE: INC-073 AFFECTED_SERVICE Noticeboard\nCLAUSE: Customer Operations | QUOTE: Customer Operations OWNS Dispatch Hub\nCLAUSE: Customer Operations | QUOTE: Customer Operations OWNS Noticeboard\nCLAUSE: Luis Ortega | QUOTE: Luis Ortega LEADS Customer Operations\n\nYES"
+  },
+  {
+    "id": "A04",
+    "type": "aggregation",
+    "fact": "INC-084: Vault Relay; Reliability Engineering; Nora Reed.",
+    "supported": true,
+    "n_triples": 97,
+    "judge_reply": "CLAUSE: INC-084 | QUOTE: INC-084 AFFECTED_CUSTOMER Tern Energy\nCLAUSE: Vault Relay | QUOTE: Reliability Engineering OWNS Vault Relay\nCLAUSE: Reliability Engineering | QUOTE: Reliability Engineering OWNS Vault Relay\nCLAUSE: Nora Reed | QUOTE: Nora Reed LEADS Reliability Engineering\n\nYES"
+  },
+  {
+    "id": "A05",
+    "type": "aggregation",
+    "fact": "Priya Shah: INC-031 failed-submission alert; open, due October 9.",
+    "supported": false,
+    "n_triples": 132,
+    "judge_reply": "CLAUSE: Priya Shah | QUOTE: Priya Shah LEADS Payments Engineering\nCLAUSE: INC-031 | QUOTE: INC-031 AFFECTED_CUSTOMER Northstar Clinics\nCLAUSE: failed-submission alert | QUOTE: failure alert ADDRESSES INC-031\nCLAUSE: open | QUOTE: failure alert has status: open\nCLAUSE: due October 9 | QUOTE: failure alert has due_date: 2026-10-09\n\nNO"
+  },
+  {
+    "id": "A05",
+    "type": "aggregation",
+    "fact": "Omar Bell: INC-044 failed-login alert; open, due October 9.",
+    "supported": false,
+    "n_triples": 132,
+    "judge_reply": "CLAUSE: Omar Bell | QUOTE: Omar Bell LEADS Identity Engineering\nCLAUSE: INC-044 | QUOTE: INC-044 AFFECTED_CUSTOMER Alder Bank\nCLAUSE: failed-login alert | QUOTE: failure alert ADDRESSES INC-044\nCLAUSE: open | QUOTE: failure alert has status: open\nCLAUSE: due October 9 | QUOTE: failure alert has due_date: 2026-10-09\n\nNO"
+  },
+  {
+    "id": "A05",
+    "type": "aggregation",
+    "fact": "Mei Chen: INC-062 row-count reconciliation alert; open, due October 16.",
+    "supported": false,
+    "n_triples": 132,
+    "judge_reply": "CLAUSE: Mei Chen | QUOTE: Mei Chen LEADS Data Platform\nCLAUSE: INC-062 row-count reconciliation alert | QUOTE: INC-062 AFFECTED_SERVICE Beacon Warehouse\nCLAUSE: open | QUOTE: reconciliation alert ADDRESSES INC-062\nCLAUSE: due October 16 | QUOTE: reconciliation alert has due_date: 2026-10-16\n\nNO"
+  },
+  {
+    "id": "A05",
+    "type": "aggregation",
+    "fact": "Luis Ortega: INC-073 delivery-confirmation alert; open, due October 16.",
+    "supported": false,
+    "n_triples": 132,
+    "judge_reply": "CLAUSE: Luis Ortega | QUOTE: Luis Ortega LEADS Customer Operations\nCLAUSE: INC-073 delivery-confirmation alert | QUOTE: confirmation alert ADDRESSES INC-073\nCLAUSE: open | QUOTE: confirmation alert has status: open\nCLAUSE: due October 16 | QUOTE: confirmation alert has due_date: 2023-10-16\n\nNO"
+  },
+  {
+    "id": "A05",
+    "type": "aggregation",
+    "fact": "Nora Reed: INC-084 telemetry-freshness alert; open, due October 23.",
+    "supported": false,
+    "n_triples": 132,
+    "judge_reply": "CLAUSE: Nora Reed | QUOTE: Nora Reed LEADS Reliability Engineering\nCLAUSE: INC-084 telemetry-freshness alert | QUOTE: telemetry-freshness alert ADDRESSES report of missing telemetry\nCLAUSE: open | QUOTE: telemetry-freshness alert has status: open\nCLAUSE: due October 23 | QUOTE: freshness alert has due_date: 2023-10-23\n\nNO"
+  },
+  {
+    "id": "A06",
+    "type": "aggregation",
+    "fact": "Project Beacon: Gatehouse consumes Session Cache, whose feed comes from Sable Trust.",
+    "supported": false,
+    "n_triples": 46,
+    "judge_reply": "CLAUSE: Project Beacon: Gatehouse | QUOTE: Project Beacon TARGETS Gatehouse\nCLAUSE: Gatehouse consumes Session Cache | QUOTE: Gatehouse DEPENDS_ON Session Cache\nCLAUSE: Session Cache, whose feed comes from Sable Trust | QUOTE: Session Cache has aliases: SC; Sable Trust SUPPLIES credential appliance; Sable Trust SUPPLIES key attestation feed\n\nNO"
+  },
+  {
+    "id": "A06",
+    "type": "aggregation",
+    "fact": "Project Compass: Watchtower consumes Vault Relay, whose appliance comes from Sable Trust.",
+    "supported": false,
+    "n_triples": 46,
+    "judge_reply": "CLAUSE: Project Compass: Watchtower consumes Vault Relay | QUOTE: Project Compass TARGETS Watchtower\nCLAUSE: Watchtower consumes Vault Relay | QUOTE: Watchtower DEPENDS_ON Vault Relay\nCLAUSE: Vault Relay, whose appliance comes from Sable Trust | QUOTE: Vault Relay USES_INTERFACE credential appliance\nCLAUSE: Sable Trust SUPPLIES credential appliance | QUOTE: Sable Trust SUPPLIES credential appliance\n\nNO"
+  },
+  {
+    "id": "A06",
+    "type": "aggregation",
+    "fact": "Victor Hale sponsors both projects and approved $25,000 per initiative.",
+    "supported": false,
+    "n_triples": 46,
+    "judge_reply": "CLAUSE: Victor Hale sponsors both projects | QUOTE: Victor Hale SPONSORS Project Beacon\nCLAUSE: Victor Hale sponsors both projects | QUOTE: Victor Hale SPONSORS Project Compass\nCLAUSE: approved $25,000 per initiative | QUOTE: validation reserve for each initiative Victor Hale sponsors has amount: 25000\n\nNO"
+  },
+  {
+    "id": "A06",
+    "type": "aggregation",
+    "fact": "Project Beacon has $25,000 and Project Compass has $25,000, totaling $50,000 of approved reserves, not spending.",
+    "supported": false,
+    "n_triples": 46,
+    "judge_reply": "CLAUSE: Project Beacon has $25,000 | QUOTE: Victor Hale SPONSORS Project Beacon\nCLAUSE: Project Compass has $25,000 | QUOTE: Victor Hale SPONSORS Project Compass\nCLAUSE: totaling $50,000 of approved reserves | QUOTE: validation reserve for each initiative Victor Hale sponsors has amount: 25000\nCLAUSE: not spending | QUOTE: none\n\nNO"
+  },
+  {
+    "id": "A07",
+    "type": "aggregation",
+    "fact": "Elena Moss sponsors Project Harbor and Project Orchard.",
+    "supported": true,
+    "n_triples": 48,
+    "judge_reply": "CLAUSE: Elena Moss sponsors Project Harbor | QUOTE: Elena Moss SPONSORS Project Harbor\nCLAUSE: Elena Moss sponsors Project Orchard | QUOTE: Elena Moss SPONSORS Project Orchard\n\nYES"
+  },
+  {
+    "id": "A07",
+    "type": "aggregation",
+    "fact": "Northstar Clinics pilots Project Harbor; revised pilot date April 24, 2026.",
+    "supported": true,
+    "n_triples": 48,
+    "judge_reply": "CLAUSE: Northstar Clinics pilots Project Harbor | QUOTE: Northstar Clinics PILOT_CUSTOMER_OF Project Harbor\nCLAUSE: revised pilot date April 24, 2026 | QUOTE: pilot has date: 2026-04-24\n\nYES"
+  },
+  {
+    "id": "A07",
+    "type": "aggregation",
+    "fact": "Juniper Freight pilots Project Orchard; revised pilot date June 26, 2026.",
+    "supported": false,
+    "n_triples": 48,
+    "judge_reply": "CLAUSE: Juniper Freight pilots Project Orchard | QUOTE: Juniper Freight PILOT_CUSTOMER_OF Project Orchard\nCLAUSE: revised pilot date June 26, 2026 | QUOTE: None\n\nNO"
+  },
+  {
+    "id": "A08",
+    "type": "aggregation",
+    "fact": "INC-062: Flowline triggered the incident; Pinebridge Data supplies its connector.",
+    "supported": false,
+    "n_triples": 74,
+    "judge_reply": "CLAUSE: INC-062: Flowline triggered the incident | QUOTE: INC-062 has trigger: An FL pagination change skipped the second page of an ingestion batch\nCLAUSE: Pinebridge Data supplies its connector | QUOTE: Pinebridge Data SUPPLIES ingestion connector\nNO"
+  },
+  {
+    "id": "A08",
+    "type": "aggregation",
+    "fact": "INC-073: Noticeboard triggered the incident; Lumen Post supplies its gateway.",
+    "supported": false,
+    "n_triples": 74,
+    "judge_reply": "CLAUSE: INC-073: Noticeboard triggered the incident | QUOTE: INC-073 has trigger: Noticeboard callback contract change\nCLAUSE: Lumen Post supplies its gateway | QUOTE: Lumen Post SUPPLIES delivery gateway\nNO"
+  },
+  {
+    "id": "A08",
+    "type": "aggregation",
+    "fact": "INC-084: Vault Relay triggered the incident; Sable Trust supplies its appliance.",
+    "supported": false,
+    "n_triples": 74,
+    "judge_reply": "CLAUSE: INC-084: Vault Relay triggered the incident | QUOTE: INC-084 AFFECTED_SERVICE Vault Relay\nCLAUSE: Sable Trust supplies its appliance | QUOTE: Sable Trust SUPPLIES credential appliance\nNO"
+  },
+  {
+    "id": "A08",
+    "type": "aggregation",
+    "fact": "These are supplier relationships, not proof the vendors caused the incidents.",
+    "supported": false,
+    "n_triples": 74,
+    "judge_reply": "CLAUSE: These are supplier relationships | QUOTE: None\nCLAUSE: not proof the vendors caused the incidents | QUOTE: None\n\nNO"
+  },
+  {
+    "id": "A09",
+    "type": "aggregation",
+    "fact": "Project Harbor: Cobalt sandbox twelve days late; Elena Moss; revised pilot April 24, 2026.",
+    "supported": false,
+    "n_triples": 69,
+    "judge_reply": "CLAUSE: Project Harbor | QUOTE: Project Harbor HAS_MILESTONE pilot\nCLAUSE: Cobalt sandbox | QUOTE: Cobalt Clearing DELIVERS representative sandbox\nCLAUSE: twelve days late | QUOTE: None\nCLAUSE: Elena Moss | QUOTE: Elena Moss SPONSORS Project Harbor\nCLAUSE: revised pilot | QUOTE: pilot has date: 2026-04-24\n\nNO"
+  },
+  {
+    "id": "A09",
+    "type": "aggregation",
+    "fact": "Project Orchard: Pinebridge harness fourteen days late; Elena Moss; revised pilot June 26, 2026.",
+    "supported": false,
+    "n_triples": 69,
+    "judge_reply": "CLAUSE: Project Orchard | QUOTE: Project Orchard HAS_MILESTONE pilot\nCLAUSE: Pinebridge harness | QUOTE: Pinebridge Data DELIVERS connector harness\nCLAUSE: fourteen days late | QUOTE: connector harness has date: 2026-06-12\nCLAUSE: connector harness has status: delivered late\nCLAUSE: Elena Moss | QUOTE: Elena Moss SPONSORS Project Orchard\nCLAUSE: revised pilot June 26, 2026 | QUOTE: pilot has date: 2026-04-24\n\nNO"
+  },
+  {
+    "id": "A09",
+    "type": "aggregation",
+    "fact": "Project Compass: Sable appliance attestation eleven days late; Victor Hale; revised pilot August 28, 2026.",
+    "supported": false,
+    "n_triples": 69,
+    "judge_reply": "CLAUSE: Project Compass | QUOTE: Project Compass HAS_MILESTONE pilot\nCLAUSE: Sable appliance attestation | QUOTE: Sable Trust SUPPLIES appliance attestation\nCLAUSE: eleven days late | QUOTE: None\nCLAUSE: Victor Hale | QUOTE: Victor Hale SPONSORS Project Compass\nCLAUSE: revised pilot August 28, 2026 | QUOTE: None\n\nNO"
+  },
+  {
+    "id": "A09",
+    "type": "aggregation",
+    "fact": "Project Beacon (nine days) and Project Relay (six days) do not meet the threshold.",
+    "supported": false,
+    "n_triples": 69,
+    "judge_reply": "CLAUSE: Project Beacon (nine days) | QUOTE: None\nCLAUSE: Project Relay (six days) | QUOTE: None\nCLAUSE: do not meet the threshold | QUOTE: None\n\nNO"
+  },
+  {
+    "id": "A10",
+    "type": "aggregation",
+    "fact": "Data Platform demonstrated ingestion backfill, owns Beacon Warehouse, Project Orchard targets Beacon Warehouse, and Juniper Freight pilots Project Orchard.",
+    "supported": true,
+    "n_triples": 61,
+    "judge_reply": "CLAUSE: Data Platform demonstrated ingestion backfill | QUOTE: Data Platform PERFORMED multi-page ingestion backfill\nCLAUSE: Data Platform owns Beacon Warehouse | QUOTE: Data Platform OWNS Beacon Warehouse\nCLAUSE: Project Orchard targets Beacon Warehouse | QUOTE: Project Orchard TARGETS Beacon Warehouse\nCLAUSE: Juniper Freight pilots Project Orchard | QUOTE: Juniper Freight PILOT_CUSTOMER_OF Project Orchard\n\nYES"
+  },
+  {
+    "id": "A10",
+    "type": "aggregation",
+    "fact": "Customer Operations demonstrated notice retries, owns Dispatch Hub, Project Relay targets Dispatch Hub, and Solstice Retail pilots Project Relay.",
+    "supported": true,
+    "n_triples": 61,
+    "judge_reply": "CLAUSE: Customer Operations demonstrated notice retries | QUOTE: Customer Operations PERFORMED notice retries after a rejected acknowledgement\nCLAUSE: Customer Operations owns Dispatch Hub | QUOTE: Customer Operations OWNS Dispatch Hub\nCLAUSE: Project Relay targets Dispatch Hub | QUOTE: Project Relay TARGETS Dispatch Hub\nCLAUSE: Solstice Retail pilots Project Relay | QUOTE: Solstice Retail PILOT_CUSTOMER_OF Project Relay\n\nYES"
+  },
+  {
+    "id": "A10",
+    "type": "aggregation",
+    "fact": "The complete matching customer set is Juniper Freight and Solstice Retail.",
+    "supported": false,
+    "n_triples": 61,
+    "judge_reply": "CLAUSE: The complete matching customer set is Juniper Freight and Solstice Retail | QUOTE: none\nCLAUSE: Juniper Freight | QUOTE: Juniper Freight PILOT_CUSTOMER_OF Project Orchard\nCLAUSE: Solstice Retail | QUOTE: Solstice Retail PILOT_CUSTOMER_OF Project Relay\n\nNO"
+  }
+]
