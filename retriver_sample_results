@@ -1,0 +1,154 @@
+
+================================================================================GRAPHRAG================================================================================
+Rank: 1
+Score: 0.7578
+Source: 03_runtime_dependencies
+Chunk: 0
+Graph facts: 
+INC-073 AFFECTED_SERVICE Dispatch Hub
+INC-001 AFFECTED_SERVICE Dispatch Hub
+Dispatch Hub USES_INTERFACE Noticeboard callback contract
+Project Relay TARGETS Dispatch Hub
+Dispatch Hub DEPENDS_ON Noticeboard
+Customer Operations OWNS Dispatch Hub
+INC-031 AFFECTED_SERVICE Ledger service
+Project Harbor TARGETS Ledger service
+Ledger service DEPENDS_ON Settlement Router
+Payments Engineering OWNS Ledger service
+Settlement Router USES_INTERFACE clearing API
+Payments Engineering OWNS Settlement Router
+Flowline USES_INTERFACE ingestion connector
+Beacon Warehouse DEPENDS_ON Flowline
+Data Platform OWNS Flowline
+INC-001 AFFECTED_SERVICE Noticeboard
+Noticeboard USES_INTERFACE delivery gateway
+Customer Operations OWNS Noticeboard
+INC-084 AFFECTED_SERVICE Watchtower
+Project Compass TARGETS Watchtower
+Watchtower DEPENDS_ON Vault Relay
+Reliability Engineering OWNS Watchtower
+Session Cache USES_INTERFACE key attestation feed
+Gatehouse DEPENDS_ON Session Cache
+Identity Engineering OWNS Session Cache
+INC-031 AFFECTED_SERVICE Beacon Warehouse
+INC-062 AFFECTED_SERVICE Beacon Warehouse
+Project Orchard TARGETS Beacon Warehouse
+Data Platform OWNS Beacon Warehouse
+INC-044 AFFECTED_SERVICE Gatehouse
+Project Beacon TARGETS Gatehouse
+Identity Engineering OWNS Gatehouse
+INC-084 AFFECTED_SERVICE Vault Relay
+Vault Relay USES_INTERFACE credential appliance
+Reliability Engineering OWNS Vault Relay
+Text:
+Runtime architecture note — September 18, 2026
+
+Ledger service consumes Settlement Router to send settlement batches. Gatehouse consumes Session Cache for login sessions. Beacon Warehouse consumes Flowline for ingestion. Dispatch Hub consumes Noticeboard to deliver customer notifications. Watchtower consumes Vault Relay to access monitoring credentials.
+
+These are direct operational dependencies, oriented from consumer to provider. No other direct service dependency is declared in this snapshot.
+
+----------------------
+
+
+Rank: 2
+Score: 0.7538
+Source: 02_service_ownership
+Chunk: 0
+Graph facts: 
+INC-084 AFFECTED_SERVICE Vault Relay
+Vault Relay USES_INTERFACE credential appliance
+Watchtower DEPENDS_ON Vault Relay
+Reliability Engineering OWNS Vault Relay
+INC-001 AFFECTED_SERVICE Noticeboard
+Noticeboard USES_INTERFACE delivery gateway
+Dispatch Hub DEPENDS_ON Noticeboard
+Customer Operations OWNS Noticeboard
+INC-084 AFFECTED_SERVICE Watchtower
+Project Compass TARGETS Watchtower
+Reliability Engineering OWNS Watchtower
+Customer Operations PERFORMED notice retries after a rejected acknowledgement
+Luis Ortega LEADS Customer Operations
+Customer Operations PART_OF Commercial Operations
+Customer Operations OWNS Dispatch Hub
+Flowline USES_INTERFACE ingestion connector
+Beacon Warehouse DEPENDS_ON Flowline
+Data Platform OWNS Flowline
+Reliability Engineering PERFORMED overlapping credential rotation
+Reliability Engineering PART_OF Commercial Operations
+Nora Reed LEADS Reliability Engineering
+INC-073 AFFECTED_SERVICE Dispatch Hub
+INC-001 AFFECTED_SERVICE Dispatch Hub
+Dispatch Hub USES_INTERFACE Noticeboard callback contract
+Project Relay TARGETS Dispatch Hub
+INC-031 AFFECTED_SERVICE Beacon Warehouse
+INC-062 AFFECTED_SERVICE Beacon Warehouse
+Project Orchard TARGETS Beacon Warehouse
+Data Platform OWNS Beacon Warehouse
+Data Platform PERFORMED multi-page ingestion backfill
+Data Platform PART_OF Commercial Operations
+Mei Chen LEADS Data Platform
+Session Cache USES_INTERFACE key attestation feed
+Gatehouse DEPENDS_ON Session Cache
+Identity Engineering OWNS Session Cache
+INC-044 AFFECTED_SERVICE Gatehouse
+Project Beacon TARGETS Gatehouse
+Identity Engineering OWNS Gatehouse
+Identity Engineering PERFORMED short-session validation
+Omar Bell LEADS Identity Engineering
+Identity Engineering PART_OF Commercial Operations
+Settlement Router USES_INTERFACE clearing API
+Ledger service DEPENDS_ON Settlement Router
+Payments Engineering OWNS Settlement Router
+INC-031 AFFECTED_SERVICE Ledger service
+Project Harbor TARGETS Ledger service
+Payments Engineering OWNS Ledger service
+Payments Engineering PERFORMED settlement replay
+Payments Engineering PART_OF Commercial Operations
+Priya Shah LEADS Payments Engineering
+Text:
+Engineering service register — September 30, 2026
+
+Payments Engineering owns Ledger service and Settlement Router. Identity Engineering owns Gatehouse and Session Cache. Data Platform owns Beacon Warehouse and Flowline. Customer Operations owns Dispatch Hub and Noticeboard. Reliability Engineering owns Watchtower and Vault Relay.
+
+Ownership means responsibility for deployment approval and corrective actions. A consumer of a service does not acquire ownership. The register applies throughout 
+
+----------------------
+
+
+Rank: 3
+Score: 0.7255
+Source: 03_runtime_dependencies
+Chunk: 1
+Graph facts: 
+Flowline USES_INTERFACE ingestion connector
+Beacon Warehouse DEPENDS_ON Flowline
+Data Platform OWNS Flowline
+INC-031 AFFECTED_SERVICE Beacon Warehouse
+INC-062 AFFECTED_SERVICE Beacon Warehouse
+Project Orchard TARGETS Beacon Warehouse
+Data Platform OWNS Beacon Warehouse
+INC-073 AFFECTED_SERVICE Dispatch Hub
+INC-001 AFFECTED_SERVICE Dispatch Hub
+Dispatch Hub USES_INTERFACE Noticeboard callback contract
+Project Relay TARGETS Dispatch Hub
+Dispatch Hub DEPENDS_ON Noticeboard
+Customer Operations OWNS Dispatch Hub
+INC-044 AFFECTED_SERVICE Gatehouse
+Project Beacon TARGETS Gatehouse
+Gatehouse DEPENDS_ON Session Cache
+Identity Engineering OWNS Gatehouse
+INC-084 AFFECTED_SERVICE Vault Relay
+Vault Relay USES_INTERFACE credential appliance
+Watchtower DEPENDS_ON Vault Relay
+Reliability Engineering OWNS Vault Relay
+INC-031 AFFECTED_SERVICE Ledger service
+Project Harbor TARGETS Ledger service
+Ledger service DEPENDS_ON Settlement Router
+Payments Engineering OWNS Ledger service
+Text:
+oriented from consumer to provider. No other direct service dependency is declared in this snapshot. Sharing a vendor is not a direct runtime dependency.
+
+The ledger is also called LDG; both names refer to Ledger service. GH is Gatehouse. BW is Beacon Warehouse, and FL is Flowline. Dispatch Hub is sometimes shortened to Dispatch. VR is Vault Relay. Project Beacon and Harbor Operations are never service aliases. Engineers should preserve these distinctions in incident tickets and dependency 
+
+----------------------
+

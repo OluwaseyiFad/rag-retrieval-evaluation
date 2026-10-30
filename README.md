@@ -87,3 +87,6 @@ Ablation is important: after every change, the graph coverage is re-ran as to me
 Based on the graph coverage result, a lot of iteration was done for the graph extraction prompt. graph_coverage.py collects the graph triples and entity properties extracted from that question's evidence documents. And based on the result from that, the 40/110 was the best that was acheieved based on few iterations conducted. This meant for 40 facts, the graph contained  everything needed, and for the other 70 somethinh was missing or wrong. Obviosly this is not an ideal result, hence in real production pipelines, more iteration is necessary.
 
 
+### GraphRAG Retriever and Answering
+
+Retriver was created based on index from chunk_embeddings from the graph, and then based on the top_k=3 the chunk text and graph facts were passed to the llm as context to generate an answer for each query. I observed that the combination of the graph facts and the chunk text really helped the LLM in answering the questions right especially for the multi-hop type of questions which are the kind graphRAG are most suitabled for as ascertained earlier. Most investigation and iteration will be carried out to determine potential rooms for improvements. 

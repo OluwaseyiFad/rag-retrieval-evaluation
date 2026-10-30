@@ -17,8 +17,6 @@ driver = create_neo4j_driver()
 embedder = OllamaEmbeddings(
     model="locusai/all-minilm-l6-v2:latest"
 )
-
-
 retriever = VectorCypherRetriever(
     driver=driver,
     index_name="chunk_embeddings",
@@ -44,8 +42,8 @@ def print_results(strategy, results):
         print(f"Score: {result['score']:.4f}")
         print(f"Source: {result['source']}")
         print(f"Chunk: {result['chunk']}")
-        print(f"Graph facts: {"\n".join(result['triples'])}")
-        print(f"Text:\n{result['text'][:1000]}")
+        print(f"Graph facts: \n{"\n".join(result['triples'])}")
+        print(f"Text:\n{result['text'][:1000]}\n\n----------------------\n\n")
 
 
 # Write results
@@ -58,11 +56,16 @@ def write_results(strategy, results, f):
         f.write(f"\nScore: {result['score']:.4f}")
         f.write(f"\nSource: {result['source']}")
         f.write(f"\nChunk: {result['chunk']}")
-        f.write(f"\nGraph facts: {"\n".join(result['triples'])}")
-        f.write(f"\nText:\n{result['text'][:1000]}")
+        f.write(f"\nGraph facts: \n{"\n".join(result['triples'])}")
+        f.write(f"\nText:\n{result['text'][:1000]}\n\n----------------------\n\n")
 
 
 if __name__ == "__main__":
-    sample_q = "Who leads the team that owns the Ledger service?"
-    results = retrieve(sample_q, 3)
-    print_results("graphrag", results)
+    try:
+        sample_q = "Who leads the team that owns the Ledger service?"
+        results = retrieve(sample_q, 3)
+        print_results("graphrag", results)
+        with open("retriver_sample_results", "w") as f:
+            write_results("graphrag", results, f)
+    finally:
+        driver.close()
