@@ -4,14 +4,27 @@ from neo4j_graphrag.embeddings import OllamaEmbeddings
 from .neo4j_driver import create_neo4j_driver
 
 
+# RETRIEVAL_QUERY = """
+# MATCH (node)-[:FROM_DOCUMENT]->(d:Document)
+# OPTIONAL MATCH (node)<-[:FROM_CHUNK]-(e:__Entity__)
+# OPTIONAL MATCH (e)-[r]-(o:__Entity__)
+# WITH node, d, score,
+#      collect(DISTINCT startNode(r).name + ' ' + type(r) + ' ' + endNode(r).name) AS triples
+# RETURN node.text AS text, d.path AS source, node.index AS chunk, score, triples
+# """
+
 RETRIEVAL_QUERY = """
 MATCH (node)-[:FROM_DOCUMENT]->(d:Document)
 OPTIONAL MATCH (node)<-[:FROM_CHUNK]-(e:__Entity__)
-OPTIONAL MATCH (e)-[r]-(o:__Entity__)
+OPTIONAL MATCH (e)-[r1]-(o:__Entity__)
+OPTIONAL MATCH (o)-[r2]-(o2:__Entity__)
+WITH node, d, score, collect(DISTINCT r1) + collect(DISTINCT r2) AS rels
+UNWIND CASE WHEN size(rels) = 0 THEN [null] ELSE rels END AS r
 WITH node, d, score,
      collect(DISTINCT startNode(r).name + ' ' + type(r) + ' ' + endNode(r).name) AS triples
 RETURN node.text AS text, d.path AS source, node.index AS chunk, score, triples
 """
+
 
 driver = create_neo4j_driver()
 embedder = OllamaEmbeddings(
@@ -62,10 +75,10 @@ def write_results(strategy, results, f):
 
 if __name__ == "__main__":
     try:
-        sample_q = "Who leads the team that owns the Ledger service?"
-        results = retrieve(sample_q, 3)
+        sample_q = "How is Beacon Warehouse connected to Pinebridge Data?"
+        results = retrieve(sample_q, 6)
         print_results("graphrag", results)
-        with open("retriver_sample_results", "w") as f:
+        with open("graphrag/retriever_sample_results.txt", "w") as f:
             write_results("graphrag", results, f)
     finally:
         driver.close()

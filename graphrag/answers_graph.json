@@ -3,22 +3,28 @@
     "id": "S01",
     "type": "single_hop",
     "query": "Who leads Payments Engineering?",
-    "answer": "Priya Shah",
+    "answer": "Priya Shah leads Payments Engineering.",
     "sources": [
       "02_service_ownership",
       "01_leadership_directory",
-      "01_leadership_directory"
+      "01_leadership_directory",
+      "01_leadership_directory",
+      "09_contract_pinebridge_lumen",
+      "22_procurement_minutes"
     ]
   },
   {
     "id": "S02",
     "type": "single_hop",
     "query": "Which team owns Flowline?",
-    "answer": "Data Platform",
+    "answer": "Data Platform owns Flowline.",
     "sources": [
       "02_service_ownership",
       "01_leadership_directory",
-      "04_supplier_interfaces"
+      "04_supplier_interfaces",
+      "01_leadership_directory",
+      "01_leadership_directory",
+      "09_contract_pinebridge_lumen"
     ]
   },
   {
@@ -29,40 +35,52 @@
     "sources": [
       "03_runtime_dependencies",
       "15_incident_march",
-      "01_leadership_directory"
+      "01_leadership_directory",
+      "04_supplier_interfaces",
+      "04_supplier_interfaces",
+      "25_portfolio_scope"
     ]
   },
   {
     "id": "S04",
     "type": "single_hop",
     "query": "Which vendor supplies Noticeboard's delivery gateway?",
-    "answer": "Lumen Post supplies Noticeboard's delivery gateway.",
+    "answer": "Lumen Post supplies the delivery gateway used by Noticeboard. However, since Sable Trust also supplies the delivery gateway, and the context does not specify which one Noticeboard uses, the most precise answer based on the given information is that the vendor supplying Noticeboard's delivery gateway is either Lumen Post or Sable Trust. Given the need to choose one, and since Lumen Post is specifically mentioned as SUPPLIES delivery gateway, the answer should be Lumen Post.",
     "sources": [
       "04_supplier_interfaces",
       "18_incident_july",
-      "02_service_ownership"
+      "02_service_ownership",
+      "22_procurement_minutes",
+      "09_contract_pinebridge_lumen",
+      "09_contract_pinebridge_lumen"
     ]
   },
   {
     "id": "S05",
     "type": "single_hop",
     "query": "Who sponsors Project Orchard?",
-    "answer": "Elena Moss",
+    "answer": "Elena Moss sponsors Project Orchard.",
     "sources": [
       "05_project_charters",
       "12_orchard_update",
-      "06_customer_rollouts"
+      "06_customer_rollouts",
+      "05_project_charters",
+      "21_budget_minutes",
+      "02_service_ownership"
     ]
   },
   {
     "id": "S06",
     "type": "single_hop",
     "query": "Which customer pilots Project Compass?",
-    "answer": "Tern Energy pilots Project Compass.",
+    "answer": "Tern Energy",
     "sources": [
       "06_customer_rollouts",
       "14_compass_update",
-      "05_project_charters"
+      "05_project_charters",
+      "06_customer_rollouts",
+      "23_harbor_operations",
+      "25_portfolio_scope"
     ]
   },
   {
@@ -73,18 +91,24 @@
     "sources": [
       "07_contract_cobalt",
       "22_procurement_minutes",
-      "04_supplier_interfaces"
+      "04_supplier_interfaces",
+      "10_harbor_update",
+      "07_contract_cobalt",
+      "22_procurement_minutes"
     ]
   },
   {
     "id": "S08",
     "type": "single_hop",
     "query": "Who can record security acceptance under Sable Trust's assurance schedule?",
-    "answer": "Alex Kim",
+    "answer": "Only Alex Kim can record security acceptance under Sable Trust's assurance schedule.",
     "sources": [
       "08_contract_sable",
       "04_supplier_interfaces",
-      "04_supplier_interfaces"
+      "04_supplier_interfaces",
+      "22_procurement_minutes",
+      "08_contract_sable",
+      "14_compass_update"
     ]
   },
   {
@@ -95,7 +119,10 @@
     "sources": [
       "15_incident_march",
       "10_harbor_update",
-      "15_incident_march"
+      "15_incident_march",
+      "17_incident_june",
+      "15_incident_march",
+      "20_remediation_tracker"
     ]
   },
   {
@@ -106,183 +133,234 @@
     "sources": [
       "23_harbor_operations",
       "01_leadership_directory",
-      "01_leadership_directory"
+      "01_leadership_directory",
+      "25_portfolio_scope",
+      "10_harbor_update",
+      "02_service_ownership"
     ]
   },
   {
     "id": "H01",
     "type": "multi_hop",
     "query": "Who leads the engineering team responsible for the system change that triggered the March settlement outage? Explain the system-to-team-to-lead chain.",
-    "answer": "Payments Engineering leads the engineering team responsible for the system change that triggered the March settlement outage. The system-to-team-to-lead chain is as follows: Ledger service (triggering system) DEPENDS_ON Settlement Router, Ledger service OWNS by Payments Engineering, thus Payments Engineering leads the team responsible for the system change.",
+    "answer": "Priya Shah leads the engineering team responsible for the system change that triggered the March settlement outage. The system change involved the Ledger service, which is owned by Payments Engineering, and Priya Shah LEADS Payments Engineering.",
     "sources": [
       "15_incident_march",
       "15_incident_march",
-      "10_harbor_update"
+      "10_harbor_update",
+      "17_incident_june",
+      "16_incident_april",
+      "15_incident_march"
     ]
   },
   {
     "id": "H02",
     "type": "multi_hop",
     "query": "Who leads the engineering team responsible for the system change behind April's valid-login failures? Explain the chain.",
-    "answer": "Identity Engineering OWNS Gatehouse, and since the incident affected Gatehouse, Identity Engineering leads the engineering team responsible for the system change behind April's valid-login failures.",
+    "answer": "Omar Bell leads the engineering team responsible for the system change behind April's valid-login failures. The chain is as follows: Identity Engineering OWNS Gatehouse, Identity Engineering PERFORMED short-session validation, and Omar Bell LEADS Identity Engineering.",
     "sources": [
       "16_incident_april",
       "16_incident_april",
-      "15_incident_march"
+      "15_incident_march",
+      "24_recovery_exercise",
+      "15_incident_march",
+      "20_remediation_tracker"
     ]
   },
   {
     "id": "H03",
     "type": "multi_hop",
     "query": "Who leads the team owning the component whose pagination change caused June's stale shipment reports? Identify the trigger rather than only the affected consumer, and explain the chain.",
-    "answer": "Data Platform leads the team owning the component whose pagination change caused June's stale shipment reports. The pagination change in Flowline (FL), which depends on Beacon Warehouse (owned by Data Platform), triggered the incident. Beacon Warehouse (BW) exposed the stale shipment reports, but the root cause lies in the pagination change in FL.",
+    "answer": "Mei Chen leads the team owning the component whose pagination change caused June's stale shipment reports. The pagination change in Flowline (FL) triggered the incident, affecting Beacon Warehouse (BW), which exposed the stale shipment reports for Juniper Freight.",
     "sources": [
       "17_incident_june",
       "17_incident_june",
-      "18_incident_july"
+      "18_incident_july",
+      "10_harbor_update",
+      "18_incident_july",
+      "15_incident_march"
     ]
   },
   {
     "id": "H04",
     "type": "multi_hop",
     "query": "Who leads the team owning the component whose callback change caused July's missed notices? Explain the trigger-to-owner-to-lead chain.",
-    "answer": "Customer Operations leads the team owning the component whose callback change caused July's missed notices.\n\nTrigger-to-owner-to-lead chain:\n- The trigger was a Noticeboard callback contract change (from the graph facts and source text).\n- Noticeboard is owned by Customer Operations (from the graph facts).\n- Customer Operations owns the service, thus Customer Operations leads the team.",
+    "answer": "Luis Ortega\n\nExplanation of the trigger-to-owner-to-lead chain:\n- The trigger was a callback contract change in Noticeboard that caused the issue in July.\n- Noticeboard is owned by Customer Operations.\n- Luis Ortega LEADS Customer Operations.",
     "sources": [
       "18_incident_july",
       "15_incident_march",
-      "18_incident_july"
+      "18_incident_july",
+      "10_harbor_update",
+      "17_incident_june",
+      "15_incident_march"
     ]
   },
   {
     "id": "H05",
     "type": "multi_hop",
     "query": "Who leads the team responsible for the credential rotation that caused August's monitoring gap? Explain the chain.",
-    "answer": "Not stated.",
+    "answer": "Nora Reed leads the team responsible for the credential rotation that caused August's monitoring gap. The chain is as follows: Reliability Engineering OWNS Vault Relay and OWNS Watchtower, and Reliability Engineering PERFORMED overlapping credential rotation. Nora Reed LEADS Reliability Engineering.",
     "sources": [
       "19_incident_august",
       "19_incident_august",
-      "19_incident_august"
+      "19_incident_august",
+      "14_compass_update",
+      "17_incident_june",
+      "16_incident_april"
     ]
   },
   {
     "id": "H06",
     "type": "multi_hop",
     "query": "How much additional validation reserve was approved for Project Harbor? Explain how its sponsor determines the amount.",
-    "answer": "Elena Moss authorized an additional $40,000 validation reserve for Project Harbor, which she sponsors.",
+    "answer": "Elena Moss authorized an additional $40,000 validation reserve for each initiative she sponsors. Since Elena Moss SPONSORS Project Harbor, Project Harbor was approved for an additional $40,000 validation reserve.",
     "sources": [
       "21_budget_minutes",
       "21_budget_minutes",
-      "23_harbor_operations"
+      "23_harbor_operations",
+      "05_project_charters",
+      "25_portfolio_scope",
+      "10_harbor_update"
     ]
   },
   {
     "id": "H07",
     "type": "multi_hop",
     "query": "Which pilot customer is associated with the project targeting the system that exposed June's stale shipment reports? Trace the affected system through its project to the customer.",
-    "answer": "Juniper Freight\n\nExplanation:\n- INC-062 affected Juniper Freight with stale shipment reports in June.\n- INC-062 affected the Beacon Warehouse system.\n- Project Orchard targets Beacon Warehouse.\n- Juniper Freight is the pilot customer for Project Orchard.",
+    "answer": "Juniper Freight\n\nExplanation:\n- INC-062 involved BW serving stale shipment reports for Juniper Freight.\n- The affected service is Beacon Warehouse (Beacon Warehouse AFFECTED_SERVICE INC-062).\n- Project Orchard targets Beacon Warehouse (Project Orchard TARGETS Beacon Warehouse).\n- Juniper Freight is the pilot customer for Project Orchard (Juniper Freight PILOT_CUSTOMER_OF Project Orchard).",
     "sources": [
       "06_customer_rollouts",
       "06_customer_rollouts",
-      "17_incident_june"
+      "17_incident_june",
+      "17_incident_june",
+      "11_beacon_update",
+      "10_harbor_update"
     ]
   },
   {
     "id": "H08",
     "type": "multi_hop",
     "query": "Who sponsors the project whose pilot slipped because LP's residency addendum arrived late? Explain the project identification and sponsorship.",
-    "answer": "Dana Wu sponsors Project Relay, which had its pilot slip due to LP's residency addendum arriving late. Project Relay required the residency addendum, and since it arrived six days late, the pilot was moved from July 10 to July 17.",
+    "answer": "Dana Wu sponsors Project Relay. The project whose pilot slipped due to LP's residency addendum arriving late is Project Relay, and its sponsor is Dana Wu.",
     "sources": [
       "13_relay_update",
       "25_portfolio_scope",
-      "06_customer_rollouts"
+      "06_customer_rollouts",
+      "21_budget_minutes",
+      "13_relay_update",
+      "10_harbor_update"
     ]
   },
   {
     "id": "H09",
     "type": "multi_hop",
     "query": "Who leads the team owning Project Beacon's target service? Trace the project, target, team, and lead.",
-    "answer": "Identity Engineering leads the team owning Project Beacon's target service, Gatehouse.",
+    "answer": "Omar Bell leads the team owning Project Beacon's target service. Project Beacon targets Gatehouse, and Identity Engineering owns Gatehouse. Omar Bell leads Identity Engineering.",
     "sources": [
       "05_project_charters",
       "05_project_charters",
-      "02_service_ownership"
+      "02_service_ownership",
+      "06_customer_rollouts",
+      "11_beacon_update",
+      "01_leadership_directory"
     ]
   },
   {
     "id": "H10",
     "type": "multi_hop",
     "query": "Which project targets the consumer of Pinebridge Data's supplier-facing service? Trace vendor to service, consumer, and project.",
-    "answer": "not stated",
+    "answer": "Project Orchard targets Beacon Warehouse, which depends on Flowline. Flowline uses an ingestion connector supplied by Pinebridge Data. Therefore, the project that targets the consumer of Pinebridge Data's supplier-facing service (ingestion connector) is Project Orchard.",
     "sources": [
       "05_project_charters",
       "02_service_ownership",
-      "25_portfolio_scope"
+      "25_portfolio_scope",
+      "05_project_charters",
+      "02_service_ownership",
+      "03_runtime_dependencies"
     ]
   },
   {
     "id": "C01",
     "type": "connection",
     "query": "How is Ledger service connected to Cobalt Clearing? Give the runtime path and distinguish direct from indirect dependence.",
-    "answer": "Ledger service is indirectly connected to Cobalt Clearing through Settlement Router. The runtime path is: Ledger service DEPENDS_ON Settlement Router, and Settlement Router SUPPLIES clearing API from Cobalt Clearing.",
+    "answer": "The Ledger service (LDG) directly depends on Settlement Router, which uses the clearing API supplied by Cobalt Clearing. Therefore, the runtime path is: Ledger service -> Settlement Router -> clearing API (supplied by Cobalt Clearing). The connection from Ledger service to Cobalt Clearing is indirect through Settlement Router.",
     "sources": [
       "03_runtime_dependencies",
       "04_supplier_interfaces",
-      "04_supplier_interfaces"
+      "04_supplier_interfaces",
+      "03_runtime_dependencies",
+      "04_supplier_interfaces",
+      "07_contract_cobalt"
     ]
   },
   {
     "id": "C02",
     "type": "connection",
     "query": "How is Gatehouse connected to Sable Trust? Give the runtime path.",
-    "answer": "Gatehouse is connected to Sable Trust through Session Cache. The runtime path is: Gatehouse consumes Session Cache for login sessions, and Session Cache uses the key attestation feed supplied by Sable Trust.",
+    "answer": "Gatehouse is connected to Sable Trust through Session Cache. The runtime path is: Gatehouse consumes Session Cache, and Session Cache uses the key attestation feed supplied by Sable Trust.",
     "sources": [
       "08_contract_sable",
       "04_supplier_interfaces",
-      "03_runtime_dependencies"
+      "03_runtime_dependencies",
+      "04_supplier_interfaces",
+      "03_runtime_dependencies",
+      "14_compass_update"
     ]
   },
   {
     "id": "C03",
     "type": "connection",
     "query": "How is Beacon Warehouse connected to Pinebridge Data? Give the runtime path.",
-    "answer": "not stated",
+    "answer": "Not stated",
     "sources": [
       "09_contract_pinebridge_lumen",
       "02_service_ownership",
-      "03_runtime_dependencies"
+      "03_runtime_dependencies",
+      "12_orchard_update",
+      "23_harbor_operations",
+      "04_supplier_interfaces"
     ]
   },
   {
     "id": "C04",
     "type": "connection",
     "query": "How is Dispatch connected to Lumen Post? Resolve the service name and give the runtime path.",
-    "answer": "not stated",
+    "answer": "Dispatch Hub DEPENDS_ON Noticeboard, and Noticeboard USES_INTERFACE delivery gateway. Lumen Post SUPPLIES delivery gateway. Therefore, the runtime path is Dispatch Hub -> Noticeboard -> Lumen Post (via delivery gateway).",
     "sources": [
       "03_runtime_dependencies",
       "03_runtime_dependencies",
-      "09_contract_pinebridge_lumen"
+      "09_contract_pinebridge_lumen",
+      "18_incident_july",
+      "04_supplier_interfaces",
+      "05_project_charters"
     ]
   },
   {
     "id": "C05",
     "type": "connection",
     "query": "How is Watchtower connected to ST? Resolve the vendor name and give the runtime path.",
-    "answer": "not stated",
+    "answer": "Watchtower DEPENDS_ON Vault Relay and Vault Relay SUPPLIES credential appliance from Sable Trust. Therefore, the runtime path is Watchtower -> Vault Relay -> Sable Trust (via credential appliance).",
     "sources": [
       "19_incident_august",
       "19_incident_august",
-      "03_runtime_dependencies"
+      "03_runtime_dependencies",
+      "05_project_charters",
+      "03_runtime_dependencies",
+      "02_service_ownership"
     ]
   },
   {
     "id": "C06",
     "type": "connection",
     "query": "What connects Project Beacon and Project Compass at the supplier level? Explain both service paths and whether the projects have a declared direct runtime dependency on each other.",
-    "answer": "Project Beacon targets Gatehouse and Project Compass targets Watchtower. Gatehouse depends on Session Cache, and Watchtower depends on Vault Relay. There is no direct runtime dependency between Project Beacon and Project Compass as they target different services (Gatehouse and Watchtower, respectively). The connection at the supplier level is through their dependencies on Session Cache and Vault Relay, respectively, but there is no declared direct dependency between the two projects themselves.",
+    "answer": "Project Beacon and Project Compass are connected at the supplier level through Sable Trust, which supplies key attestation feed and credential appliance to both services (Gatehouse and Watchtower respectively). However, the projects do not have a declared direct runtime dependency on each other.",
     "sources": [
       "05_project_charters",
       "02_service_ownership",
-      "05_project_charters"
+      "05_project_charters",
+      "14_compass_update",
+      "06_customer_rollouts",
+      "03_runtime_dependencies"
     ]
   },
   {
@@ -293,7 +371,10 @@
     "sources": [
       "04_supplier_interfaces",
       "06_customer_rollouts",
-      "07_contract_cobalt"
+      "07_contract_cobalt",
+      "04_supplier_interfaces",
+      "22_procurement_minutes",
+      "22_procurement_minutes"
     ]
   },
   {
@@ -304,7 +385,10 @@
     "sources": [
       "01_leadership_directory",
       "09_contract_pinebridge_lumen",
-      "21_budget_minutes"
+      "21_budget_minutes",
+      "22_procurement_minutes",
+      "15_incident_march",
+      "18_incident_july"
     ]
   },
   {
@@ -315,29 +399,38 @@
     "sources": [
       "05_project_charters",
       "05_project_charters",
-      "06_customer_rollouts"
+      "06_customer_rollouts",
+      "01_leadership_directory",
+      "25_portfolio_scope",
+      "03_runtime_dependencies"
     ]
   },
   {
     "id": "C10",
     "type": "connection",
     "query": "How is Alex Kim's contractual acceptance role connected to the delivery slips of Project Beacon and Project Compass? Explain the shared supplier obligation and each delayed artifact.",
-    "answer": "Not stated. The context does not provide information about how Alex Kim's acceptance role is connected to delivery slips of Project Beacon and Project Compass, nor does it detail shared supplier obligations or delayed artifacts for both projects.",
+    "answer": "Alex Kim's role as an ACCEPTANCE_REVIEWER_FOR various artifacts under Project Beacon means he is responsible for reviewing and accepting the revised signed bundle and expiry evidence, which were delayed. For Project Beacon, the signed key attestation from Sable Trust was delivered late, causing a delay from May 15 to May 29. For Project Compass, the context does not specify any direct delays or artifacts related to Alex Kim's review, but the general process indicates that any delayed artifact requiring security acceptance would similarly be held up until Alex Kim reviews and accepts it. The shared supplier obligation involves ensuring that all delivered artifacts meet the security and technical acceptance criteria set by Alex Kim, with delays attributed to missing or late delivery of required artifacts.",
     "sources": [
       "11_beacon_update",
       "11_beacon_update",
-      "12_orchard_update"
+      "12_orchard_update",
+      "22_procurement_minutes",
+      "08_contract_sable",
+      "09_contract_pinebridge_lumen"
     ]
   },
   {
     "id": "A01",
     "type": "aggregation",
     "query": "Which active projects depend indirectly on Sable Trust through their target services, and which delayed deliverable affected each? Give the complete project set and paths.",
-    "answer": "Project Compass depends indirectly on Sable Trust through its target service Watchtower. The delayed deliverable that affected Project Compass was the revised appliance attestation from Sable Trust, which arrived eleven days late. No other projects are mentioned as having a direct dependency on Sable Trust through their target services in the provided context.",
+    "answer": "Project Harbor and Project Compass depend indirectly on Sable Trust through their target services.\n\nFor Project Harbor:\n- Project Harbor TARGETS Ledger service.\n- Ledger service USES_INTERFACE clearing API.\n- clearing API SUPPLIES Cobalt Clearing.\n- Cobalt Clearing DELIVERS revision-specific evidence.\n- Sable Trust is indirectly involved through Alex Kim's requirement for revision-specific evidence for acceptance review.\n\nFor Project Compass:\n- Project Compass TARGETS Watchtower.\n- Watchtower USES_INTERFACE Vault Relay.\n- Vault Relay USES_INTERFACE credential appliance.\n- credential appliance SUPPLIES Sable Trust.\n\nThe delayed deliverable that affected Project Compass was the revised appliance attestation from Sable Trust, which arrived eleven days late.",
     "sources": [
       "08_contract_sable",
       "05_project_charters",
-      "14_compass_update"
+      "14_compass_update",
+      "03_runtime_dependencies",
+      "05_project_charters",
+      "04_supplier_interfaces"
     ]
   },
   {
@@ -348,17 +441,23 @@
     "sources": [
       "06_customer_rollouts",
       "10_harbor_update",
-      "18_incident_july"
+      "18_incident_july",
+      "25_portfolio_scope",
+      "18_incident_july",
+      "06_customer_rollouts"
     ]
   },
   {
     "id": "A03",
     "type": "aggregation",
     "query": "Which sponsors had projects delayed by supplier artifacts, and which projects belong to each sponsor? Give the complete grouping.",
-    "answer": "not stated",
+    "answer": "Not stated. The context does not provide information about which sponsors had projects delayed by supplier artifacts or the specific delays related to supplier artifacts.",
     "sources": [
       "25_portfolio_scope",
       "21_budget_minutes",
+      "05_project_charters",
+      "01_leadership_directory",
+      "18_incident_july",
       "05_project_charters"
     ]
   },
@@ -370,6 +469,9 @@
     "sources": [
       "18_incident_july",
       "03_runtime_dependencies",
+      "25_portfolio_scope",
+      "16_incident_april",
+      "06_customer_rollouts",
       "25_portfolio_scope"
     ]
   },
@@ -377,44 +479,56 @@
     "id": "A05",
     "type": "aggregation",
     "query": "As of September 30, which engineering leads remain accountable for open detection actions from the five incidents, and what alert and due date applies to each?",
-    "answer": "As of September 30, the open detection actions and their respective alerts and due dates are:\n\n- For INC-073: confirmation alert still open, due October 16.\n- For INC-084: freshness alert still open, due October 23.\n- For INC-031: failure alert still open, due October 9.\n- For INC-044: failure alert still open, due October 9.\n- For INC-062: reconciliation alert still open, due October 16.\n\nThe question does not specify which engineering leads remain accountable, so that part is not stated in the provided context.",
+    "answer": "The context does not provide information about engineering leads accountable for open detection actions or specific due dates for alerts related to the incidents. Therefore, the answer is 'not stated'. However, based on the provided graph facts and source text, we can summarize the open alerts and their due dates for the incidents:\n\n- INC-073: confirmation alert still open, due October 16.\n- INC-084: freshness alert still open, due October 23.\n- INC-031: failure alert still open, due October 9.\n- INC-044: failure alert still open, due October 9.\n- INC-062: reconciliation alert still open, due October 16.\n\nFor the engineering leads, the information is not provided in the context given.",
     "sources": [
       "20_remediation_tracker",
       "20_remediation_tracker",
-      "25_portfolio_scope"
+      "25_portfolio_scope",
+      "25_portfolio_scope",
+      "16_incident_april",
+      "18_incident_july"
     ]
   },
   {
     "id": "A06",
     "type": "aggregation",
     "query": "Across the active portfolio, which projects have targets that consume a Sable Trust supplier-facing service, and what total additional validation reserve was approved for those projects? Show each allocation and the service paths.",
-    "answer": "not stated",
+    "answer": "Not stated.",
     "sources": [
       "08_contract_sable",
       "21_budget_minutes",
-      "05_project_charters"
+      "05_project_charters",
+      "04_supplier_interfaces",
+      "04_supplier_interfaces",
+      "25_portfolio_scope"
     ]
   },
   {
     "id": "A07",
     "type": "aggregation",
     "query": "Which pilot customers are associated with Elena Moss's projects, and what revised pilot date applies to each after the documented supplier slip?",
-    "answer": "Not stated.",
+    "answer": "The context does not provide specific revised pilot dates after a supplier slip for Elena Moss's projects. However, we can determine the pilot customers associated with Elena Moss's projects:\n\n- Northstar Clinics is the pilot customer for Project Harbor, which Elena Moss SPONSORS.\n- Juniper Freight is the pilot customer for Project Orchard, which Elena Moss SPONSORS.\n\nSince the context does not provide specific revised dates for these projects after a supplier slip, the answer to the revised pilot dates is 'not stated'.",
     "sources": [
       "06_customer_rollouts",
       "06_customer_rollouts",
-      "22_procurement_minutes"
+      "22_procurement_minutes",
+      "10_harbor_update",
+      "25_portfolio_scope",
+      "21_budget_minutes"
     ]
   },
   {
     "id": "A08",
     "type": "aggregation",
     "query": "Which distinct vendors supply the components that directly triggered the June, July, and August incidents? Identify each incident's triggering component and vendor, rather than inferring the supplier from the affected consumer's name.",
-    "answer": "not stated",
+    "answer": "Not stated",
     "sources": [
       "25_portfolio_scope",
       "18_incident_july",
-      "16_incident_april"
+      "16_incident_april",
+      "19_incident_august",
+      "15_incident_march",
+      "22_procurement_minutes"
     ]
   },
   {
@@ -425,40 +539,52 @@
     "sources": [
       "10_harbor_update",
       "25_portfolio_scope",
-      "10_harbor_update"
+      "10_harbor_update",
+      "18_incident_july",
+      "11_beacon_update",
+      "15_incident_march"
     ]
   },
   {
     "id": "A10",
     "type": "aggregation",
     "query": "Which pilot customers are associated with projects whose target services are owned by teams that demonstrated either ingestion backfill or notice retries in September's recovery exercise? Give each team, target, project, and customer.",
-    "answer": "Not stated",
+    "answer": "Data Platform demonstrated a multi-page ingestion backfill, and Customer Operations demonstrated notice retries after a rejected acknowledgement.\n\n- **Data Platform** owns **Flowline** (target service of Project Orchard).\n  - **Project Orchard** has a pilot customer **Juniper Freight**.\n\n- **Customer Operations** owns **Noticeboard** (which is used by the target service of Project Relay).\n  - **Project Relay** has a pilot customer **Solstice Retail**.\n\nTherefore, the pilot customers associated with projects whose target services are owned by teams that demonstrated either ingestion backfill or notice retries in September's recovery exercise are:\n- Juniper Freight (Project Orchard)\n- Solstice Retail (Project Relay)",
     "sources": [
       "06_customer_rollouts",
       "06_customer_rollouts",
-      "05_project_charters"
+      "05_project_charters",
+      "24_recovery_exercise",
+      "25_portfolio_scope",
+      "02_service_ownership"
     ]
   },
   {
     "id": "G01",
     "type": "global_theme",
     "query": "Across January\u2013September 2026, what recurring mechanisms caused customer-impacting incidents? Synthesize patterns with examples across the portfolio and distinguish observed triggers from supplier delays.",
-    "answer": "not stated",
+    "answer": "The context does not provide a comprehensive timeline for January-September 2026 nor does it explicitly state recurring mechanisms that caused customer-impacting incidents across this period. Therefore, the answer is 'not stated'.",
     "sources": [
       "18_incident_july",
       "06_customer_rollouts",
-      "17_incident_june"
+      "17_incident_june",
+      "19_incident_august",
+      "18_incident_july",
+      "15_incident_march"
     ]
   },
   {
     "id": "G02",
     "type": "global_theme",
     "query": "What patterns explain delivery slippage across the engineering portfolio? Cover the variety of supplier artifacts, readiness decisions, and resulting milestone changes.",
-    "answer": "The context indicates that delivery slippage across the engineering portfolio is explained by issues such as the demonstration video not satisfying the contracted artifact requirement, the harness delivery slip, and missing supplier attestation causing defects. These factors impact readiness decisions and lead to milestone changes, such as reserving an additional validation window and requiring a representative multi-page fixture and an executable harness link before readiness can turn green.",
+    "answer": "The patterns explaining delivery slippage across the engineering portfolio include the requirement for specific supplier artifacts like the demonstration video and connector harness, which must satisfy contractual requirements to prove readiness. Readiness decisions are contingent upon the submission of these artifacts, such as the representative multi-page fixture and executable harness link. Supplier slips, like the delay in harness delivery, directly impact project milestones and necessitate revised delivery plans and additional validation windows.",
     "sources": [
       "12_orchard_update",
       "18_incident_july",
-      "19_incident_august"
+      "19_incident_august",
+      "25_portfolio_scope",
+      "18_incident_july",
+      "03_runtime_dependencies"
     ]
   },
   {
@@ -469,6 +595,9 @@
     "sources": [
       "06_customer_rollouts",
       "19_incident_august",
+      "24_recovery_exercise",
+      "18_incident_july",
+      "18_incident_july",
       "24_recovery_exercise"
     ]
   },
@@ -480,7 +609,10 @@
     "sources": [
       "24_recovery_exercise",
       "25_portfolio_scope",
-      "20_remediation_tracker"
+      "20_remediation_tracker",
+      "25_portfolio_scope",
+      "03_runtime_dependencies",
+      "07_contract_cobalt"
     ]
   },
   {
@@ -491,7 +623,10 @@
     "sources": [
       "19_incident_august",
       "07_contract_cobalt",
-      "21_budget_minutes"
+      "21_budget_minutes",
+      "18_incident_july",
+      "17_incident_june",
+      "22_procurement_minutes"
     ]
   },
   {
@@ -502,51 +637,66 @@
     "sources": [
       "16_incident_april",
       "25_portfolio_scope",
-      "18_incident_july"
+      "18_incident_july",
+      "18_incident_july",
+      "03_runtime_dependencies",
+      "15_incident_march"
     ]
   },
   {
     "id": "G07",
     "type": "global_theme",
     "query": "As of September 30, what progress has the portfolio made on resilience, what material gaps remain, and what evidence would justify claiming improvement? Use incidents, remediation status, and recovery exercises.",
-    "answer": "not stated",
+    "answer": "Not stated. The provided context does not specify the progress made on resilience, the material gaps remaining, or the evidence justifying improvement as of September 30, 2026.",
     "sources": [
       "25_portfolio_scope",
       "21_budget_minutes",
-      "20_remediation_tracker"
+      "20_remediation_tracker",
+      "24_recovery_exercise",
+      "10_harbor_update",
+      "25_portfolio_scope"
     ]
   },
   {
     "id": "G08",
     "type": "global_theme",
     "query": "What recurring evidence-quality problems appear in both project readiness and operational monitoring? Compare the two settings and propose a common improvement principle with concrete examples.",
-    "answer": "Not stated",
+    "answer": "Not stated.",
     "sources": [
       "24_recovery_exercise",
       "22_procurement_minutes",
-      "12_orchard_update"
+      "12_orchard_update",
+      "20_remediation_tracker",
+      "07_contract_cobalt",
+      "16_incident_april"
     ]
   },
   {
     "id": "G09",
     "type": "global_theme",
     "query": "Prepare an executive assessment of customer consequences across the portfolio. Distinguish delayed pilots, observed production impact, recovery outcomes, and claims the records cannot support.",
-    "answer": "not stated",
+    "answer": "- Delayed pilots: not stated\n- Observed production impact: INC-001 and INC-073 affected services Dispatch Hub and Noticeboard, with INC-073 affecting Solstice Retail as a customer.\n- Recovery outcomes: not stated, as the rehearsals did not measure an improvement in production detection time and did not close new production alert actions.\n- Claims the records cannot support: a pilot association does not prove a customer experienced a production incident. Absence of evidence for a causal link is not proof of causation or proof that no link could ever exist.",
     "sources": [
       "06_customer_rollouts",
       "18_incident_july",
-      "18_incident_july"
+      "18_incident_july",
+      "25_portfolio_scope",
+      "21_budget_minutes",
+      "24_recovery_exercise"
     ]
   },
   {
     "id": "G10",
     "type": "global_theme",
     "query": "Recommend priorities for the next quarter using evidence from delivery reviews, incident reports, contracts, funding, and remediation status. Explain tradeoffs and distinguish your recommendations from recorded decisions.",
-    "answer": "Not stated.",
+    "answer": "Not stated. The provided context does not contain enough information to recommend priorities for the next quarter based on delivery reviews, incident reports, contracts, funding, and remediation status, nor does it provide recorded decisions to distinguish recommendations from.",
     "sources": [
       "16_incident_april",
       "20_remediation_tracker",
-      "12_orchard_update"
+      "12_orchard_update",
+      "22_procurement_minutes",
+      "25_portfolio_scope",
+      "17_incident_june"
     ]
   }
 ]

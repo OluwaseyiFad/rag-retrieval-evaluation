@@ -2,6 +2,7 @@ import json
 import asyncio
 from pathlib import Path
 
+from transformers import AutoTokenizer
 from neo4j_graphrag.llm import OpenAILLM
 from .graph_retriever import retrieve
 
@@ -20,6 +21,7 @@ local_llm = OpenAILLM(
     timeout=300,
     max_retries=0,
 )
+tok = AutoTokenizer.from_pretrained("Qwen/Qwen2.5-14B-Instruct")
 
 
 async def main():
@@ -29,7 +31,7 @@ async def main():
         for query in queries:
             try:
                 seen = set()  # Helps to track duplicate in graph facts
-                result = retrieve(query["query"], 3)
+                result = retrieve(query["query"], 6)
                 context = "\n"
                 sources = []
                 for r in result:
@@ -49,6 +51,8 @@ async def main():
                     f"Question: {query['query']}\n\n"
                     "Answer:"
                 )
+                prompt_token = len(tok(prompt).input_ids)
+                print(f"The prompt token is: {prompt_token}...\n")
                 reply = await local_llm.ainvoke(prompt)
                 answer = reply.content.strip()
                 results.append({"id": query["id"], "type": query["type"], "query": query["query"], "answer": answer, "sources": sources})
